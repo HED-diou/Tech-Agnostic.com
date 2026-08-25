@@ -73,6 +73,52 @@ export const stacks = [
 ] as const;
 
 /* -------------------------------------------------------------------------
+ * Trust band — the numbers a non-technical buyer scans for
+ * ---------------------------------------------------------------------- */
+
+export const stats = {
+  eyebrow: 'in practice',
+  title: 'Small on purpose.',
+  lead: 'We run a handful of engagements at a time. That is a deliberate constraint, not a stage we are trying to grow out of.',
+  items: [
+    { value: '0', label: 'vendor commissions taken', note: 'No reseller agreements, no partner tiers, no referral fees.' },
+    { value: '1 in 3', label: 'audits end in "keep what you have"', note: 'That recommendation is worth as much as the other two.' },
+    { value: '2 wks', label: 'from first call to a decision', note: 'Fixed scope, fixed price, dated deliverable.' },
+    { value: '100%', label: 'of what we build, you own', note: 'Your repos, your cloud accounts, your documentation.' },
+  ],
+} as const;
+
+/* -------------------------------------------------------------------------
+ * Who you actually work with — photo slots, see docs/PHOTOGRAPHY.md
+ * ---------------------------------------------------------------------- */
+
+export const team = {
+  eyebrow: 'who you work with',
+  title: 'The people on the call are the people doing the work.',
+  lead: 'No account manager, no offshore handover, no bait and switch. You meet the engineers who will be in your repository.',
+  members: [
+    {
+      slot: 'TEAM-01',
+      name: 'Founder & principal consultant',
+      role: 'Architecture · cost · vendor negotiation',
+      brief: 'Portrait, natural light, at a desk or whiteboard — working, not posed',
+    },
+    {
+      slot: 'TEAM-02',
+      name: 'Senior engineer',
+      role: 'Build sprints · platform · data',
+      brief: 'Portrait, natural light, same treatment as TEAM-01',
+    },
+    {
+      slot: 'TEAM-03',
+      name: 'Senior engineer',
+      role: 'Cloud · infrastructure · reliability',
+      brief: 'Portrait, natural light, same treatment as TEAM-01',
+    },
+  ],
+} as const;
+
+/* -------------------------------------------------------------------------
  * Funnel step 2 — name the pain
  * ---------------------------------------------------------------------- */
 

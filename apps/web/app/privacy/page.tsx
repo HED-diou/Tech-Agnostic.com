@@ -37,34 +37,34 @@ export default function PrivacyPage() {
     <section className="container-ta py-20 lg:py-28">
       <Eyebrow>legal</Eyebrow>
       <h1 className="mt-6 text-h1">Privacy note</h1>
-      <p className="mt-6 text-body-lg text-steel-400 measure-lead">
+      <p className="mt-6 text-body-lg text-muted measure-lead">
         Short, because there is not much to say. We collect the minimum needed
         to answer you.
       </p>
 
-      <div className="mt-16 divide-y divide-ink-600 border-t border-ink-600">
+      <div className="mt-16 divide-y divide-line border-t border-line">
         {sections.map((section) => (
           <div
             key={section.title}
             className="grid gap-4 py-9 md:grid-cols-[240px_1fr] md:gap-10"
           >
             <h2 className="text-h3">{section.title}</h2>
-            <p className="text-steel-400 measure">{section.body}</p>
+            <p className="text-muted measure">{section.body}</p>
           </div>
         ))}
       </div>
 
-      <p className="mt-12 text-sm text-steel-400">
+      <p className="mt-12 text-sm text-muted">
         Questions about any of this:{' '}
         <a
           href={`mailto:${site.email}`}
-          className="text-paper underline underline-offset-4 transition-colors duration-150 ease-out hover:text-signal"
+          className="font-medium text-ink underline underline-offset-4 transition-colors duration-150 ease-out hover:text-signal-deep"
         >
           {site.email}
         </a>
       </p>
 
-      <p className="mt-10 font-mono text-xs text-steel-400">
+      <p className="mt-10 text-sm text-muted">
         This is a plain-language summary, not legal advice. Have counsel review
         it against your jurisdiction before launch.
       </p>

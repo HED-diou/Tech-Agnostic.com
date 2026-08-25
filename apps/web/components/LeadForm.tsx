@@ -170,19 +170,19 @@ export function LeadForm() {
 
   if (status === 'sent' || status === 'mailto') {
     return (
-      <div className="rounded-card border border-ink-600 bg-ink-800 p-8 lg:p-10">
-        <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-signal text-ink-900">
+      <div className="rounded-card border border-line bg-surface p-8 shadow-card lg:p-10">
+        <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-signal text-ink">
           <Check />
         </span>
         <h3 className="mt-6 text-h2">
           {status === 'sent' ? 'Received.' : 'Your email client is open.'}
         </h3>
-        <p className="mt-4 text-steel-400 measure">
+        <p className="mt-4 text-muted measure">
           {status === 'sent'
             ? `Thanks ${fields.name.split(' ')[0] ?? ''}. We read every one of these ourselves and reply within one business day — usually with a first opinion attached.`
             : `We have pre-filled a message to ${site.email}. Send it and we will reply within one business day.`}
         </p>
-        <p className="mt-8 font-mono text-xs uppercase tracking-[0.14em] text-steel-400">
+        <p className="mt-8 text-sm font-medium text-muted">
           No sequences. No drip campaigns.
         </p>
       </div>
@@ -193,7 +193,7 @@ export function LeadForm() {
     <form
       onSubmit={submit}
       noValidate
-      className="relative rounded-card border border-ink-600 bg-ink-800 p-6 sm:p-8 lg:p-10"
+      className="relative rounded-card border border-line bg-surface p-6 shadow-card sm:p-8 lg:p-10"
     >
       {/* Progress */}
       <div className="flex items-center gap-3">
@@ -201,13 +201,13 @@ export function LeadForm() {
           <div key={label} className="flex flex-1 flex-col gap-2">
             <span
               aria-hidden="true"
-              className={`h-1 w-full rounded-full transition-colors duration-150 ease-out ${
-                i <= step ? 'bg-signal' : 'bg-ink-600'
+              className={`h-0.5 w-full rounded-full transition-colors duration-150 ease-out ${
+                i <= step ? 'bg-signal' : 'bg-sand-deep'
               }`}
             />
             <span
-              className={`font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] ${
-                i === step ? 'text-paper' : 'text-steel-400'
+              className={`text-[0.6875rem] font-semibold ${
+                i === step ? 'text-ink' : 'text-muted'
               }`}
             >
               {label}
@@ -220,62 +220,60 @@ export function LeadForm() {
         ref={headingRef}
         tabIndex={-1}
         aria-live="polite"
-        className="mt-8 font-mono text-eyebrow uppercase text-steel-400 outline-none"
+        className="mt-8 text-sm font-semibold text-muted outline-none"
       >
-        <span className="text-signal font-semibold">//</span> Step {step + 1} of {STEPS.length}
+        Step {step + 1} of {STEPS.length}
       </p>
 
       {/* ── Step 1 ─────────────────────────────────────────────────────── */}
       {step === 0 ? (
-        <fieldset className="mt-4">
-          <legend className="text-h2 font-semibold text-paper">What brings you here?</legend>
-          <p className="mt-2 text-sm text-steel-400">
+        <fieldset className="mt-5">
+          <legend className="text-h2">What brings you here?</legend>
+          <p className="mt-3 text-sm text-muted">
             Closest match is fine. We will get to the detail on the call.
           </p>
 
           <div
-            className="mt-6 space-y-2.5"
+            className="mt-7 space-y-2"
             role="radiogroup"
             aria-describedby={errors.intent ? `${uid}-intent-err` : undefined}
           >
             {formOptions.intent.map((option) => (
               <label
                 key={option.value}
-                className={`flex cursor-pointer items-center justify-between rounded-field border px-4 py-3.5 text-sm transition-colors duration-150 ease-out ${
+                className={`flex cursor-pointer items-center gap-3 rounded-field border px-4 py-3.5 text-sm transition-colors duration-150 ease-out ${
                   fields.intent === option.value
-                    ? 'border-signal bg-ink-900 text-paper shadow-sm'
-                    : 'border-ink-600 bg-ink-800/80 text-steel-200 hover:border-steel-400'
+                    ? 'border-signal bg-signal-wash text-ink'
+                    : 'border-line text-body hover:border-line-strong hover:bg-sand/60'
                 }`}
               >
-                <div className="flex items-center gap-3">
-                  <input
-                    type="radio"
-                    name="intent"
-                    value={option.value}
-                    checked={fields.intent === option.value}
-                    onChange={() => set('intent', option.value)}
-                    className="sr-only"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className={`grid h-4 w-4 shrink-0 place-items-center rounded-full border ${
-                      fields.intent === option.value
-                        ? 'border-signal'
-                        : 'border-ink-500'
-                    }`}
-                  >
-                    {fields.intent === option.value ? (
-                      <span className="h-2 w-2 rounded-full bg-signal" />
-                    ) : null}
-                  </span>
-                  <span className="font-medium">{option.label}</span>
-                </div>
+                <input
+                  type="radio"
+                  name="intent"
+                  value={option.value}
+                  checked={fields.intent === option.value}
+                  onChange={() => set('intent', option.value)}
+                  className="sr-only"
+                />
+                <span
+                  aria-hidden="true"
+                  className={`grid h-4 w-4 shrink-0 place-items-center rounded-full border ${
+                    fields.intent === option.value
+                      ? 'border-signal'
+                      : 'border-line-strong'
+                  }`}
+                >
+                  {fields.intent === option.value ? (
+                    <span className="h-2 w-2 rounded-full bg-signal" />
+                  ) : null}
+                </span>
+                {option.label}
               </label>
             ))}
           </div>
 
           {errors.intent ? (
-            <p id={`${uid}-intent-err`} className="mt-3 text-sm text-err font-medium">
+            <p id={`${uid}-intent-err`} className="mt-3 text-sm text-err">
               {errors.intent}
             </p>
           ) : null}
@@ -357,10 +355,10 @@ export function LeadForm() {
           <div>
             <label
               htmlFor={`${uid}-message`}
-              className="block text-sm font-medium text-paper"
+              className="block text-sm font-semibold text-ink"
             >
               What is stuck?{' '}
-              <span className="font-normal text-steel-400">(optional)</span>
+              <span className="font-normal text-muted">(optional)</span>
             </label>
             <textarea
               id={`${uid}-message`}
@@ -369,7 +367,7 @@ export function LeadForm() {
               value={fields.message}
               onChange={(e) => set('message', e.target.value)}
               placeholder="Two or three sentences is plenty."
-              className="mt-2 w-full rounded-field border border-ink-600 bg-ink-900 px-4 py-3 text-sm text-paper transition-colors duration-150 ease-out placeholder:text-ink-500 hover:border-steel-400 focus:border-steel-400 focus:outline-none"
+              className="mt-2 w-full rounded-field border border-line bg-paper px-4 py-3 text-sm text-ink transition-colors duration-150 ease-out placeholder:text-muted hover:border-line-strong focus:border-ink focus:outline-none"
             />
           </div>
 
@@ -386,12 +384,12 @@ export function LeadForm() {
             />
           </div>
 
-          <p className="text-xs leading-relaxed text-steel-400">
+          <p className="text-xs leading-relaxed text-muted">
             We use your details to reply to this enquiry and nothing else. No
             newsletter, no third-party sharing. See our{' '}
             <a
               href="/privacy"
-              className="text-paper underline underline-offset-2"
+              className="font-medium text-ink underline underline-offset-2"
             >
               privacy note
             </a>
@@ -455,17 +453,17 @@ function ChipGroup({
 }) {
   return (
     <fieldset>
-      <legend className="text-sm font-semibold text-paper">{label}</legend>
-      {hint ? <p className="mt-1 text-xs text-steel-400">{hint}</p> : null}
+      <legend className="text-sm font-semibold text-ink">{label}</legend>
+      {hint ? <p className="mt-1 text-xs text-muted">{hint}</p> : null}
 
       <div className="mt-3 flex flex-wrap gap-2">
         {options.map((option) => (
           <label
             key={option.value}
-            className={`cursor-pointer rounded-field border px-3.5 py-2 text-sm font-medium transition-colors duration-150 ease-out ${
+            className={`cursor-pointer rounded-field border px-3.5 py-2 text-sm transition-colors duration-150 ease-out ${
               value === option.value
-                ? 'border-signal bg-ink-900 text-paper ring-1 ring-signal/30'
-                : 'border-ink-600 bg-ink-900/40 text-steel-200 hover:border-steel-400'
+                ? 'border-signal bg-signal-wash text-ink'
+                : 'border-line text-body hover:border-line-strong hover:bg-sand/60'
             }`}
           >
             <input
@@ -482,7 +480,7 @@ function ChipGroup({
       </div>
 
       {error ? (
-        <p id={`${uid}-${name}-err`} className="mt-2 text-xs text-err font-medium">
+        <p id={`${uid}-${name}-err`} className="mt-2 text-sm text-err">
           {error}
         </p>
       ) : null}
@@ -516,10 +514,10 @@ function Field({
 
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-semibold text-paper">
+      <label htmlFor={id} className="block text-sm font-semibold text-ink">
         {label}{' '}
         {optional ? (
-          <span className="font-normal text-steel-400">(optional)</span>
+          <span className="font-normal text-muted">(optional)</span>
         ) : null}
       </label>
       <input
@@ -531,14 +529,14 @@ function Field({
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? errorId : undefined}
         onChange={(e) => onChange(e.target.value)}
-        className={`mt-2 h-12 w-full rounded-field border bg-ink-900 px-4 text-sm text-paper transition-colors duration-150 ease-out placeholder:text-ink-500 focus:outline-none ${
+        className={`mt-2 h-12 w-full rounded-field border bg-paper px-4 text-sm text-ink transition-colors duration-150 ease-out placeholder:text-muted focus:outline-none ${
           error
-            ? 'border-err ring-1 ring-err/30'
-            : 'border-ink-600 hover:border-steel-400 focus:border-steel-400'
+            ? 'border-err'
+            : 'border-line hover:border-line-strong focus:border-ink'
         }`}
       />
       {error ? (
-        <p id={errorId} className="mt-2 text-xs text-err font-medium">
+        <p id={errorId} className="mt-2 text-sm text-err">
           {error}
         </p>
       ) : null}

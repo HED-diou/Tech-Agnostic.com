@@ -35,31 +35,31 @@ const toc = headings.filter((h) => h.depth === 2);
     <header class="relative overflow-hidden">
       <div
         aria-hidden="true"
-        class="blueprint pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(110%_80%_at_70%_0%,black,transparent_72%)]"
+        class="wash pointer-events-none absolute inset-0"
       >
       </div>
 
       <div class="container-ta relative py-16 lg:py-20">
         <a
           href="/blog"
-          class="inline-flex items-center gap-2 font-mono text-eyebrow uppercase text-steel-400 transition-colors duration-150 ease-out hover:text-paper"
+          class="inline-flex items-center gap-2 text-eyebrow font-semibold text-muted transition-colors duration-150 ease-out hover:text-ink"
         >
           <span aria-hidden="true">←</span> All notes
         </a>
 
-        <p class="mt-10 font-mono text-eyebrow uppercase text-steel-400">
+        <p class="mt-10 text-eyebrow font-semibold text-muted">
           <span class="text-signal" aria-hidden="true">//</span>{' '}
           {post.data.topic}
         </p>
 
         <h1 class="mt-6 max-w-[20ch] text-h1">{post.data.title}</h1>
 
-        <p class="mt-6 max-w-[54ch] text-body-lg text-steel-400">
+        <p class="mt-6 max-w-[54ch] text-body-lg text-muted">
           {post.data.description}
         </p>
 
         <div
-          class="hairline mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 pt-6 font-mono text-xs text-steel-400"
+          class="border-t border-line mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 pt-6 font-mono text-xs text-muted"
         >
           <span>{post.data.author}</span>
           <time datetime={post.data.publishedAt.toISOString()}>
@@ -87,15 +87,15 @@ const toc = headings.filter((h) => h.depth === 2);
               aria-label="On this page"
               class="order-1 self-start lg:order-2 lg:sticky lg:top-28"
             >
-              <h2 class="font-mono text-eyebrow uppercase text-steel-400">
+              <h2 class="text-eyebrow font-semibold text-muted">
                 On this page
               </h2>
-              <ul class="mt-4 space-y-2.5 border-l border-ink-600 pl-4">
+              <ul class="mt-4 space-y-2.5 border-l border-line pl-4">
                 {toc.map((heading) => (
                   <li>
                     <a
                       href={`#${heading.slug}`}
-                      class="text-sm text-steel-400 transition-colors duration-150 ease-out hover:text-paper"
+                      class="text-sm text-muted transition-colors duration-150 ease-out hover:text-ink"
                     >
                       {heading.text}
                     </a>
@@ -110,18 +110,18 @@ const toc = headings.filter((h) => h.depth === 2);
 
     <div class="container-ta pb-4">
       <aside
-        class="rounded-card border border-ink-600 bg-ink-800 p-8 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:p-10"
+        class="rounded-card border border-line bg-surface shadow-card p-8 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:p-10"
       >
         <div>
           <h2 class="text-h2">Recognise this from your own stack?</h2>
-          <p class="mt-4 max-w-[52ch] text-steel-400">
+          <p class="mt-4 max-w-[52ch] text-muted">
             We do a free 30-minute technical review. Bring one real problem —
             you will leave with a first opinion and a written summary.
           </p>
         </div>
         <a
           href="/contact"
-          class="mt-8 inline-flex h-12 shrink-0 items-center rounded-field bg-signal px-6 font-semibold text-[0.9375rem] text-ink-900 transition-colors duration-150 ease-out hover:bg-signal-dim lg:mt-0"
+          class="mt-8 inline-flex h-12 shrink-0 items-center rounded-field bg-signal px-6 font-semibold text-[0.9375rem] text-ink transition-colors duration-150 ease-out hover:bg-signal-hover lg:mt-0"
         >
           Book a review
         </a>

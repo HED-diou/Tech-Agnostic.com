@@ -17,9 +17,16 @@ type MarkProps = {
   className?: string;
   /** Monochrome rendering for print, favicons and single-colour contexts. */
   mono?: boolean;
+  /** `deep` lifts the tile so the mark stays visible on inverted bands. */
+  tone?: 'light' | 'deep';
 };
 
-export function LogoMark({ size = 32, className, mono = false }: MarkProps) {
+export function LogoMark({
+  size = 32,
+  className,
+  mono = false,
+  tone = 'light',
+}: MarkProps) {
   return (
     <svg
       width={size}
@@ -34,10 +41,16 @@ export function LogoMark({ size = 32, className, mono = false }: MarkProps) {
         width="32"
         height="32"
         rx="9"
-        fill={mono ? 'currentColor' : 'var(--color-ink-700)'}
+        fill={
+          mono
+            ? 'currentColor'
+            : tone === 'deep'
+              ? 'var(--color-deep-soft)'
+              : 'var(--color-ink)'
+        }
       />
       <g
-        stroke={mono ? 'var(--color-ink-900)' : 'var(--color-signal)'}
+        stroke={mono ? 'var(--color-paper)' : 'var(--color-signal)'}
         strokeWidth="4"
         strokeLinecap="round"
       >
@@ -53,13 +66,19 @@ type LogoProps = {
   variant?: 'full' | 'mark';
   size?: number;
   className?: string;
+  tone?: 'light' | 'deep';
 };
 
-export function Logo({ variant = 'full', size = 32, className }: LogoProps) {
+export function Logo({
+  variant = 'full',
+  size = 32,
+  className,
+  tone = 'light',
+}: LogoProps) {
   if (variant === 'mark') {
     return (
       <span className={className}>
-        <LogoMark size={size} />
+        <LogoMark size={size} tone={tone} />
         <span className="sr-only">{site.name}</span>
       </span>
     );
@@ -67,9 +86,9 @@ export function Logo({ variant = 'full', size = 32, className }: LogoProps) {
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className ?? ''}`}>
-      <LogoMark size={size} />
+      <LogoMark size={size} tone={tone} />
       <span
-        className="font-display font-medium text-paper"
+        className={`font-display font-extrabold ${tone === 'deep' ? 'text-white' : 'text-ink'}`}
         style={{ fontSize: size * 0.56, letterSpacing: '-0.02em' }}
       >
         {site.wordmark}

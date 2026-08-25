@@ -1,22 +1,27 @@
-# Tech-Agnostic — Charte Graphique v1.0
+# Tech-Agnostic — Charte Graphique v2.0 "warm & human"
 
-> This document is the source of truth. Every screen, component and asset in this
-> repository must be traceable back to a rule below. If a design decision is not
-> covered here, extend this document first, then build.
+> This document is the source of truth. Every screen, component and asset in
+> this repository must be traceable back to a rule below. If a design decision
+> is not covered here, extend this document first, then build.
+>
+> **v2 replaces the dark, terminal-flavoured v1.** The positioning, the voice
+> and the `//` mark are unchanged. The visual register moved from
+> engineer-tool to confident-company: light-first, warmer, softer, with real
+> elevation. Rationale in §12.
 
 ---
 
 ## 1. Brand platform
 
 **Name.** Tech-Agnostic (wordmark: `tech-agnostic`, always lowercase, hyphen kept).
-Domain: tech-agnostic.com.
 
 **Category.** Independent IT & software consultancy.
 
-**Positioning statement.**
+**Positioning.**
 
 > We are not paid by vendors. We are paid by outcomes.
-> Tech-Agnostic helps teams choose, ship and own the right stack — whatever that stack turns out to be.
+> Tech-Agnostic helps teams choose, ship and own the right stack — whatever
+> that stack turns out to be.
 
 **Promise.** No vendor kickbacks. No stack religion. No 90-page decks.
 
@@ -25,242 +30,350 @@ Domain: tech-agnostic.com.
 **Voice rules.**
 
 - Lead with the number or the constraint, not the adjective.
-- Never write "cutting-edge", "innovative", "seamless", "revolutionary", "leverage", "synergy".
+- Never write "cutting-edge", "innovative", "seamless", "revolutionary",
+  "leverage", "synergy", "best-in-class", "world-class".
 - Say "we don't know yet" when it is true. It is the whole brand.
 - Short sentences. Active voice. Second person ("you"), never "clients" in body copy.
 - Prices and timelines are always stated. Hiding them contradicts the positioning.
 
 ---
 
-## 2. Logo
+## 2. Logo — unchanged from v1
 
 ### 2.1 Concept — "The Comment"
 
-The mark is `//`.
-
-The double slash is the line-comment marker in C, C++, C#, Java, JavaScript,
-TypeScript, Go, Rust, Swift, Kotlin, PHP, Scala, Dart… It is one of the very few
-pieces of syntax that survives almost every language migration. It is, literally,
-technology-agnostic.
-
-It also reads as _the aside_ — the honest note an engineer leaves next to the code.
-That is the tone of the company.
+The mark is `//` — the line-comment marker in C, C++, C#, Java, JavaScript,
+TypeScript, Go, Rust, Swift, Kotlin, PHP, Scala and Dart. It is one of the very
+few pieces of syntax that survives almost any language migration, which makes
+it literally technology-agnostic. It also reads as _the aside_ — the honest note
+an engineer leaves next to the code.
 
 ### 2.2 Construction
 
 - Canvas: 32 × 32 grid.
-- Tile: rounded square, corner radius **9/32 of the width** (28.125%).
-- Two parallel strokes, stroke width **4/32**, round caps.
-- Slant: **20° from vertical** (dx = 5 for dy = 14 — a 5:14 rise).
-- Gap between stroke axes: **8/32** measured horizontally.
-- Optical centring: the pair is nudged **−0.5/32 on x** so the slant does not
-  drag the mark right.
+- Tile: rounded square, corner radius **9/32** (28.125%).
+- Two parallel strokes, width **4/32**, round caps.
+- Slant: **5 : 14** (≈ 20° from vertical).
+- Stroke axes **8/32** apart; pair nudged **−0.5/32 on x** for optical centring.
+- Stroke 1 `M14 9 L9 23` · Stroke 2 `M22 9 L17 23`.
 
-Never rebuild the mark by hand. Import it from
-`apps/web/components/Logo.tsx` or `apps/web/public/logo.svg`.
+Never rebuild the mark by hand. Import from `apps/web/components/Logo.tsx`,
+`apps/blog/src/components/Logo.astro`, or `apps/web/public/logo.svg`.
 
 ### 2.3 Lockups
 
-| Lockup                                    | Use                                                          |
-| ----------------------------------------- | ------------------------------------------------------------ |
-| **Primary** — tile + wordmark, horizontal | Header, footer, decks, email signature                       |
-| **Mark only** — tile alone                | Favicon, avatars, ≤ 32 px, app icons                         |
-| **Wordmark only** — `tech-agnostic`       | Body copy, legal, contexts where the tile is already visible |
+| Lockup                        | Use                                              |
+| ----------------------------- | ------------------------------------------------ |
+| **Primary** — tile + wordmark | Header, footer, decks, email signature           |
+| **Mark only**                 | Favicon, avatars, ≤ 32 px, app icons             |
+| **Wordmark only**             | Body copy, legal, where the tile already appears |
 
-Wordmark: Space Grotesk Medium (500), tracking `-0.02em`, lowercase, hyphen never
-replaced by an en dash. The `//` prefix may precede the wordmark in text
-(`// tech-agnostic`) as a voice device — it is typographic, not the logo.
+Wordmark: Plus Jakarta Sans ExtraBold (800), tracking `-0.02em`, lowercase,
+hyphen never replaced by an en dash. Set at `0.56 ×` tile height.
+
+> **v2 change.** The wordmark moved from Space Grotesk Medium to Plus Jakarta
+> Sans ExtraBold when the display face changed (§4). It is the only logo change.
 
 ### 2.4 Clear space & minimum size
 
-- Clear space on all sides = the tile's corner radius × 2 (i.e. 0.5625 × tile height).
-- Minimum tile size: **20 px** on screen, **6 mm** in print.
-- Below 20 px, drop to the two strokes without the tile.
+- Clear space all sides = `0.5625 ×` tile height (twice the corner radius).
+- Minimum tile: **20 px** screen, **6 mm** print.
+- Below 20 px, drop the tile and use the two strokes alone.
 
-### 2.5 Colour rules
+### 2.5 Colourways
 
-| Background                      | Tile           | Strokes                |
-| ------------------------------- | -------------- | ---------------------- |
-| Ink (dark)                      | `--ta-ink-700` | `--ta-signal`          |
-| Paper (light)                   | `--ta-ink-900` | `--ta-signal`          |
-| Single colour / fax / engraving | transparent    | 100% ink or 100% paper |
+| Background    | Tile             | Strokes                    |
+| ------------- | ---------------- | -------------------------- |
+| Paper / light | `--ta-ink`       | `--ta-signal`              |
+| Deep band     | `--ta-deep-soft` | `--ta-signal`              |
+| Single colour | transparent      | 100% ink **or** 100% paper |
+
+Use the `tone="deep"` prop on inverted bands — the light tile disappears there.
 
 ### 2.6 Misuse (all forbidden)
 
-Do not: rotate the tile · change the slant · add a third stroke · outline the
-strokes · apply a gradient to the strokes · place the mark on a photograph
-without a solid tile · stretch either axis · recolour the strokes to anything
-other than `--ta-signal` or a full ink/paper monochrome · add a drop shadow ·
-set the wordmark in any face other than Space Grotesk.
+Rotate the tile · change the slant · add a third stroke · outline the strokes ·
+gradient the strokes · place on a photograph without a solid tile · stretch
+either axis · recolour the strokes to anything but `--ta-signal` or a full
+monochrome · add a drop shadow · set the wordmark in another face.
 
 ---
 
 ## 3. Colour
 
-Duotone base (ink + paper), **one** accent, **one** structural tint. That is the
-whole system. A fourth colour is a bug.
+Light-first. Paper and white surfaces carry the page; two deep bands break the
+rhythm; **one** accent. A colour outside this table is a bug.
 
 ### 3.1 Tokens
 
-| Token             | Hex       | Role                                                          |
-| ----------------- | --------- | ------------------------------------------------------------- |
-| `--ta-ink-900`    | `#080B0D` | Page background (dark surfaces), max contrast text on paper   |
-| `--ta-ink-800`    | `#0E1317` | Elevated surface / section banding                            |
-| `--ta-ink-700`    | `#161C21` | Cards, logo tile                                              |
-| `--ta-ink-600`    | `#222A31` | Hairlines, dividers, input borders                            |
-| `--ta-ink-500`    | `#39454E` | Disabled, chart gridlines                                     |
-| `--ta-steel-400`  | `#7E8F9B` | Secondary text on ink ("blueprint" tint)                      |
-| `--ta-steel-200`  | `#B9C4CC` | Body text on ink                                              |
-| `--ta-paper`      | `#F4F5F3` | Light surface background                                      |
-| `--ta-paper-dim`  | `#E4E7E3` | Light surface banding                                         |
-| `--ta-signal`     | `#FF5D2E` | THE accent. CTAs, the `//`, active state, one word per screen |
-| `--ta-signal-dim` | `#C7431D` | Signal hover / pressed                                        |
+| Token               | Hex       | Role                                     |
+| ------------------- | --------- | ---------------------------------------- |
+| `--ta-paper`        | `#FAF9F7` | Page background                          |
+| `--ta-surface`      | `#FFFFFF` | Cards, raised panels                     |
+| `--ta-sand`         | `#F2EFE9` | Section banding, soft fills, photo slots |
+| `--ta-sand-deep`    | `#E8E3DA` | Pressed / secondary fills                |
+| `--ta-line`         | `#E4E0D8` | Hairlines on light                       |
+| `--ta-line-strong`  | `#CFC9BD` | Hover borders on light                   |
+| `--ta-ink`          | `#14181C` | Headings, primary text                   |
+| `--ta-body`         | `#414B56` | Body copy                                |
+| `--ta-muted`        | `#636C78` | Secondary text, captions                 |
+| `--ta-faint`        | `#9AA2AC` | **Decorative only** — see §3.4           |
+| `--ta-deep`         | `#101519` | Inverted band background                 |
+| `--ta-deep-soft`    | `#1B2228` | Cards on a deep band                     |
+| `--ta-deep-line`    | `#2C353D` | Hairlines on deep                        |
+| `--ta-deep-body`    | `#B6BFC9` | Body copy on deep                        |
+| `--ta-signal`       | `#FF5D2E` | Accent fills, large figures, bars        |
+| `--ta-signal-hover` | `#EE4E1C` | Accent fill on hover                     |
+| `--ta-signal-deep`  | `#BC3810` | Accent **text** on light surfaces        |
+| `--ta-signal-wash`  | `#FFF1EC` | Tinted badges and pills                  |
 
-Semantic (used only in the lead form and system messages):
-`--ta-ok #5FBF8F` · `--ta-warn #E8B341` · `--ta-err #E5604A`
+Semantic, used only in forms and system messages:
+`--ta-ok #2F9E6E` · `--ta-warn #B57C11` · `--ta-err #CF3F2C`
 
 ### 3.2 The Signal rule
 
-`--ta-signal` is a scarce resource. Per viewport, it may appear on **at most**:
-one primary button, the `//` in the logo/eyebrows, and one emphasised word or
-number. If two orange things compete for attention on the same screen, one of
-them is wrong.
+Per viewport, the accent may appear on **at most**: one primary button, the `//`
+in the logo and eyebrows, and one emphasised element. If two orange things
+compete for attention on the same screen, one of them is wrong.
 
 **Exception — repeated data treatments.** A systematic, identical treatment
-applied across a set of data (the metric rail on a case study, the winning
-column of a decision matrix) counts as a _single_ use, because the eye reads it
-as one pattern rather than several competing highlights. The exception applies
-only when the treatment is uniform across the whole set; highlighting three of
-five metrics is two colours, not one pattern.
+across a set of data (a case-study metric rail, the winning column of a decision
+matrix) counts as a _single_ use: the eye reads one pattern, not several
+highlights. Only when the treatment is uniform across the whole set.
 
-Signal is **never** used for large fills, body text, or backgrounds behind text.
+### 3.3 The two accent tokens — read this before using orange
 
-### 3.3 Contrast floor
+`#FF5D2E` is bright, and **white text on it is 3.06:1 — an AA failure.** So the
+accent is split by job:
 
-All text ≥ 4.5:1 against its background; large display text ≥ 3:1.
-Verified pairs: `--ta-steel-200` on `--ta-ink-900` (11.2:1),
-`--ta-steel-400` on `--ta-ink-900` (6.6:1), `--ta-ink-900` on `--ta-signal` (7.3:1),
-`--ta-paper` on `--ta-ink-900` (16.9:1).
-`--ta-signal` on `--ta-ink-900` is 6.1:1 — allowed for text, never below 14px bold / 18px regular.
+| Job                                     | Token               | Why                                     |
+| --------------------------------------- | ------------------- | --------------------------------------- |
+| Fill (button, badge, bar, large figure) | `--ta-signal`       | Label on it must be `--ta-ink` (5.83:1) |
+| Fill hover                              | `--ta-signal-hover` | Ink label still clears 4.88:1           |
+| Accent **text** on a light surface      | `--ta-signal-deep`  | 5.38:1 on paper, 5.13:1 on wash         |
+
+Never put white text on `--ta-signal`. Never use `--ta-signal` for body-size
+text on a light surface.
+
+### 3.4 `--ta-faint` is not a text colour
+
+`#9AA2AC` is 2.45:1 on paper. It exists for **decoration only** — empty score
+bars, inactive ticks, dividers. Any text that reaches for "faint" takes
+`--ta-muted` instead.
+
+### 3.5 Verified contrast
+
+All 21 foreground/background pairs in the system are measured, not estimated.
+Floors: body text ≥ 4.5:1, large display ≥ 3:1.
+
+| Pair                               | Ratio     |
+| ---------------------------------- | --------- |
+| `ink` on `paper`                   | 16.95 : 1 |
+| `body` on `paper`                  | 8.44 : 1  |
+| `muted` on `paper`                 | 5.06 : 1  |
+| `muted` on `sand`                  | 4.64 : 1  |
+| `ink` on `signal` (button label)   | 5.83 : 1  |
+| `ink` on `signal-hover`            | 4.88 : 1  |
+| `signal-deep` on `paper`           | 5.38 : 1  |
+| `signal-deep` on `signal-wash`     | 5.13 : 1  |
+| `signal` on `surface` (large only) | 3.06 : 1  |
+| `signal` on `deep`                 | 6.00 : 1  |
+| `white` on `deep`                  | 18.37 : 1 |
+| `deep-body` on `deep`              | 9.87 : 1  |
+
+Re-run the check whenever a colour changes. Do not ship an unverified pair.
 
 ---
 
 ## 4. Typography
 
-| Role               | Face               | Weights       | Notes                                      |
-| ------------------ | ------------------ | ------------- | ------------------------------------------ |
-| Display & headings | **Space Grotesk**  | 500, 700      | Tracking tightens as size grows            |
-| Body & UI          | **Inter**          | 400, 500, 600 | `font-feature-settings: "cv05","ss03"`     |
-| Labels, data, code | **JetBrains Mono** | 400, 500      | Uppercase + `0.14em` tracking for eyebrows |
+| Role               | Face                  | Weights       | Notes                                  |
+| ------------------ | --------------------- | ------------- | -------------------------------------- |
+| Display & headings | **Plus Jakarta Sans** | 600, 700, 800 | Warm humanist geometric                |
+| Body & UI          | **Inter**             | 400, 500, 600 | `font-feature-settings: "cv05","ss03"` |
+| Data & code        | **JetBrains Mono**    | 400, 500      | Sparingly — matrices, code, meta       |
 
-Loaded through `next/font` (self-hosted, no layout shift). Fallback stack:
-`ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif`.
+Self-hosted: `next/font` in the Next app, `@fontsource-variable` in Astro.
+No Google Fonts `<link>` — the privacy page promises no third-party requests.
 
-### 4.1 Scale (fluid, `clamp()`)
+> **v2 change.** Space Grotesk → Plus Jakarta Sans, and mono is now a specialist
+> face rather than the voice of every label. The mono terminal eyebrow was the
+> single strongest "this is a dev tool" signal in v1.
 
-| Step      | Size                          | Line height | Tracking | Use                            |
-| --------- | ----------------------------- | ----------- | -------- | ------------------------------ |
-| `display` | clamp(2.5rem, 4.8vw, 4.25rem) | 0.98        | −0.035em | Hero H1 only, once per page    |
-| `h1`      | clamp(2.25rem, 4.2vw, 3.5rem) | 1.04        | −0.03em  | Section openers                |
-| `h2`      | clamp(1.6rem, 2.6vw, 2.25rem) | 1.12        | −0.02em  | Sub-sections                   |
-| `h3`      | 1.25rem                       | 1.3         | −0.01em  | Card titles                    |
-| `body-lg` | 1.125rem                      | 1.65        | 0        | Lead paragraphs                |
-| `body`    | 1rem                          | 1.7         | 0        | Default                        |
-| `small`   | 0.875rem                      | 1.6         | 0        | Captions, footnotes            |
-| `eyebrow` | 0.75rem                       | 1           | 0.14em   | Mono, uppercase, `//` prefixed |
+### 4.1 Scale
 
-**Measure:** body copy is capped at **66ch**. Lead paragraphs at **52ch**.
+| Step      | Size                            | Line height | Tracking | Use                         |
+| --------- | ------------------------------- | ----------- | -------- | --------------------------- |
+| `display` | clamp(2.5rem, 5vw, 4.5rem)      | 1.02        | −0.035em | Hero H1 only, once per page |
+| `h1`      | clamp(2.125rem, 3.8vw, 3.25rem) | 1.08        | −0.03em  | Section openers             |
+| `h2`      | clamp(1.5rem, 2.4vw, 2rem)      | 1.18        | −0.02em  | Sub-sections, big figures   |
+| `h3`      | 1.1875rem                       | 1.35        | −0.011em | Card titles                 |
+| `body-lg` | 1.1875rem                       | 1.62        | 0        | Lead paragraphs             |
+| `body`    | 1rem                            | 1.7         | 0        | Default                     |
+| `small`   | 0.875rem                        | 1.6         | 0        | Captions, footnotes         |
+| `eyebrow` | 0.8125rem                       | 1           | 0.02em   | Semibold, in a pill         |
+
+### 4.2 Measure
+
+Body copy **66ch**. Lead paragraphs **54ch**. Long-form article body **68ch**.
+A full-width paragraph is the fastest way to make this brand look cheap.
 
 ---
 
 ## 5. Layout
 
-- **Grid:** 12 columns, gutter 24px, max container **1200px**, page padding
-  20px (mobile) → 40px (≥768px) → 64px (≥1280px).
-- **Spacing scale:** 4px base — 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 160.
-  Nothing outside this scale.
-- **Section rhythm:** vertical padding 96px mobile / 160px desktop.
-- **Radii:** 0 (hairline rules) · 8px (inputs, small chips) · 14px (cards) ·
-  9/32 of size (logo tile only). No pill buttons except the stack chips.
-- **Borders:** always 1px, always `--ta-ink-600` on ink. Borders do the work that
-  shadows do elsewhere.
-- **Elevation:** there is exactly one shadow, used only on the sticky header once
-  scrolled: `0 1px 0 0 var(--ta-ink-600)`. No soft glows, no coloured shadows.
+- **Grid:** 12 columns, 24px gutter, container max **1200px**.
+- **Page padding:** 20px → 40px (≥768px) → 56px (≥1280px).
+- **Spacing scale:** 4px base — 4, 8, 12, 16, 24, 32, 48, 64, 88, 96, 136, 160.
+- **Section rhythm:** 88px mobile / 136px desktop.
+- **Radii:** 10px (fields, chips) · 20px (cards) · 28px (panels) · full (buttons,
+  pills) · 28.125% of size (logo tile only).
+- **Borders:** 1px `--ta-line` on light, 1px `--ta-deep-line` on deep.
 
-### 5.1 The grid motif
+### 5.1 Band rhythm
 
-A 1px blueprint grid (`--ta-ink-600` at 6% alpha, 64px cell) may back full-bleed
-sections. It is decoration and must sit behind a solid surface wherever text
-lands, never directly under body copy.
+The page alternates surfaces so it never reads as one long scroll:
+`paper` → `deep` → `paper` → `sand` → `paper` → `sand` → `paper` → `deep` → …
+
+Use the `.band-deep` and `.band-sand` helpers. **Never put body-heavy long-form
+copy on a deep band** — it is for statements, numbers and short claims.
+
+### 5.2 Elevation — three steps, and only three
+
+> **v2 change.** v1 had exactly one shadow and used borders for everything.
+> A light page needs real elevation to separate a white card from a near-white
+> background, so v2 introduces a small, strictly-limited shadow scale.
+
+| Token           | Use                                          |
+| --------------- | -------------------------------------------- |
+| `--shadow-sm`   | Buttons, sticky header once scrolled         |
+| `--shadow-card` | Cards and panels at rest                     |
+| `--shadow-lift` | Hover on an interactive card; the hero panel |
+
+All three are neutral and warm-tinted. **No coloured shadows, no glows.** Cards
+change _shadow_, never position — nothing translates on hover.
 
 ---
 
 ## 6. Components
 
-**Buttons.**
+**Buttons.** Full-radius, 52px tall, 28px horizontal padding, weight 600.
 
-- Primary: `--ta-signal` fill, `--ta-ink-900` label, radius 8px, height 48px,
-  padding 0 24px, weight 600. Hover → `--ta-signal-dim`. No scale transform.
-- Secondary: transparent, 1px `--ta-ink-600` border, `--ta-paper` label.
-  Hover → border `--ta-steel-400`.
-- Ghost: text + a 1px underline that grows from the left on hover.
-- Every button has a visible `:focus-visible` ring: 2px `--ta-signal`, 2px offset.
+- _Primary_: `--ta-signal` fill, **`--ta-ink` label** (§3.3), `--shadow-sm`.
+  Hover → `--ta-signal-hover`.
+- _Secondary_: white fill, 1px `--ta-line-strong` border, ink label.
+  Hover → border `--ta-ink`, `--shadow-card`.
+- _On deep_: white fill, ink label.
+- _Ghost_: text with a permanent underline at 4px offset.
 
-**Cards.** `--ta-ink-800` surface, 1px `--ta-ink-600` border, radius 14px,
-padding 24/32px. Hover changes the border colour only — cards do not lift.
+Every button has a visible `:focus-visible` ring: 2px `--ta-signal`, 2px offset.
 
-**Eyebrows.** `// LABEL` in JetBrains Mono, uppercase, `--ta-steel-400`, with the
-`//` in `--ta-signal`.
+**Cards.** White surface, 1px `--ta-line`, radius 20px, `--shadow-card`,
+padding 28–36px. Interactive cards go to `--shadow-lift` on hover.
 
-**Forms.** 48px controls, `--ta-ink-900` field on `--ta-ink-800` surface, 1px
-`--ta-ink-600` border → `--ta-steel-400` on focus plus the focus ring. Labels
-above fields, always visible. Errors in `--ta-err` below the field, with
-`aria-describedby`. Placeholder text is never a substitute for a label.
+**Eyebrows.** A pill, not a terminal label: `--ta-signal-wash` background,
+`--ta-signal-deep` text, semibold, with a muted `//` glyph as prefix. On deep
+bands: `white/10` background, white text.
+
+**Forms.** 48px controls, `--ta-paper` field on a white card, 1px `--ta-line`
+→ `--ta-ink` on focus plus the ring. Labels always visible above the field.
+Errors in `--ta-err` below the field, wired with `aria-describedby`.
+Placeholder text is never a substitute for a label.
+
+**Chips.** `--ta-sand` fill, no border, radius full, 12px semibold `--ta-muted`.
 
 ---
 
 ## 7. Motion
 
-- Durations: 150ms (state), 240ms (entrance), 400ms (page-level). Nothing longer.
-- Easing: `cubic-bezier(0.22, 0.61, 0.36, 1)` for entrances, `ease-out` for states.
-- The only entrance animation is **fade + 12px rise**, triggered once on scroll.
-- No parallax, no counters that tick up, no typing effects, no marquee that
-  cannot be paused, no animated gradients.
-- Everything above collapses to zero under `prefers-reduced-motion: reduce`.
+- Durations: 150ms (state), 260ms (entrance), 400ms (page). Nothing longer.
+- Easing: `cubic-bezier(0.22, 0.61, 0.36, 1)` entrances, `ease-out` states.
+- The only entrance is **fade + 14px rise**, fired once on scroll.
+- **Banned:** parallax · counters that tick up · typing effects · unpausable
+  marquees · animated gradients · looping background animation · hover lifts.
+- Everything collapses to zero under `prefers-reduced-motion: reduce`.
+
+### 7.1 Reveals are progressive enhancement
+
+Content is **visible by default** and hidden only after an inline script
+confirms JavaScript is running (`html[data-js='true']`). A hydration failure or
+a JS-blocked browser must never leave the page blank. This is an accessibility
+and SEO requirement, not a preference.
 
 ---
 
 ## 8. Imagery & iconography
 
-- **No stock photography.** If a photo is used it is a real person or a real screen.
-- Diagrams over illustrations: thin-line, `--ta-ink-600` strokes, one `--ta-signal`
-  highlight per diagram.
-- Icons: 1.5px stroke, 24px box, round caps, drawn inline as SVG. No icon fonts,
-  no third-party icon packs with a different stroke weight.
-- Logos of technologies are rendered as **text chips**, not brand marks — we are
-  not endorsed by any vendor and must not imply it.
+- **No stock photography.** Every photo position is a `PhotoSlot` that renders a
+  designed warm panel until a real image exists. Art direction and the slot
+  register live in `docs/PHOTOGRAPHY.md`.
+- **Diagrams over illustrations:** thin-line, `--ta-line-strong` strokes, one
+  `--ta-signal` highlight per diagram.
+- **Show the deliverable.** The hero illustration is a working decision matrix
+  because that _is_ the product. Prefer the real artefact over an abstract mock.
+- **Icons:** 1.75px stroke, 24px box, round caps, inline SVG. No icon fonts, no
+  third-party packs at a different weight.
+- **Technologies are text, never vendor logos.** We are not endorsed by any
+  vendor and must not imply it. This is a positioning and legal rule.
 
 ---
 
 ## 9. Accessibility (non-negotiable)
 
-- WCAG 2.2 AA minimum.
-- Every interactive element reachable and visible by keyboard.
+- WCAG 2.2 AA is the floor.
+- Every interactive element keyboard-reachable with a visible focus ring.
+- Skip-to-content link as the first tab stop.
 - One `<h1>` per page; headings never skip a level.
-- All decorative SVG `aria-hidden`; all meaningful SVG has a `<title>`.
+- Decorative SVG `aria-hidden`; meaningful SVG carries a `<title>`.
 - Colour is never the only carrier of meaning.
 - `prefers-reduced-motion` honoured globally.
+- No horizontal page scroll from 360px upward.
 
 ---
 
 ## 10. Asset index
 
-| Asset                     | Path                                  |
-| ------------------------- | ------------------------------------- |
-| Charter (this file)       | `docs/BRAND.md`                       |
-| Design tokens (CSS)       | `apps/web/app/globals.css` → `@theme` |
-| Token mirror (blog)       | `apps/blog/src/styles/brand.css`      |
-| Logo component            | `apps/web/components/Logo.tsx`        |
-| Logo SVG                  | `apps/web/public/logo.svg`            |
-| Mark SVG (favicon source) | `apps/web/public/mark.svg`            |
-| Open Graph image          | `apps/web/public/og.svg`              |
+| Asset               | Path                                                                   |
+| ------------------- | ---------------------------------------------------------------------- |
+| Charter (this file) | `docs/BRAND.md`                                                        |
+| Applied skill       | `skill-charte-graphic.md`                                              |
+| Photography brief   | `docs/PHOTOGRAPHY.md`                                                  |
+| Business context    | `docs/BRD.md`                                                          |
+| Tokens (Next)       | `apps/web/app/globals.css` → `@theme`                                  |
+| Tokens (Astro)      | `apps/blog/src/styles/brand.css`                                       |
+| Logo components     | `apps/web/components/Logo.tsx` · `apps/blog/src/components/Logo.astro` |
+| Static assets       | `apps/web/public/{logo,mark,favicon,og}.svg`                           |
+| Rendered specimen   | `docs/brand-specimen.html`                                             |
+
+**The two token files must stay in step.** Changing one without the other is the
+most likely source of brand drift in this repository.
+
+---
+
+## 11. Static assets still on the v1 palette
+
+`logo.svg`, `mark.svg`, `favicon.svg` and `og.svg` were drawn for the dark v1
+page and still carry the v1 ink tile. They read correctly on a light page
+because the tile is dark either way, but **`og.svg` shows the old dark layout**
+and should be redrawn before launch. Tracked in `docs/CONTENT.md`.
+
+---
+
+## 12. Why v2 exists
+
+v1 was dark, mono-labelled and terminal-flavoured. It was internally consistent
+and it tested well with engineers — but the buyer is rarely only an engineer.
+The CTO's CFO, COO and CEO see the same page, and to them a near-black site with
+monospace labels reads as a developer tool rather than a firm they can hire.
+
+v2 keeps everything that carries the positioning — the `//` mark, the accent,
+published prices, the blunt voice, the decision matrix as hero — and changes
+only the register: light surfaces, a warmer humanist face, real elevation,
+photographs of real people, and a stats band that answers "who are these people"
+before the visitor has to ask.
+
+What it deliberately does **not** do is imitate a large systems integrator.
+Tech-Agnostic is small on purpose, and the design says so: a short work list,
+three faces, and a stat that reads "0 vendor commissions taken". Dressing a
+small independent firm as a 150,000-person SI would undercut the one thing it
+is selling.

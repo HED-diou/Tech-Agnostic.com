@@ -15,7 +15,7 @@ export default function ContactPage() {
     <section className="relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="blueprint pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(110%_70%_at_80%_0%,black,transparent_70%)]"
+        className="wash pointer-events-none absolute inset-0"
       />
 
       <div className="container-ta relative py-20 lg:py-28">
@@ -25,14 +25,14 @@ export default function ContactPage() {
             <h1 className="mt-6 text-h1">
               Thirty minutes. One real problem. No deck.
             </h1>
-            <p className="mt-6 text-body-lg text-steel-400 measure-lead">
+            <p className="mt-6 text-body-lg text-muted measure-lead">
               Bring an architecture question, a cloud invoice or a decision your
               team keeps re-litigating. You will leave the call with a first
               opinion and a written summary within 48 hours.
             </p>
 
-            <div className="hairline mt-12 pt-10">
-              <h2 className="font-mono text-eyebrow uppercase text-steel-400">
+            <div className="mt-12 border-t border-line pt-10">
+              <h2 className="text-sm font-semibold text-ink">
                 What happens next
               </h2>
               <ol className="mt-6 space-y-6">
@@ -54,12 +54,12 @@ export default function ContactPage() {
                   },
                 ].map((item) => (
                   <li key={item.n} className="flex gap-5">
-                    <span className="font-mono text-eyebrow text-signal">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-signal-wash text-xs font-bold text-signal-deep">
                       {item.n}
                     </span>
                     <div>
                       <h3 className="text-h3">{item.t}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-steel-400">
+                      <p className="mt-2 text-sm leading-relaxed text-muted">
                         {item.d}
                       </p>
                     </div>
@@ -68,11 +68,11 @@ export default function ContactPage() {
               </ol>
             </div>
 
-            <p className="mt-12 text-sm text-steel-400">
+            <p className="mt-12 text-sm text-muted">
               Prefer email?{' '}
               <a
                 href={`mailto:${site.email}`}
-                className="text-paper underline underline-offset-4 transition-colors duration-150 ease-out hover:text-signal"
+                className="font-medium text-ink underline underline-offset-4 transition-colors duration-150 ease-out hover:text-signal-deep"
               >
                 {site.email}
               </a>
@@ -82,7 +82,7 @@ export default function ContactPage() {
           <div>
             <LeadForm />
 
-            <p className="mt-8 font-mono text-xs leading-relaxed text-steel-400">
+            <p className="mt-8 text-sm leading-relaxed text-muted">
               Engagements run in {method.steps.length} steps — map, decide,
               ship, hand over. You can stop after any of them.
             </p>

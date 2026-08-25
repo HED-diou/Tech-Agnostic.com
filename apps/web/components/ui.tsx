@@ -2,16 +2,29 @@ import Link from 'next/link';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 /* ── Eyebrow ────────────────────────────────────────────────────────────────
- * `// LABEL` — mono, uppercase, the `//` in signal. BRAND.md §6.
+ * v2: a small pill rather than a mono terminal label. Warmer, and it reads as
+ * a section marker to a non-technical visitor. BRAND.md §6.
  */
-export function Eyebrow({ children }: { children: ReactNode }) {
+export function Eyebrow({
+  children,
+  tone = 'light',
+}: {
+  children: ReactNode;
+  tone?: 'light' | 'deep';
+}) {
   return (
-    <p className="font-mono text-eyebrow uppercase tracking-[0.14em] text-steel-400">
-      <span className="font-bold text-signal" aria-hidden="true">
+    <span
+      className={`inline-flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-2.5 text-eyebrow font-semibold ${
+        tone === 'deep'
+          ? 'bg-white/10 text-white'
+          : 'bg-signal-wash text-signal-deep'
+      }`}
+    >
+      <span className="font-mono leading-none opacity-70" aria-hidden="true">
         {'//'}
-      </span>{' '}
+      </span>
       {children}
-    </p>
+    </span>
   );
 }
 
@@ -20,18 +33,13 @@ export function Section({
   id,
   children,
   className = '',
-  hairline = true,
 }: {
   id?: string;
   children: ReactNode;
   className?: string;
-  hairline?: boolean;
 }) {
   return (
-    <section
-      id={id}
-      className={`section-ta ${hairline ? 'border-t border-ink-600/70' : ''} ${className}`}
-    >
+    <section id={id} className={`section-ta ${className}`}>
       <div className="container-ta">{children}</div>
     </section>
   );
@@ -43,25 +51,27 @@ export function SectionHead({
   title,
   lead,
   align = 'left',
+  tone = 'light',
 }: {
   eyebrow: string;
   title: string;
   lead?: string;
   align?: 'left' | 'center';
+  tone?: 'light' | 'deep';
 }) {
   return (
     <header
       className={
-        align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-3xl'
+        align === 'center' ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'
       }
     >
-      <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="mt-4 text-h1">{title}</h2>
+      <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
+      <h2 className="mt-6 text-h1">{title}</h2>
       {lead ? (
         <p
-          className={`mt-5 text-body-lg text-steel-400 ${
-            align === 'center' ? 'mx-auto' : ''
-          } measure`}
+          className={`mt-5 text-body-lg ${
+            tone === 'deep' ? 'text-deep-body' : 'text-muted'
+          } ${align === 'center' ? 'mx-auto' : ''} measure`}
         >
           {lead}
         </p>
@@ -70,21 +80,20 @@ export function SectionHead({
   );
 }
 
-/* ── Button ────────────────────────────────────────────────────────────────
- * Three variants only. No pills, no scale transforms. BRAND.md §6.
- */
-type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+/* ── Button ────────────────────────────────────────────────────────────────*/
+type ButtonVariant = 'primary' | 'secondary' | 'onDeep' | 'ghost';
 
 const buttonBase =
-  'inline-flex h-12 items-center justify-center gap-2.5 rounded-field px-6 ' +
-  'text-sm font-semibold transition-colors duration-150 ease-out ' +
-  'cursor-pointer disabled:pointer-events-none disabled:opacity-45';
+  'inline-flex h-13 items-center justify-center gap-2 rounded-full px-7 ' +
+  'text-[0.9375rem] font-semibold transition-all duration-150 ease-out ' +
+  'disabled:pointer-events-none disabled:opacity-45';
 
 const buttonVariants: Record<ButtonVariant, string> = {
-  primary: 'bg-signal text-ink-900 hover:bg-signal-dim active:bg-signal-dim',
+  primary: 'bg-signal text-ink shadow-sm hover:bg-signal-hover',
   secondary:
-    'border border-ink-600 bg-ink-800/80 text-paper hover:border-steel-400 hover:bg-ink-700 active:bg-ink-700',
-  ghost: 'px-0 text-paper hover:text-signal',
+    'border border-line-strong bg-surface text-ink shadow-sm hover:border-ink hover:shadow-card',
+  onDeep: 'bg-white text-ink hover:bg-sand',
+  ghost: 'px-0 text-ink underline underline-offset-4 hover:text-signal',
 };
 
 export function Button({
@@ -103,16 +112,14 @@ export function Button({
 
   if (href) {
     const external = href.startsWith('http');
+    // /blog is served by Astro from the public directory, so it needs a full
+    // document navigation rather than a client-side transition.
     if (external || href.startsWith('/blog')) {
-      // /blog is served by Astro from the public directory, so it must be a
-      // full document navigation rather than a client-side transition.
       return (
         <a
           href={href}
           className={classes}
-          {...(external
-            ? { target: '_blank', rel: 'noreferrer noopener' }
-            : {})}
+          {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
         >
           {children}
         </a>
@@ -144,9 +151,9 @@ export function Card({
 }) {
   return (
     <div
-      className={`rounded-card border border-ink-600 bg-ink-800 ${
+      className={`rounded-card border border-line bg-surface shadow-card ${
         interactive
-          ? 'transition-colors duration-150 ease-out hover:border-steel-400'
+          ? 'transition-shadow duration-150 ease-out hover:shadow-lift'
           : ''
       } ${className}`}
     >
@@ -155,9 +162,7 @@ export function Card({
   );
 }
 
-/* ── Arrow ─────────────────────────────────────────────────────────────────
- * 1.5px stroke, 24px box, round caps — the only icon weight in the system.
- */
+/* ── Icons — 1.75px stroke, 24px box, round caps ───────────────────────────*/
 export function ArrowRight({ className = '' }: { className?: string }) {
   return (
     <svg
@@ -166,7 +171,7 @@ export function ArrowRight({ className = '' }: { className?: string }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -185,7 +190,7 @@ export function Check({ className = '' }: { className?: string }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}

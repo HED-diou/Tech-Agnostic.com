@@ -4,7 +4,7 @@ import { Reveal } from '../Reveal';
 
 export function Pricing() {
   return (
-    <Section id="pricing">
+    <Section id="pricing" className="band-sand">
       <SectionHead
         eyebrow={pricing.eyebrow}
         title={pricing.title}
@@ -13,48 +13,42 @@ export function Pricing() {
 
       <div className="mt-14 grid gap-6 lg:grid-cols-3">
         {pricing.tiers.map((tier, i) => (
-          <Reveal key={tier.name} delay={i * 80} className="h-full">
+          <Reveal key={tier.name} delay={i * 60} className="h-full">
             <article
-              className={`flex h-full flex-col rounded-card border p-7 lg:p-9 transition-colors duration-150 ease-out ${
+              className={`flex h-full flex-col rounded-card bg-surface p-7 lg:p-9 ${
                 tier.featured
-                  ? 'border-signal/80 bg-ink-800 ring-1 ring-signal/30'
-                  : 'border-ink-600 bg-ink-800 hover:border-steel-400'
+                  ? 'border-2 border-signal shadow-lift'
+                  : 'border border-line shadow-card'
               }`}
             >
               <div className="flex items-center justify-between gap-3">
-                <h3 className="text-h3 font-semibold text-paper">{tier.name}</h3>
+                <h3 className="text-h3">{tier.name}</h3>
                 {tier.featured ? (
-                  <span className="rounded-full bg-signal px-2.5 py-0.5 font-mono text-[0.625rem] font-bold uppercase tracking-wider text-ink-900">
-                    Recommended
+                  <span className="rounded-full bg-signal px-3 py-1 text-[0.6875rem] font-bold tracking-wide text-ink uppercase">
+                    Most chosen
                   </span>
                 ) : null}
               </div>
 
-              <div className="mt-6">
-                <p className="font-display text-3xl font-bold tracking-tight text-paper">
-                  {tier.price}
-                </p>
-                <p className="mt-1 font-mono text-xs text-steel-400">
-                  {tier.unit}
-                </p>
-              </div>
+              <p className="mt-6 font-display text-h2 font-bold text-ink">
+                {tier.price}
+              </p>
+              <p className="mt-1 text-sm text-muted">{tier.unit}</p>
 
-              <p className="mt-5 text-sm leading-relaxed text-steel-400">
+              <p className="mt-6 text-sm leading-relaxed text-muted">
                 {tier.body}
               </p>
 
-              <div className="my-6 border-t border-ink-600/70" />
-
-              <ul className="space-y-3">
+              <ul className="mt-7 space-y-3">
                 {tier.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-steel-200">
+                  <li key={f} className="flex gap-3 text-sm text-body">
                     <Check className="mt-0.5 shrink-0 text-signal" />
-                    <span className="leading-snug">{f}</span>
+                    <span>{f}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-auto pt-8">
+              <div className="mt-auto pt-9">
                 <Button
                   href={tier.cta.href}
                   variant={tier.featured ? 'primary' : 'secondary'}
@@ -68,9 +62,9 @@ export function Pricing() {
         ))}
       </div>
 
-      <p className="mt-10 text-center font-mono text-xs text-steel-400">
-        Prices exclude VAT. Fixed-scope work is invoiced 50% on signature, 50%
-        on delivery.
+      <p className="mt-10 text-center text-sm text-muted">
+        Prices exclude VAT. Fixed-scope work is invoiced 50% on signature, 50% on
+        delivery.
       </p>
     </Section>
   );

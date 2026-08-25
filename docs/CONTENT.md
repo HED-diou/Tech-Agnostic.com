@@ -16,12 +16,14 @@ invented results would contradict the positioning the brand is built on.
 
 ## Should review
 
-| Where                                 | What                                                                                                                                                      |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `apps/web/lib/site.ts` → `faq`        | The answers commit you to specific promises (free review, written summary in 48h, referrals). Keep only the ones you will honour.                         |
-| `apps/web/lib/site.ts` → `principles` | Same — "no vendor commission" and "fixed price or we re-scope free" are contractual claims.                                                               |
-| `apps/blog/src/content/blog/*.md`     | Three seed posts. They are written in the brand voice and are safe to publish, but the anonymised distribution table in the rewrite post is illustrative. |
-| `apps/web/public/og.svg`              | Rasterise to PNG if your target platforms do not render SVG Open Graph images. LinkedIn in particular does not.                                           |
+| Where                                     | What                                                                                                                                                           |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `apps/web/lib/site.ts` → `faq`            | The answers commit you to specific promises (free review, written summary in 48h, referrals). Keep only the ones you will honour.                              |
+| `apps/web/lib/site.ts` → `principles`     | Same — "no vendor commission" and "fixed price or we re-scope free" are contractual claims.                                                                    |
+| `apps/blog/src/content/blog/*.md`         | Three seed posts. They are written in the brand voice and are safe to publish, but the anonymised distribution table in the rewrite post is illustrative.      |
+| `apps/web/public/og.svg`                  | **Still drawn for the dark v1 page** — redraw on the light v2 palette, then rasterise to PNG. LinkedIn does not render SVG Open Graph images.                  |
+| `apps/web/public/{logo,mark,favicon}.svg` | Tiles still use the v1 ink `#161C21`. They read correctly on light, but should be aligned to `--ta-ink #14181C` for exactness.                                 |
+| Photo slots                               | Six empty `PhotoSlot`s (3 team, 3 case study). Shippable as-is, but real photography is the single biggest trust upgrade available. See `docs/PHOTOGRAPHY.md`. |
 
 ## Safe as-is
 

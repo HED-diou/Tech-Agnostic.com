@@ -33,27 +33,27 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-ink-900/90 backdrop-blur-md transition-all duration-200 ease-out border-b ${
-        scrolled ? 'border-ink-600/90 shadow-sm' : 'border-transparent'
+      className={`sticky top-0 z-50 bg-paper/85 backdrop-blur-md transition-shadow duration-150 ease-out ${
+        scrolled ? 'border-b border-line shadow-sm' : ''
       }`}
     >
-      <div className="container-ta flex h-[72px] items-center justify-between gap-6">
+      <div className="container-ta flex h-[76px] items-center justify-between gap-6">
         <Link
           href="/"
-          className="shrink-0 rounded-sm focus-visible:outline-offset-4"
+          className="shrink-0 rounded-sm"
           aria-label={`${'Tech-Agnostic'} — home`}
           onClick={() => setOpen(false)}
         >
-          <Logo size={32} />
+          <Logo size={30} />
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
+        <nav aria-label="Main" className="hidden items-center gap-8 lg:flex">
           {nav.map((item) =>
             item.href.startsWith('/blog') ? (
               <a
                 key={item.href}
                 href={item.href}
-                className="font-mono text-[0.8125rem] uppercase tracking-wider text-steel-200 transition-colors duration-150 ease-out hover:text-paper"
+                className="text-sm font-medium text-body transition-colors duration-150 ease-out hover:text-ink"
               >
                 {item.label}
               </a>
@@ -61,7 +61,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="font-mono text-[0.8125rem] uppercase tracking-wider text-steel-200 transition-colors duration-150 ease-out hover:text-paper"
+                className="text-sm font-medium text-body transition-colors duration-150 ease-out hover:text-ink"
               >
                 {item.label}
               </Link>
@@ -70,14 +70,14 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button href="/contact" className="h-10 px-4 text-xs font-mono uppercase tracking-wider">
+          <Button href="/contact" className="h-11 px-5">
             Book a review
           </Button>
         </div>
 
         <button
           type="button"
-          className="-mr-2 flex h-11 w-11 items-center justify-center rounded-field text-paper lg:hidden"
+          className="-mr-2 flex h-11 w-11 items-center justify-center rounded-field text-ink lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
@@ -105,15 +105,15 @@ export function Header() {
       {open ? (
         <div
           id="mobile-nav"
-          className="hairline absolute inset-x-0 top-[72px] max-h-[calc(100dvh-72px)] overflow-y-auto bg-ink-900 lg:hidden"
+          className="absolute inset-x-0 top-[76px] max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-line bg-paper shadow-card lg:hidden"
         >
           <nav aria-label="Mobile" className="container-ta py-6">
             <ul className="flex flex-col">
               {nav.map((item) => (
-                <li key={item.href} className="border-b border-ink-600">
+                <li key={item.href} className="border-b border-line">
                   <a
                     href={item.href}
-                    className="block py-4 text-h3 text-paper"
+                    className="block py-4 text-h3 text-ink"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}

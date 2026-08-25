@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from 'next';
-import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from 'next/font/google';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { site } from '@/lib/site';
 import './globals.css';
 
 /* Typography — BRAND.md §4. Self-hosted by next/font, so no layout shift. */
-const grotesk = Space_Grotesk({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['500', '700'],
-  variable: '--font-grotesk',
+  weight: ['600', '700', '800'],
+  variable: '--font-jakarta',
   display: 'swap',
 });
 
@@ -68,8 +68,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#080B0D',
-  colorScheme: 'dark',
+  themeColor: '#FAF9F7',
+  colorScheme: 'light',
 };
 
 /** Organisation schema — helps the brand resolve as an entity, not a keyword. */
@@ -98,7 +98,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${grotesk.variable} ${inter.variable} ${jbmono.variable}`}
+      className={`${jakarta.variable} ${inter.variable} ${jbmono.variable}`}
     >
       <head>
         {/* Marks JS as available before first paint, which arms the scroll
@@ -113,7 +113,7 @@ export default function RootLayout({
       <body>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-field focus:bg-signal focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink-900"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-field focus:bg-signal focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink"
         >
           Skip to content
         </a>

@@ -5,8 +5,11 @@
  */
 interface Props {
   size?: number;
+  /** `deep` lifts the tile so the mark stays visible on inverted bands. */
+  tone?: 'light' | 'deep';
 }
-const { size = 30 } = Astro.props;
+const { size = 30, tone = 'light' } = Astro.props;
+const tile = tone === 'deep' ? 'var(--color-deep-soft)' : 'var(--color-ink)';
 ---
 
 <span class="inline-flex items-center gap-2.5">
@@ -18,14 +21,14 @@ const { size = 30 } = Astro.props;
     aria-hidden="true"
     focusable="false"
   >
-    <rect width="32" height="32" rx="9" fill="var(--color-ink-700)"></rect>
+    <rect width="32" height="32" rx="9" fill={tile}></rect>
     <g stroke="var(--color-signal)" stroke-width="4" stroke-linecap="round">
       <path d="M14 9 L9 23"></path>
       <path d="M22 9 L17 23"></path>
     </g>
   </svg>
   <span
-    class="font-display font-medium text-paper"
+    class={`font-display font-extrabold ${tone === "deep" ? "text-white" : "text-ink"}`}
     style={`font-size:${size * 0.56}px; letter-spacing:-0.02em;`}
   >
     tech-agnostic

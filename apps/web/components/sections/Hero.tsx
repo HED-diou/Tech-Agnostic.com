@@ -4,50 +4,42 @@ import { DecisionMatrix } from '../DecisionMatrix';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-ink-600/70">
+    <section className="relative overflow-hidden">
       {/* Earth Satellite Background layer */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
         <div
-          className="animate-satellite absolute -inset-[15%] bg-cover bg-center opacity-[0.16] grayscale contrast-125 mix-blend-screen"
+          className="animate-satellite absolute -inset-[12%] bg-cover bg-center opacity-[0.08] grayscale contrast-125 mix-blend-multiply"
           style={{
             backgroundImage: "url('/earth-opt.jpg')",
           }}
         />
-        {/* Radial vignette to fade out edges and keep copy crystal clear */}
-        <div className="absolute inset-0 bg-radial-[circle_at_50%_40%] from-transparent via-ink-900/60 to-ink-900" />
+        {/* Soft gradient mask */}
+        <div className="absolute inset-0 bg-radial-[circle_at_60%_35%] from-transparent via-paper/40 to-paper" />
       </div>
 
-      {/* Blueprint grid — subtle precision background overlay */}
-      <div
-        aria-hidden="true"
-        className="blueprint pointer-events-none absolute inset-0 opacity-[0.3] [mask-image:radial-gradient(110%_80%_at_65%_10%,black,transparent_75%)]"
-      />
+      <div aria-hidden="true" className="wash pointer-events-none absolute inset-0" />
 
       <div className="container-ta relative pt-16 pb-20 lg:pt-24 lg:pb-28">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16">
           <div className="min-w-0">
-            <div className="inline-flex items-center gap-2 rounded-full border border-ink-600 bg-ink-800/80 px-3.5 py-1.5 backdrop-blur-xs">
-              <span className="font-mono text-eyebrow uppercase text-steel-400">
-                <span className="font-bold text-signal" aria-hidden="true">
-                  {'//'}
-                </span>{' '}
-                {hero.eyebrow}
+            <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 py-1.5 pr-4 pl-2.5 text-eyebrow font-semibold text-ink shadow-sm backdrop-blur-sm">
+              <span className="font-mono leading-none text-signal" aria-hidden="true">
+                {'//'}
               </span>
-            </div>
+              {hero.eyebrow}
+            </span>
 
-            <h1 className="mt-6 text-display tracking-tight text-paper">
-              {hero.title}
-            </h1>
+            <h1 className="mt-7 text-display">{hero.title}</h1>
 
-            <p className="mt-6 text-body-lg text-steel-400 measure-lead">
+            <p className="mt-6 text-body-lg text-muted measure-lead">
               {hero.lead}
             </p>
 
-            <div className="mt-10 flex flex-col gap-3.5 sm:flex-row sm:items-center">
-              <Button href={hero.primary.href} className="shadow-lg shadow-signal/15">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Button href={hero.primary.href}>
                 {hero.primary.label}
                 <ArrowRight />
               </Button>
@@ -56,31 +48,25 @@ export function Hero() {
               </Button>
             </div>
 
-            <div className="mt-8 flex items-center gap-3 text-xs font-mono uppercase tracking-[0.12em] text-steel-400">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-ok" aria-hidden="true" />
-              <span>{hero.proof}</span>
-            </div>
+            <p className="mt-7 text-sm font-medium text-muted">{hero.proof}</p>
           </div>
 
-          <div className="min-w-0 lg:pl-2">
+          <div className="min-w-0 lg:pl-6">
             <DecisionMatrix />
           </div>
         </div>
       </div>
 
-      {/* Agnostic proof: technologies as text chips, never vendor marks */}
-      <div className="border-t border-ink-600 bg-ink-800/30">
-        <div className="container-ta py-6">
+      {/* Agnostic proof: technologies as text chips, never vendor marks. §8 */}
+      <div className="relative border-t border-line bg-surface/60">
+        <div className="container-ta py-7">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
-            <p className="shrink-0 font-mono text-eyebrow uppercase tracking-wider text-steel-400">
+            <p className="shrink-0 text-sm font-semibold text-ink">
               Shipped in production with
             </p>
-            <ul className="flex flex-wrap gap-2">
+            <ul className="flex flex-wrap gap-x-5 gap-y-2">
               {stacks.map((s) => (
-                <li
-                  key={s}
-                  className="rounded-full border border-ink-600/80 bg-ink-800/60 px-3 py-1 font-mono text-xs text-steel-200 transition-colors duration-150 hover:border-steel-400"
-                >
+                <li key={s} className="text-sm font-medium text-muted">
                   {s}
                 </li>
               ))}

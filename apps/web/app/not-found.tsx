@@ -5,7 +5,7 @@ export default function NotFound() {
     <section className="container-ta flex min-h-[60vh] flex-col justify-center py-24">
       <Eyebrow>error 404</Eyebrow>
       <h1 className="mt-6 text-h1">This page is not part of the stack.</h1>
-      <p className="mt-6 text-body-lg text-steel-400 measure-lead">
+      <p className="mt-6 text-body-lg text-muted measure-lead">
         The link is broken or the page moved. Both are our fault, not yours.
       </p>
       <div className="mt-10 flex flex-col gap-3 sm:flex-row">
