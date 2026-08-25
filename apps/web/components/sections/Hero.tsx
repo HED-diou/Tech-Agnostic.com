@@ -5,10 +5,25 @@ import { DecisionMatrix } from '../DecisionMatrix';
 export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-ink-600/70">
-      {/* Blueprint grid — subtle precision background */}
+      {/* Earth Satellite Background layer */}
       <div
         aria-hidden="true"
-        className="blueprint pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(110%_80%_at_65%_10%,black,transparent_75%)]"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <div
+          className="animate-satellite absolute -inset-[15%] bg-cover bg-center opacity-[0.16] grayscale contrast-125 mix-blend-screen"
+          style={{
+            backgroundImage: "url('/earth-opt.jpg')",
+          }}
+        />
+        {/* Radial vignette to fade out edges and keep copy crystal clear */}
+        <div className="absolute inset-0 bg-radial-[circle_at_50%_40%] from-transparent via-ink-900/60 to-ink-900" />
+      </div>
+
+      {/* Blueprint grid — subtle precision background overlay */}
+      <div
+        aria-hidden="true"
+        className="blueprint pointer-events-none absolute inset-0 opacity-[0.3] [mask-image:radial-gradient(110%_80%_at_65%_10%,black,transparent_75%)]"
       />
 
       <div className="container-ta relative pt-16 pb-20 lg:pt-24 lg:pb-28">

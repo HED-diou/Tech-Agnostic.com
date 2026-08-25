@@ -258,4 +258,29 @@
   .measure-lead {
     max-width: 52ch;
   }
+
+  /* Satellite drift animation */
+  @keyframes satellite-drift {
+    0% {
+      transform: scale(1.25) translate(0%, 0%);
+    }
+    50% {
+      transform: scale(1.38) translate(-2.5%, -1.5%);
+    }
+    100% {
+      transform: scale(1.25) translate(0%, 0%);
+    }
+  }
+
+  .animate-satellite {
+    animation: satellite-drift 50s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-satellite {
+      animation: none !important;
+      transform: scale(1.25);
+    }
+  }
 }
