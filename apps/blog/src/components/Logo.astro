@@ -1,0 +1,33 @@
+---
+/**
+ * Mirror of apps/web/components/Logo.tsx — same 32×32 geometry, per BRAND.md §2.2.
+ * Kept in sync by hand: the two files are the only places the mark is drawn.
+ */
+interface Props {
+  size?: number;
+}
+const { size = 30 } = Astro.props;
+---
+
+<span class="inline-flex items-center gap-2.5">
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect width="32" height="32" rx="9" fill="var(--color-ink-700)"></rect>
+    <g stroke="var(--color-signal)" stroke-width="4" stroke-linecap="round">
+      <path d="M14 9 L9 23"></path>
+      <path d="M22 9 L17 23"></path>
+    </g>
+  </svg>
+  <span
+    class="font-display font-medium text-paper"
+    style={`font-size:${size * 0.56}px; letter-spacing:-0.02em;`}
+  >
+    tech-agnostic
+  </span>
+</span>

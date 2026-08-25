@@ -1,0 +1,131 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+type Props = { post: CollectionEntry<'blog'> };
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+
+const dateFmt = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const toc = headings.filter((h) => h.depth === 2);
+---
+
+<Base
+  title={`${post.data.title} — Tech-Agnostic`}
+  description={post.data.description}
+  path={`/blog/${post.id}`}
+  type="article"
+  publishedAt={post.data.publishedAt}
+>
+  <article>
+    <header class="relative overflow-hidden">
+      <div
+        aria-hidden="true"
+        class="blueprint pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(110%_80%_at_70%_0%,black,transparent_72%)]"
+      >
+      </div>
+
+      <div class="container-ta relative py-16 lg:py-20">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 font-mono text-eyebrow uppercase text-steel-400 transition-colors duration-150 ease-out hover:text-paper"
+        >
+          <span aria-hidden="true">←</span> All notes
+        </a>
+
+        <p class="mt-10 font-mono text-eyebrow uppercase text-steel-400">
+          <span class="text-signal" aria-hidden="true">//</span>{' '}
+          {post.data.topic}
+        </p>
+
+        <h1 class="mt-6 max-w-[20ch] text-h1">{post.data.title}</h1>
+
+        <p class="mt-6 max-w-[54ch] text-body-lg text-steel-400">
+          {post.data.description}
+        </p>
+
+        <div
+          class="hairline mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 pt-6 font-mono text-xs text-steel-400"
+        >
+          <span>{post.data.author}</span>
+          <time datetime={post.data.publishedAt.toISOString()}>
+            {dateFmt.format(post.data.publishedAt)}
+          </time>
+          <span>{post.data.readingTime}</span>
+          {
+            post.data.updatedAt && (
+              <span>Updated {dateFmt.format(post.data.updatedAt)}</span>
+            )
+          }
+        </div>
+      </div>
+    </header>
+
+    <div class="container-ta pb-8">
+      <div class="grid gap-12 lg:grid-cols-[1fr_220px] lg:gap-16">
+        <div class="prose-ta order-2 lg:order-1">
+          <Content />
+        </div>
+
+        {
+          toc.length > 1 && (
+            <nav
+              aria-label="On this page"
+              class="order-1 self-start lg:order-2 lg:sticky lg:top-28"
+            >
+              <h2 class="font-mono text-eyebrow uppercase text-steel-400">
+                On this page
+              </h2>
+              <ul class="mt-4 space-y-2.5 border-l border-ink-600 pl-4">
+                {toc.map((heading) => (
+                  <li>
+                    <a
+                      href={`#${heading.slug}`}
+                      class="text-sm text-steel-400 transition-colors duration-150 ease-out hover:text-paper"
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="container-ta pb-4">
+      <aside
+        class="rounded-card border border-ink-600 bg-ink-800 p-8 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:p-10"
+      >
+        <div>
+          <h2 class="text-h2">Recognise this from your own stack?</h2>
+          <p class="mt-4 max-w-[52ch] text-steel-400">
+            We do a free 30-minute technical review. Bring one real problem —
+            you will leave with a first opinion and a written summary.
+          </p>
+        </div>
+        <a
+          href="/contact"
+          class="mt-8 inline-flex h-12 shrink-0 items-center rounded-field bg-signal px-6 font-semibold text-[0.9375rem] text-ink-900 transition-colors duration-150 ease-out hover:bg-signal-dim lg:mt-0"
+        >
+          Book a review
+        </a>
+      </aside>
+    </div>
+  </article>
+</Base>

@@ -1,0 +1,42 @@
+---
+import Logo from './Logo.astro';
+
+const links = [
+  { label: 'Services', href: '/#services' },
+  { label: 'Work', href: '/#work' },
+  { label: 'Method', href: '/#method' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Blog', href: '/blog' },
+];
+
+const { current } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 bg-ink-900/85 backdrop-blur-md">
+  <div class="container-ta flex h-[72px] items-center justify-between gap-6">
+    <a href="/" aria-label="Tech-Agnostic — home" class="shrink-0">
+      <Logo size={30} />
+    </a>
+
+    <nav aria-label="Main" class="hidden items-center gap-8 md:flex">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={current === link.href ? 'page' : undefined}
+            class="text-sm text-steel-200 transition-colors duration-150 ease-out hover:text-paper aria-[current=page]:text-paper"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a
+      href="/contact"
+      class="inline-flex h-11 items-center justify-center rounded-field bg-signal px-5 text-[0.9375rem] font-semibold text-ink-900 transition-colors duration-150 ease-out hover:bg-signal-dim"
+    >
+      Book a review
+    </a>
+  </div>
+</header>

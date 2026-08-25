@@ -1,0 +1,30 @@
+{
+  "name": "tech-agnostic",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Tech-Agnostic.com — independent IT consulting. Next.js marketing site + Astro blog.",
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace=web",
+    "dev:blog": "npm run dev --workspace=blog",
+    "build:blog": "npm run build --workspace=blog",
+    "build:web": "npm run build --workspace=web",
+    "build": "npm run build:blog && npm run build:web",
+    "start": "npm run start --workspace=web",
+    "lint": "npm run lint --workspace=web",
+    "typecheck": "npm run typecheck --workspace=web && npm run typecheck --workspace=blog",
+    "check": "npm run typecheck && npm run lint && npm run build",
+    "clean": "rm -rf apps/web/.next apps/web/public/blog apps/blog/dist",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}

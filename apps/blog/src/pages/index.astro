@@ -1,0 +1,145 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+
+const [featured, ...rest] = posts;
+
+const dateFmt = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<Base
+  title="Notes — Tech-Agnostic"
+  description="Short, opinionated write-ups on choosing, running and paying for technology. No listicles, no vendor content."
+  path="/blog"
+>
+  <section class="relative overflow-hidden">
+    <div
+      aria-hidden="true"
+      class="blueprint pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(110%_70%_at_75%_0%,black,transparent_72%)]"
+    >
+    </div>
+
+    <div class="container-ta relative py-20 lg:py-24">
+      <p class="font-mono text-eyebrow uppercase text-steel-400">
+        <span class="text-signal" aria-hidden="true">//</span> notes
+      </p>
+      <h1 class="mt-6 text-h1">Things we keep having to explain.</h1>
+      <p class="mt-6 max-w-[52ch] text-body-lg text-steel-400">
+        Write-ups from real engagements, with the numbers left in. No listicles,
+        no vendor content, no posts written to rank for a keyword.
+      </p>
+    </div>
+  </section>
+
+  {
+    featured && (
+      <section class="hairline">
+        <div class="container-ta py-14 lg:py-16">
+          <a
+            href={`/blog/${featured.id}`}
+            class="group grid gap-8 rounded-card border border-ink-600 bg-ink-800 p-7 transition-colors duration-150 ease-out hover:border-steel-400 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16 lg:p-10"
+          >
+            <div>
+              <p class="font-mono text-eyebrow uppercase text-steel-400">
+                <span class="text-signal" aria-hidden="true">
+                  //
+                </span>{' '}
+                {featured.data.topic}
+              </p>
+              <h2 class="mt-5 text-h1 transition-colors duration-150 ease-out group-hover:text-signal">
+                {featured.data.title}
+              </h2>
+              <p class="mt-5 max-w-[60ch] text-steel-400">
+                {featured.data.description}
+              </p>
+            </div>
+            <p class="shrink-0 font-mono text-xs text-steel-400">
+              {dateFmt.format(featured.data.publishedAt)} ·{' '}
+              {featured.data.readingTime}
+            </p>
+          </a>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    rest.length > 0 && (
+      <section class="hairline">
+        <div class="container-ta py-14 lg:py-16">
+          <h2 class="font-mono text-eyebrow uppercase text-steel-400">
+            More notes
+          </h2>
+
+          <ul class="mt-8 divide-y divide-ink-600 border-t border-ink-600">
+            {rest.map((post) => (
+              <li>
+                <a
+                  href={`/blog/${post.id}`}
+                  class="group grid gap-3 py-8 md:grid-cols-[150px_1fr_auto] md:items-baseline md:gap-10"
+                >
+                  <p class="font-mono text-eyebrow uppercase text-steel-400">
+                    <span class="text-signal" aria-hidden="true">
+                      //
+                    </span>{' '}
+                    {post.data.topic}
+                  </p>
+                  <div>
+                    <h3 class="text-h3 transition-colors duration-150 ease-out group-hover:text-signal">
+                      {post.data.title}
+                    </h3>
+                    <p class="mt-2 max-w-[60ch] text-sm text-steel-400">
+                      {post.data.description}
+                    </p>
+                  </div>
+                  <p class="shrink-0 font-mono text-xs text-steel-400">
+                    {dateFmt.format(post.data.publishedAt)}
+                  </p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="hairline">
+    <div class="container-ta py-16 lg:py-20">
+      <div class="rounded-card border border-ink-600 bg-ink-800 p-8 lg:p-10">
+        <h2 class="text-h2">Got one of these problems right now?</h2>
+        <p class="mt-4 max-w-[52ch] text-steel-400">
+          The 30-minute technical review is free, and you get a written summary
+          whether or not we end up working together.
+        </p>
+        <a
+          href="/contact"
+          class="mt-8 inline-flex h-12 items-center gap-2 rounded-field bg-signal px-6 font-semibold text-[0.9375rem] text-ink-900 transition-colors duration-150 ease-out hover:bg-signal-dim"
+        >
+          Book a review
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14M13 6l6 6-6 6"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

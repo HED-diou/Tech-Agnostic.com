@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tech-agnostic.com/sitemap.xml
+Sitemap: https://tech-agnostic.com/blog/sitemap-index.xml

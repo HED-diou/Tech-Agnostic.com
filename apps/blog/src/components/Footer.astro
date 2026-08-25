@@ -1,0 +1,53 @@
+---
+import Logo from './Logo.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="hairline mt-24">
+  <div class="container-ta py-14">
+    <div
+      class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between"
+    >
+      <div>
+        <Logo size={28} />
+        <p class="mt-4 max-w-xs text-sm text-steel-400">
+          Independent IT consulting. No vendor commission, no stack religion, no
+          90-page decks.
+        </p>
+      </div>
+
+      <nav aria-label="Footer" class="flex flex-wrap gap-x-8 gap-y-3">
+        {
+          [
+            { label: 'Services', href: '/#services' },
+            { label: 'Method', href: '/#method' },
+            { label: 'Pricing', href: '/#pricing' },
+            { label: 'Contact', href: '/contact' },
+            { label: 'RSS', href: '/blog/rss.xml' },
+          ].map((link) => (
+            <a
+              href={link.href}
+              class="text-sm text-steel-200 transition-colors duration-150 ease-out hover:text-paper"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <div
+      class="hairline mt-12 flex flex-col gap-3 pt-6 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p class="font-mono text-xs text-steel-400">
+        © {year} Tech-Agnostic. All rights reserved.
+      </p>
+      <a
+        href="/privacy"
+        class="font-mono text-xs text-steel-400 transition-colors duration-150 ease-out hover:text-paper"
+      >
+        Privacy
+      </a>
+    </div>
+  </div>
+</footer>
