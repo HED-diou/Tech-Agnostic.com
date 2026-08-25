@@ -2,6 +2,7 @@ import { Hero } from '@/components/sections/Hero';
 import { Stats } from '@/components/sections/Stats';
 import { Problems } from '@/components/sections/Problems';
 import { Services } from '@/components/sections/Services';
+import { Portfolio } from '@/components/sections/Portfolio';
 import { Work } from '@/components/sections/Work';
 import { Method } from '@/components/sections/Method';
 import { Team } from '@/components/sections/Team';
@@ -17,7 +18,8 @@ import { FinalCta } from '@/components/sections/FinalCta';
  *   Stats       the numbers a non-technical buyer scans for
  *   Problems    name the pain in the visitor's own words
  *   Services    the offer ladder, each with a price and a date
- *   Work        evidence, with numbers
+ *   Portfolio   filterable client showcase across key sectors
+ *   Work        in-depth evidence with detailed metrics
  *   Method      de-risk: show exactly what happens after they sign
  *   Team        who they will actually be working with
  *   Principles  remove the conflict of interest (the core objection)
@@ -35,6 +37,7 @@ export default function HomePage() {
       <Stats />
       <Problems />
       <Services />
+      <Portfolio />
       <Work />
       <Method />
       <Team />

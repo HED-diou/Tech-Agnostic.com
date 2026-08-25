@@ -31,6 +31,7 @@ export const site = {
 
 export const nav = [
   { label: 'Services', href: '/#services' },
+  { label: 'Portfolio', href: '/#portfolio' },
   { label: 'Work', href: '/#work' },
   { label: 'Method', href: '/#method' },
   { label: 'Pricing', href: '/#pricing' },
@@ -259,6 +260,121 @@ export const work = {
         { value: '4', label: 'internal owners trained' },
       ],
       stack: ['ClickHouse', 'dbt', 'Next.js'],
+    },
+  ],
+} as const;
+
+/* -------------------------------------------------------------------------
+ * Portfolio showcase
+ * ---------------------------------------------------------------------- */
+
+export const portfolio = {
+  eyebrow: 'client portfolio',
+  title: 'Proven engineering outcomes across critical industries.',
+  lead: 'From regulated banking to high-throughput IoT, here is how we help organizations build scalable, cost-efficient, and vendor-neutral systems.',
+  categories: [
+    'All',
+    'Fintech & Payments',
+    'Cloud & FinOps',
+    'Data & Real-Time',
+    'Architecture & Scale',
+  ],
+  projects: [
+    {
+      id: 'pay-orchestrator',
+      category: 'Fintech & Payments',
+      client: 'Tier-1 Payment Gateway',
+      sector: 'Fintech',
+      title: 'Resilient Payment Orchestrator for 12M Daily Transactions',
+      description:
+        'Decomposed a bottlenecked payments core into an event-driven Go cluster with idempotent state machines, eliminating outage risks during peak transaction spikes.',
+      stack: ['Go', 'Postgres', 'Kafka', 'Kubernetes', 'Terraform'],
+      kpis: [
+        { label: 'Latency Drop', value: '−72%' },
+        { label: 'Daily Volume', value: '12M tx' },
+        { label: 'System Uptime', value: '99.999%' },
+      ],
+      tag: 'Core Banking',
+    },
+    {
+      id: 'iot-telemetry',
+      category: 'Data & Real-Time',
+      client: 'Global Fleet Telematics',
+      sector: 'Logistics & IoT',
+      title: 'Sub-Second Real-Time Telemetry Pipeline for 45,000 Connected Vehicles',
+      description:
+        'Replaced expensive managed SaaS ingest pipelines with a custom ClickHouse + Rust stream architecture, unlocking instant vehicle status queries and cutting monthly bills.',
+      stack: ['Rust', 'ClickHouse', 'Vector', 'GCP', 'Grafana'],
+      kpis: [
+        { label: 'Ingest Bill', value: '−64%' },
+        { label: 'Query P95', value: '<800ms' },
+        { label: 'Active Devices', value: '45,000' },
+      ],
+      tag: 'Big Data',
+    },
+    {
+      id: 'finops-saas',
+      category: 'Cloud & FinOps',
+      client: 'Enterprise B2B SaaS',
+      sector: 'Cloud Infrastructure',
+      title: 'Cloud Cost Remediation & Multi-Tenant Infrastructure Isolation',
+      description:
+        'Audited AWS multi-region deployments, replaced over-provisioned ECS instances with Karpenter auto-scaling and spot fleets, recovering 48% compute runway.',
+      stack: ['AWS', 'Kubernetes', 'Karpenter', 'Terraform', 'Datadog'],
+      kpis: [
+        { label: 'Annual Saved', value: '€340k' },
+        { label: 'Compute Waste', value: '−48%' },
+        { label: 'Time to ROI', value: '2 Weeks' },
+      ],
+      tag: 'FinOps',
+    },
+    {
+      id: 'health-gateway',
+      category: 'Architecture & Scale',
+      client: 'HealthTech Platform',
+      sector: 'Healthcare',
+      title: 'Zero-Trust FHIR Interoperability & Medical Records Gateway',
+      description:
+        'Designed an end-to-end encrypted integration bridge linking hospital legacy EHR systems with patient mobile applications under strict HIPAA and GDPR standards.',
+      stack: ['TypeScript', 'Node.js', 'Postgres', 'AWS KMS', 'OpenTelemetry'],
+      kpis: [
+        { label: 'Compliance', value: '100% Passed' },
+        { label: 'Integrations', value: '18 Hospitals' },
+        { label: 'Leak Incidents', value: '0' },
+      ],
+      tag: 'Zero-Trust',
+    },
+    {
+      id: 'industrial-mes',
+      category: 'Architecture & Scale',
+      client: 'Automotive Parts Manufacturer',
+      sector: 'Industry 4.0',
+      title: 'Manufacturing Execution System De-coupling & Queue Modernization',
+      description:
+        'Eliminated assembly line freezes caused by database contention by introducing Temporal resilient workflows and distributed asynchronous queues.',
+      stack: ['Temporal', 'Go', 'Postgres', 'Docker', 'RabbitMQ'],
+      kpis: [
+        { label: 'Line Freezes', value: '0 Incidents' },
+        { label: 'Throughput', value: '4.2x' },
+        { label: 'Delivery', value: '6 Weeks' },
+      ],
+      tag: 'Industrial IT',
+    },
+    {
+      id: 'media-vector-search',
+      category: 'Data & Real-Time',
+      client: 'Digital News Network',
+      sector: 'Media & Publishing',
+      title: 'High-Scale Semantic Search Engine across 50M Editorial Archives',
+      description:
+        'Engineered an in-house hybrid vector retrieval engine combining Postgres pgvector and lightweight semantic caches, reducing latency from 4s to 120ms.',
+      stack: ['Python', 'pgvector', 'Postgres', 'Redis', 'Next.js'],
+      kpis: [
+        { label: 'Search Latency', value: '120ms' },
+        { label: 'Indexed Docs', value: '50M+' },
+        { label: 'CTR Growth', value: '+34%' },
+      ],
+      tag: 'AI / Search',
     },
   ],
 } as const;
