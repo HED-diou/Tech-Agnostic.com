@@ -11,46 +11,50 @@ export function Pricing() {
         lead={pricing.lead}
       />
 
-      <div className="mt-16 grid gap-6 lg:grid-cols-3">
+      <div className="mt-14 grid gap-6 lg:grid-cols-3">
         {pricing.tiers.map((tier, i) => (
-          <Reveal key={tier.name} delay={i * 60} className="h-full">
+          <Reveal key={tier.name} delay={i * 80} className="h-full">
             <article
-              className={`flex h-full flex-col rounded-card border p-7 lg:p-9 ${
+              className={`flex h-full flex-col rounded-card border p-7 lg:p-9 transition-colors duration-150 ease-out ${
                 tier.featured
-                  ? 'border-signal bg-ink-800'
-                  : 'border-ink-600 bg-ink-800'
+                  ? 'border-signal/80 bg-ink-800 ring-1 ring-signal/30'
+                  : 'border-ink-600 bg-ink-800 hover:border-steel-400'
               }`}
             >
               <div className="flex items-center justify-between gap-3">
-                <h3 className="text-h3">{tier.name}</h3>
+                <h3 className="text-h3 font-semibold text-paper">{tier.name}</h3>
                 {tier.featured ? (
-                  <span className="rounded-full bg-signal px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-900">
-                    Most chosen
+                  <span className="rounded-full bg-signal px-2.5 py-0.5 font-mono text-[0.625rem] font-bold uppercase tracking-wider text-ink-900">
+                    Recommended
                   </span>
                 ) : null}
               </div>
 
-              <p className="mt-6 font-display text-h2 text-paper">
-                {tier.price}
-              </p>
-              <p className="mt-1 font-mono text-xs text-steel-400">
-                {tier.unit}
-              </p>
+              <div className="mt-6">
+                <p className="font-display text-3xl font-bold tracking-tight text-paper">
+                  {tier.price}
+                </p>
+                <p className="mt-1 font-mono text-xs text-steel-400">
+                  {tier.unit}
+                </p>
+              </div>
 
-              <p className="mt-6 text-sm leading-relaxed text-steel-400">
+              <p className="mt-5 text-sm leading-relaxed text-steel-400">
                 {tier.body}
               </p>
 
-              <ul className="mt-7 space-y-3">
+              <div className="my-6 border-t border-ink-600/70" />
+
+              <ul className="space-y-3">
                 {tier.features.map((f) => (
-                  <li key={f} className="flex gap-3 text-sm text-steel-200">
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-steel-200">
                     <Check className="mt-0.5 shrink-0 text-signal" />
-                    <span>{f}</span>
+                    <span className="leading-snug">{f}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-auto pt-9">
+              <div className="mt-auto pt-8">
                 <Button
                   href={tier.cta.href}
                   variant={tier.featured ? 'primary' : 'secondary'}

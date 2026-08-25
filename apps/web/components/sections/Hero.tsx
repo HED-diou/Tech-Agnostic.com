@@ -4,31 +4,35 @@ import { DecisionMatrix } from '../DecisionMatrix';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      {/* Blueprint grid — decoration, masked away from the copy. BRAND.md §5.1 */}
+    <section className="relative overflow-hidden border-b border-ink-600/70">
+      {/* Blueprint grid — subtle precision background */}
       <div
         aria-hidden="true"
-        className="blueprint pointer-events-none absolute inset-0 opacity-[0.45] [mask-image:radial-gradient(120%_80%_at_70%_0%,black,transparent_72%)]"
+        className="blueprint pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(110%_80%_at_65%_10%,black,transparent_75%)]"
       />
 
-      <div className="container-ta relative pt-20 pb-24 lg:pt-28 lg:pb-32">
-        <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+      <div className="container-ta relative pt-16 pb-20 lg:pt-24 lg:pb-28">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div className="min-w-0">
-            <p className="font-mono text-eyebrow uppercase text-steel-400">
-              <span className="text-signal" aria-hidden="true">
-                {'//'}
-              </span>{' '}
-              {hero.eyebrow}
-            </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-ink-600 bg-ink-800/80 px-3.5 py-1.5 backdrop-blur-xs">
+              <span className="font-mono text-eyebrow uppercase text-steel-400">
+                <span className="font-bold text-signal" aria-hidden="true">
+                  {'//'}
+                </span>{' '}
+                {hero.eyebrow}
+              </span>
+            </div>
 
-            <h1 className="mt-6 text-display">{hero.title}</h1>
+            <h1 className="mt-6 text-display tracking-tight text-paper">
+              {hero.title}
+            </h1>
 
-            <p className="mt-8 text-body-lg text-steel-400 measure-lead">
+            <p className="mt-6 text-body-lg text-steel-400 measure-lead">
               {hero.lead}
             </p>
 
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button href={hero.primary.href}>
+            <div className="mt-10 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+              <Button href={hero.primary.href} className="shadow-lg shadow-signal/15">
                 {hero.primary.label}
                 <ArrowRight />
               </Button>
@@ -37,29 +41,30 @@ export function Hero() {
               </Button>
             </div>
 
-            <p className="mt-8 font-mono text-xs uppercase tracking-[0.14em] text-steel-400">
-              {hero.proof}
-            </p>
+            <div className="mt-8 flex items-center gap-3 text-xs font-mono uppercase tracking-[0.12em] text-steel-400">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-ok" aria-hidden="true" />
+              <span>{hero.proof}</span>
+            </div>
           </div>
 
-          <div className="min-w-0 lg:pl-4">
+          <div className="min-w-0 lg:pl-2">
             <DecisionMatrix />
           </div>
         </div>
       </div>
 
-      {/* Agnostic proof: technologies as text chips, never vendor marks. §8 */}
-      <div className="hairline relative">
-        <div className="container-ta py-8">
-          <div className="flex flex-col gap-5 md:flex-row md:items-center md:gap-8">
-            <p className="shrink-0 font-mono text-eyebrow uppercase text-steel-400">
+      {/* Agnostic proof: technologies as text chips, never vendor marks */}
+      <div className="border-t border-ink-600 bg-ink-800/30">
+        <div className="container-ta py-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
+            <p className="shrink-0 font-mono text-eyebrow uppercase tracking-wider text-steel-400">
               Shipped in production with
             </p>
             <ul className="flex flex-wrap gap-2">
               {stacks.map((s) => (
                 <li
                   key={s}
-                  className="rounded-full border border-ink-600 px-3 py-1 font-mono text-xs text-steel-400"
+                  className="rounded-full border border-ink-600/80 bg-ink-800/60 px-3 py-1 font-mono text-xs text-steel-200 transition-colors duration-150 hover:border-steel-400"
                 >
                   {s}
                 </li>

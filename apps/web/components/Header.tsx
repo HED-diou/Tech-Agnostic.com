@@ -33,27 +33,27 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-ink-900/85 backdrop-blur-md transition-shadow duration-150 ease-out ${
-        scrolled ? 'shadow-[0_1px_0_0_var(--color-ink-600)]' : ''
+      className={`sticky top-0 z-50 bg-ink-900/90 backdrop-blur-md transition-all duration-200 ease-out border-b ${
+        scrolled ? 'border-ink-600/90 shadow-sm' : 'border-transparent'
       }`}
     >
       <div className="container-ta flex h-[72px] items-center justify-between gap-6">
         <Link
           href="/"
-          className="shrink-0 rounded-sm"
+          className="shrink-0 rounded-sm focus-visible:outline-offset-4"
           aria-label={`${'Tech-Agnostic'} — home`}
           onClick={() => setOpen(false)}
         >
-          <Logo size={30} />
+          <Logo size={32} />
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-8 lg:flex">
+        <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
           {nav.map((item) =>
             item.href.startsWith('/blog') ? (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm text-steel-200 transition-colors duration-150 ease-out hover:text-paper"
+                className="font-mono text-[0.8125rem] uppercase tracking-wider text-steel-200 transition-colors duration-150 ease-out hover:text-paper"
               >
                 {item.label}
               </a>
@@ -61,7 +61,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm text-steel-200 transition-colors duration-150 ease-out hover:text-paper"
+                className="font-mono text-[0.8125rem] uppercase tracking-wider text-steel-200 transition-colors duration-150 ease-out hover:text-paper"
               >
                 {item.label}
               </Link>
@@ -70,7 +70,7 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button href="/contact" className="h-11 px-5">
+          <Button href="/contact" className="h-10 px-4 text-xs font-mono uppercase tracking-wider">
             Book a review
           </Button>
         </div>

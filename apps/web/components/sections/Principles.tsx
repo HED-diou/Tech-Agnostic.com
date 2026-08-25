@@ -4,29 +4,28 @@ import { Reveal } from '../Reveal';
 
 export function Principles() {
   return (
-    <Section id="principles" className="bg-ink-800/40">
-      <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+    <Section id="principles" className="bg-ink-800/30">
+      <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <Eyebrow>{principles.eyebrow}</Eyebrow>
           <h2 className="mt-5 text-h1">{principles.title}</h2>
-          <p className="mt-6 text-steel-400 measure-lead">
+          <p className="mt-6 text-body-lg text-steel-400 measure-lead">
             Independence is a business model, not a slogan. Here is exactly how
-            ours is structured, so you can check it.
+            ours is structured, so you can verify every aspect.
           </p>
         </div>
 
-        <dl className="divide-y divide-ink-600">
+        <dl className="space-y-4">
           {principles.items.map((item, i) => (
-            <Reveal key={item.title} delay={i * 50}>
-              <div className="py-8 first:pt-0">
-                <dt className="flex gap-4 text-h3">
-                  <span
-                    aria-hidden="true"
-                    className="mt-2.5 h-px w-6 shrink-0 bg-signal"
-                  />
+            <Reveal key={item.title} delay={i * 60}>
+              <div className="rounded-card border border-ink-600 bg-ink-800 p-6 transition-colors duration-150 ease-out hover:border-steel-400 lg:p-7">
+                <dt className="flex items-center gap-3 text-h3 font-semibold text-paper">
+                  <span className="font-mono text-xs font-bold text-signal">
+                    0{i + 1}.
+                  </span>
                   <span>{item.title}</span>
                 </dt>
-                <dd className="mt-4 pl-10 text-steel-400 measure">
+                <dd className="mt-3 pl-7 text-sm leading-relaxed text-steel-400 measure">
                   {item.body}
                 </dd>
               </div>

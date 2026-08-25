@@ -6,8 +6,8 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react';
  */
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
-    <p className="font-mono text-eyebrow uppercase text-steel-400">
-      <span className="text-signal" aria-hidden="true">
+    <p className="font-mono text-eyebrow uppercase tracking-[0.14em] text-steel-400">
+      <span className="font-bold text-signal" aria-hidden="true">
         {'//'}
       </span>{' '}
       {children}
@@ -30,7 +30,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`section-ta ${hairline ? 'hairline' : ''} ${className}`}
+      className={`section-ta ${hairline ? 'border-t border-ink-600/70' : ''} ${className}`}
     >
       <div className="container-ta">{children}</div>
     </section>
@@ -56,10 +56,10 @@ export function SectionHead({
       }
     >
       <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="mt-5 text-h1">{title}</h2>
+      <h2 className="mt-4 text-h1">{title}</h2>
       {lead ? (
         <p
-          className={`mt-6 text-body-lg text-steel-400 ${
+          className={`mt-5 text-body-lg text-steel-400 ${
             align === 'center' ? 'mx-auto' : ''
           } measure`}
         >
@@ -76,14 +76,14 @@ export function SectionHead({
 type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 
 const buttonBase =
-  'inline-flex h-12 items-center justify-center gap-2 rounded-field px-6 ' +
-  'font-medium text-[0.9375rem] transition-colors duration-150 ease-out ' +
-  'disabled:pointer-events-none disabled:opacity-45';
+  'inline-flex h-12 items-center justify-center gap-2.5 rounded-field px-6 ' +
+  'text-sm font-semibold transition-colors duration-150 ease-out ' +
+  'cursor-pointer disabled:pointer-events-none disabled:opacity-45';
 
 const buttonVariants: Record<ButtonVariant, string> = {
-  primary: 'bg-signal text-ink-900 font-semibold hover:bg-signal-dim',
+  primary: 'bg-signal text-ink-900 hover:bg-signal-dim active:bg-signal-dim',
   secondary:
-    'border border-ink-600 text-paper hover:border-steel-400 hover:bg-ink-800',
+    'border border-ink-600 bg-ink-800/80 text-paper hover:border-steel-400 hover:bg-ink-700 active:bg-ink-700',
   ghost: 'px-0 text-paper hover:text-signal',
 };
 

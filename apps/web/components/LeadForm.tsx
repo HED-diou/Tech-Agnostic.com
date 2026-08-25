@@ -201,12 +201,12 @@ export function LeadForm() {
           <div key={label} className="flex flex-1 flex-col gap-2">
             <span
               aria-hidden="true"
-              className={`h-0.5 w-full rounded-full transition-colors duration-150 ease-out ${
+              className={`h-1 w-full rounded-full transition-colors duration-150 ease-out ${
                 i <= step ? 'bg-signal' : 'bg-ink-600'
               }`}
             />
             <span
-              className={`font-mono text-[0.625rem] uppercase tracking-[0.12em] ${
+              className={`font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] ${
                 i === step ? 'text-paper' : 'text-steel-400'
               }`}
             >
@@ -222,58 +222,60 @@ export function LeadForm() {
         aria-live="polite"
         className="mt-8 font-mono text-eyebrow uppercase text-steel-400 outline-none"
       >
-        Step {step + 1} of {STEPS.length}
+        <span className="text-signal font-semibold">//</span> Step {step + 1} of {STEPS.length}
       </p>
 
       {/* ── Step 1 ─────────────────────────────────────────────────────── */}
       {step === 0 ? (
-        <fieldset className="mt-5">
-          <legend className="text-h2">What brings you here?</legend>
-          <p className="mt-3 text-sm text-steel-400">
+        <fieldset className="mt-4">
+          <legend className="text-h2 font-semibold text-paper">What brings you here?</legend>
+          <p className="mt-2 text-sm text-steel-400">
             Closest match is fine. We will get to the detail on the call.
           </p>
 
           <div
-            className="mt-7 space-y-2"
+            className="mt-6 space-y-2.5"
             role="radiogroup"
             aria-describedby={errors.intent ? `${uid}-intent-err` : undefined}
           >
             {formOptions.intent.map((option) => (
               <label
                 key={option.value}
-                className={`flex cursor-pointer items-center gap-3 rounded-field border px-4 py-3.5 text-sm transition-colors duration-150 ease-out ${
+                className={`flex cursor-pointer items-center justify-between rounded-field border px-4 py-3.5 text-sm transition-colors duration-150 ease-out ${
                   fields.intent === option.value
-                    ? 'border-signal bg-ink-900 text-paper'
-                    : 'border-ink-600 text-steel-200 hover:border-steel-400'
+                    ? 'border-signal bg-ink-900 text-paper shadow-sm'
+                    : 'border-ink-600 bg-ink-800/80 text-steel-200 hover:border-steel-400'
                 }`}
               >
-                <input
-                  type="radio"
-                  name="intent"
-                  value={option.value}
-                  checked={fields.intent === option.value}
-                  onChange={() => set('intent', option.value)}
-                  className="sr-only"
-                />
-                <span
-                  aria-hidden="true"
-                  className={`grid h-4 w-4 shrink-0 place-items-center rounded-full border ${
-                    fields.intent === option.value
-                      ? 'border-signal'
-                      : 'border-ink-500'
-                  }`}
-                >
-                  {fields.intent === option.value ? (
-                    <span className="h-2 w-2 rounded-full bg-signal" />
-                  ) : null}
-                </span>
-                {option.label}
+                <div className="flex items-center gap-3">
+                  <input
+                    type="radio"
+                    name="intent"
+                    value={option.value}
+                    checked={fields.intent === option.value}
+                    onChange={() => set('intent', option.value)}
+                    className="sr-only"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className={`grid h-4 w-4 shrink-0 place-items-center rounded-full border ${
+                      fields.intent === option.value
+                        ? 'border-signal'
+                        : 'border-ink-500'
+                    }`}
+                  >
+                    {fields.intent === option.value ? (
+                      <span className="h-2 w-2 rounded-full bg-signal" />
+                    ) : null}
+                  </span>
+                  <span className="font-medium">{option.label}</span>
+                </div>
               </label>
             ))}
           </div>
 
           {errors.intent ? (
-            <p id={`${uid}-intent-err`} className="mt-3 text-sm text-err">
+            <p id={`${uid}-intent-err`} className="mt-3 text-sm text-err font-medium">
               {errors.intent}
             </p>
           ) : null}
@@ -453,17 +455,17 @@ function ChipGroup({
 }) {
   return (
     <fieldset>
-      <legend className="text-sm font-medium text-paper">{label}</legend>
+      <legend className="text-sm font-semibold text-paper">{label}</legend>
       {hint ? <p className="mt-1 text-xs text-steel-400">{hint}</p> : null}
 
       <div className="mt-3 flex flex-wrap gap-2">
         {options.map((option) => (
           <label
             key={option.value}
-            className={`cursor-pointer rounded-field border px-3.5 py-2 text-sm transition-colors duration-150 ease-out ${
+            className={`cursor-pointer rounded-field border px-3.5 py-2 text-sm font-medium transition-colors duration-150 ease-out ${
               value === option.value
-                ? 'border-signal bg-ink-900 text-paper'
-                : 'border-ink-600 text-steel-200 hover:border-steel-400'
+                ? 'border-signal bg-ink-900 text-paper ring-1 ring-signal/30'
+                : 'border-ink-600 bg-ink-900/40 text-steel-200 hover:border-steel-400'
             }`}
           >
             <input
@@ -480,7 +482,7 @@ function ChipGroup({
       </div>
 
       {error ? (
-        <p id={`${uid}-${name}-err`} className="mt-2 text-sm text-err">
+        <p id={`${uid}-${name}-err`} className="mt-2 text-xs text-err font-medium">
           {error}
         </p>
       ) : null}
@@ -514,7 +516,7 @@ function Field({
 
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-paper">
+      <label htmlFor={id} className="block text-sm font-semibold text-paper">
         {label}{' '}
         {optional ? (
           <span className="font-normal text-steel-400">(optional)</span>
@@ -531,12 +533,12 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         className={`mt-2 h-12 w-full rounded-field border bg-ink-900 px-4 text-sm text-paper transition-colors duration-150 ease-out placeholder:text-ink-500 focus:outline-none ${
           error
-            ? 'border-err'
+            ? 'border-err ring-1 ring-err/30'
             : 'border-ink-600 hover:border-steel-400 focus:border-steel-400'
         }`}
       />
       {error ? (
-        <p id={errorId} className="mt-2 text-sm text-err">
+        <p id={errorId} className="mt-2 text-xs text-err font-medium">
           {error}
         </p>
       ) : null}
