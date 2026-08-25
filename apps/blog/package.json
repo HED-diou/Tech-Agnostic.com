@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node ./scripts/prune-output.mjs",
+    "build": "npx --no-install astro build && node ./scripts/prune-output.mjs",
     "preview": "astro preview",
     "typecheck": "astro check"
   },
