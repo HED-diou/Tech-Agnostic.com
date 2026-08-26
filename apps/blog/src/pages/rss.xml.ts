@@ -8,10 +8,10 @@ export async function GET(context: APIContext) {
   );
 
   return rss({
-    title: 'Tech-Agnostic — Notes',
+    title: 'Deltavantis — Notes',
     description:
       'Short, opinionated write-ups on choosing, running and paying for technology.',
-    site: context.site ?? 'https://tech-agnostic.com',
+    site: context.site ?? 'https://deltavantis.com',
     items: posts.map((post) => ({
       title: post.data.title,
       description: post.data.description,

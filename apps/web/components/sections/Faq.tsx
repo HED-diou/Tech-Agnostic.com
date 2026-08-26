@@ -15,21 +15,21 @@ export function Faq() {
           {faq.items.map((item) => (
             <details
               key={item.q}
-              className="group rounded-card border border-line bg-surface px-6 shadow-sm transition-shadow duration-150 ease-out hover:shadow-card"
+              className="group rounded-card border border-edge bg-panel px-6 shadow-sm transition-shadow duration-150 ease-out hover:shadow-card"
             >
               <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 text-left [&::-webkit-details-marker]:hidden">
-                <h3 className="text-h3 transition-colors duration-150 ease-out group-hover:text-signal-deep">
+                <h3 className="text-h3 transition-colors duration-150 ease-out group-hover:text-signal">
                   {item.q}
                 </h3>
                 <span
                   aria-hidden="true"
-                  className="relative mt-1.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sand"
+                  className="relative mt-1.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-panel-2"
                 >
-                  <span className="absolute h-px w-2.5 bg-ink" />
-                  <span className="absolute h-2.5 w-px bg-ink transition-opacity duration-150 ease-out group-open:opacity-0" />
+                  <span className="absolute h-px w-2.5 bg-frost" />
+                  <span className="absolute h-2.5 w-px bg-frost transition-opacity duration-150 ease-out group-open:opacity-0" />
                 </span>
               </summary>
-              <div className="pb-6 text-muted measure">{item.a}</div>
+              <div className="pb-6 text-dim measure">{item.a}</div>
             </details>
           ))}
         </div>

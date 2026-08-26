@@ -10,20 +10,20 @@ invented results would contradict the positioning the brand is built on.
 | ---------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | `apps/web/lib/site.ts` → `work.items`                | All three case studies: client descriptors, metrics, stacks | These numbers are illustrative. Publishing them as real results is a factual claim you cannot support. |
 | `apps/web/lib/site.ts` → `services`, `pricing`       | Prices, durations, currency                                 | Set to your actual rates. Currency is EUR throughout; change the `€` in both objects if that is wrong. |
-| `apps/web/lib/site.ts` → `site.email`, `site.social` | Contact address, LinkedIn, GitHub                           | Currently placeholders on the `tech-agnostic.com` domain.                                              |
+| `apps/web/lib/site.ts` → `site.email`, `site.social` | Contact address, LinkedIn, GitHub                           | Currently placeholders on the `deltavantis.com` domain.                                                |
 | `apps/web/app/privacy/page.tsx`                      | Retention periods, processor details                        | Written as a plain-language summary. Have counsel review it against your jurisdiction.                 |
 | `.env.example` → `NEXT_PUBLIC_FORM_ENDPOINT`         | Form handler URL                                            | Until this is set, the form falls back to `mailto:`. That works, but it converts worse.                |
 
 ## Should review
 
-| Where                                     | What                                                                                                                                                           |
-| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `apps/web/lib/site.ts` → `faq`            | The answers commit you to specific promises (free review, written summary in 48h, referrals). Keep only the ones you will honour.                              |
-| `apps/web/lib/site.ts` → `principles`     | Same — "no vendor commission" and "fixed price or we re-scope free" are contractual claims.                                                                    |
-| `apps/blog/src/content/blog/*.md`         | Three seed posts. They are written in the brand voice and are safe to publish, but the anonymised distribution table in the rewrite post is illustrative.      |
-| `apps/web/public/og.svg`                  | **Still drawn for the dark v1 page** — redraw on the light v2 palette, then rasterise to PNG. LinkedIn does not render SVG Open Graph images.                  |
-| `apps/web/public/{logo,mark,favicon}.svg` | Tiles still use the v1 ink `#161C21`. They read correctly on light, but should be aligned to `--ta-ink #14181C` for exactness.                                 |
-| Photo slots                               | Six empty `PhotoSlot`s (3 team, 3 case study). Shippable as-is, but real photography is the single biggest trust upgrade available. See `docs/PHOTOGRAPHY.md`. |
+| Where                                     | What                                                                                                                                                                                      |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `apps/web/lib/site.ts` → `faq`            | The answers commit you to specific promises (free review, written summary in 48h, referrals). Keep only the ones you will honour.                                                         |
+| `apps/web/lib/site.ts` → `principles`     | Same — "no vendor commission" and "fixed price or we re-scope free" are contractual claims.                                                                                               |
+| `apps/blog/src/content/blog/*.md`         | Three seed posts. They are written in the brand voice and are safe to publish, but the anonymised distribution table in the rewrite post is illustrative.                                 |
+| `apps/web/public/og.svg`                  | Redrawn on the v3 aurora palette. Still rasterise to PNG before launch — LinkedIn does not render SVG Open Graph images.                                                                  |
+| `apps/web/public/{logo,mark,favicon}.svg` | Redrawn as the Offset Delta on the aurora gradient. No action needed.                                                                                                                     |
+| Photo slots                               | Six empty `PhotoSlot`s (3 team, 3 case study). Shippable as-is. Real photography is the biggest trust upgrade available — and must be graded for a night page. See `docs/PHOTOGRAPHY.md`. |
 
 ## Safe as-is
 

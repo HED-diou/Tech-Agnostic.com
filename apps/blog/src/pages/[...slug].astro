@@ -25,7 +25,7 @@ const toc = headings.filter((h) => h.depth === 2);
 ---
 
 <Base
-  title={`${post.data.title} — Tech-Agnostic`}
+  title={`${post.data.title} — Deltavantis`}
   description={post.data.description}
   path={`/blog/${post.id}`}
   type="article"
@@ -35,31 +35,31 @@ const toc = headings.filter((h) => h.depth === 2);
     <header class="relative overflow-hidden">
       <div
         aria-hidden="true"
-        class="wash pointer-events-none absolute inset-0"
+        class="aurora pointer-events-none absolute inset-0"
       >
       </div>
 
-      <div class="container-ta relative py-16 lg:py-20">
+      <div class="container-dv relative py-16 lg:py-20">
         <a
           href="/blog"
-          class="inline-flex items-center gap-2 text-eyebrow font-semibold text-muted transition-colors duration-150 ease-out hover:text-ink"
+          class="inline-flex items-center gap-2 text-eyebrow font-semibold text-dim transition-colors duration-150 ease-out hover:text-frost"
         >
           <span aria-hidden="true">←</span> All notes
         </a>
 
-        <p class="mt-10 text-eyebrow font-semibold text-muted">
-          <span class="text-signal" aria-hidden="true">//</span>{' '}
+        <p class="mt-10 text-eyebrow font-semibold text-dim">
+          <span class="text-signal" aria-hidden="true">&#916;</span>{' '}
           {post.data.topic}
         </p>
 
         <h1 class="mt-6 max-w-[20ch] text-h1">{post.data.title}</h1>
 
-        <p class="mt-6 max-w-[54ch] text-body-lg text-muted">
+        <p class="mt-6 max-w-[54ch] text-body-lg text-dim">
           {post.data.description}
         </p>
 
         <div
-          class="border-t border-line mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 pt-6 font-mono text-xs text-muted"
+          class="border-t border-edge mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 pt-6 font-mono text-xs text-dim"
         >
           <span>{post.data.author}</span>
           <time datetime={post.data.publishedAt.toISOString()}>
@@ -75,9 +75,9 @@ const toc = headings.filter((h) => h.depth === 2);
       </div>
     </header>
 
-    <div class="container-ta pb-8">
+    <div class="container-dv pb-8">
       <div class="grid gap-12 lg:grid-cols-[1fr_220px] lg:gap-16">
-        <div class="prose-ta order-2 lg:order-1">
+        <div class="prose-dv order-2 lg:order-1">
           <Content />
         </div>
 
@@ -87,15 +87,15 @@ const toc = headings.filter((h) => h.depth === 2);
               aria-label="On this page"
               class="order-1 self-start lg:order-2 lg:sticky lg:top-28"
             >
-              <h2 class="text-eyebrow font-semibold text-muted">
+              <h2 class="text-eyebrow font-semibold text-dim">
                 On this page
               </h2>
-              <ul class="mt-4 space-y-2.5 border-l border-line pl-4">
+              <ul class="mt-4 space-y-2.5 border-l border-edge pl-4">
                 {toc.map((heading) => (
                   <li>
                     <a
                       href={`#${heading.slug}`}
-                      class="text-sm text-muted transition-colors duration-150 ease-out hover:text-ink"
+                      class="text-sm text-dim transition-colors duration-150 ease-out hover:text-frost"
                     >
                       {heading.text}
                     </a>
@@ -108,20 +108,20 @@ const toc = headings.filter((h) => h.depth === 2);
       </div>
     </div>
 
-    <div class="container-ta pb-4">
+    <div class="container-dv pb-4">
       <aside
-        class="rounded-card border border-line bg-surface shadow-card p-8 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:p-10"
+        class="rounded-card border border-edge bg-panel shadow-card p-8 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:p-10"
       >
         <div>
           <h2 class="text-h2">Recognise this from your own stack?</h2>
-          <p class="mt-4 max-w-[52ch] text-muted">
+          <p class="mt-4 max-w-[52ch] text-dim">
             We do a free 30-minute technical review. Bring one real problem —
             you will leave with a first opinion and a written summary.
           </p>
         </div>
         <a
           href="/contact"
-          class="mt-8 inline-flex h-12 shrink-0 items-center rounded-field bg-signal px-6 font-semibold text-[0.9375rem] text-ink transition-colors duration-150 ease-out hover:bg-signal-hover lg:mt-0"
+          class="mt-8 inline-flex h-12 shrink-0 items-center rounded-field bg-signal px-6 font-semibold text-[0.9375rem] text-frost transition-colors duration-150 ease-out hover:bg-signal-hover lg:mt-0"
         >
           Book a review
         </a>

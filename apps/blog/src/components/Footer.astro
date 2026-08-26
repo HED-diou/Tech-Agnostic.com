@@ -3,14 +3,14 @@ import Logo from './Logo.astro';
 const year = new Date().getFullYear();
 ---
 
-<footer class="band-deep mt-24">
-  <div class="container-ta py-14">
+<footer class="band-aurora mt-24">
+  <div class="container-dv py-14">
     <div
       class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between"
     >
       <div>
-        <Logo size={28} tone="deep" />
-        <p class="mt-4 max-w-xs text-sm text-deep-body">
+        <Logo size={28} idSuffix="footer" />
+        <p class="mt-4 max-w-xs text-sm text-mist">
           Independent IT consulting. No vendor commission, no stack religion, no
           90-page decks.
         </p>
@@ -27,7 +27,7 @@ const year = new Date().getFullYear();
           ].map((link) => (
             <a
               href={link.href}
-              class="text-sm text-deep-body transition-colors duration-150 ease-out hover:text-white"
+              class="text-sm text-mist transition-colors duration-150 ease-out hover:text-white"
             >
               {link.label}
             </a>
@@ -37,14 +37,14 @@ const year = new Date().getFullYear();
     </div>
 
     <div
-      class="mt-12 flex flex-col gap-3 border-t border-deep-line pt-6 sm:flex-row sm:items-center sm:justify-between"
+      class="mt-12 flex flex-col gap-3 border-t border-edge-2 pt-6 sm:flex-row sm:items-center sm:justify-between"
     >
-      <p class="text-xs text-deep-body">
-        © {year} Tech-Agnostic. All rights reserved.
+      <p class="text-xs text-mist">
+        © {year} Deltavantis. All rights reserved.
       </p>
       <a
         href="/privacy"
-        class="text-xs text-deep-body transition-colors duration-150 ease-out hover:text-white"
+        class="text-xs text-mist transition-colors duration-150 ease-out hover:text-white"
       >
         Privacy
       </a>

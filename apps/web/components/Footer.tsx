@@ -25,12 +25,12 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="band-deep">
-      <div className="container-ta py-16 lg:py-24">
+    <footer className="band-aurora">
+      <div className="container-dv py-16 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <Logo size={30} tone="deep" />
-            <p className="mt-5 max-w-xs text-sm text-deep-body">
+            <Logo size={30} />
+            <p className="mt-5 max-w-xs text-sm text-mist">
               Independent IT consulting. No vendor commission, no stack
               religion, no 90-page decks.
             </p>
@@ -47,14 +47,14 @@ export function Footer() {
                     {link.href.startsWith('/blog') ? (
                       <a
                         href={link.href}
-                        className="text-sm text-deep-body transition-colors duration-150 ease-out hover:text-white"
+                        className="text-sm text-mist transition-colors duration-150 ease-out hover:text-white"
                       >
                         {link.label}
                       </a>
                     ) : (
                       <Link
                         href={link.href}
-                        className="text-sm text-deep-body transition-colors duration-150 ease-out hover:text-white"
+                        className="text-sm text-mist transition-colors duration-150 ease-out hover:text-white"
                       >
                         {link.label}
                       </Link>
@@ -73,7 +73,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-sm text-deep-body transition-colors duration-150 ease-out hover:text-white"
+                  className="text-sm text-mist transition-colors duration-150 ease-out hover:text-white"
                 >
                   {site.email}
                 </a>
@@ -81,7 +81,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-deep-body transition-colors duration-150 ease-out hover:text-white"
+                  className="text-sm text-mist transition-colors duration-150 ease-out hover:text-white"
                 >
                   Book a technical review
                 </Link>
@@ -91,7 +91,7 @@ export function Footer() {
                   href={site.social.linkedin}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="text-sm text-deep-body transition-colors duration-150 ease-out hover:text-white"
+                  className="text-sm text-mist transition-colors duration-150 ease-out hover:text-white"
                 >
                   LinkedIn
                 </a>
@@ -100,20 +100,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-deep-line pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-deep-body">
+        <div className="mt-16 flex flex-col gap-4 border-t border-edge-2 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-mist">
             © {year} {site.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link
               href="/privacy"
-              className="text-xs text-deep-body transition-colors duration-150 ease-out hover:text-white"
+              className="text-xs text-mist transition-colors duration-150 ease-out hover:text-white"
             >
               Privacy
             </Link>
             <a
               href="/blog/rss.xml"
-              className="text-xs text-deep-body transition-colors duration-150 ease-out hover:text-white"
+              className="text-xs text-mist transition-colors duration-150 ease-out hover:text-white"
             >
               RSS
             </a>

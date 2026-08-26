@@ -3,7 +3,7 @@ title: 'The rewrite is almost never the answer'
 description: 'Four out of five teams that ask us to scope a rewrite are describing a single bottleneck. Here is the test we run before anyone writes a migration plan.'
 topic: 'architecture'
 publishedAt: 2026-06-11
-author: 'Tech-Agnostic'
+author: 'Deltavantis'
 readingTime: '7 min read'
 ---
 

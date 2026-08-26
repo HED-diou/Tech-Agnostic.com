@@ -4,7 +4,7 @@ import { Reveal } from '../Reveal';
 
 export function Pricing() {
   return (
-    <Section id="pricing" className="band-sand">
+    <Section id="pricing" className="band-panel">
       <SectionHead
         eyebrow={pricing.eyebrow}
         title={pricing.title}
@@ -15,33 +15,33 @@ export function Pricing() {
         {pricing.tiers.map((tier, i) => (
           <Reveal key={tier.name} delay={i * 60} className="h-full">
             <article
-              className={`flex h-full flex-col rounded-card bg-surface p-7 lg:p-9 ${
+              className={`flex h-full flex-col rounded-card bg-panel p-7 lg:p-9 ${
                 tier.featured
                   ? 'border-2 border-signal shadow-lift'
-                  : 'border border-line shadow-card'
+                  : 'border border-edge shadow-card'
               }`}
             >
               <div className="flex items-center justify-between gap-3">
                 <h3 className="text-h3">{tier.name}</h3>
                 {tier.featured ? (
-                  <span className="rounded-full bg-signal px-3 py-1 text-[0.6875rem] font-bold tracking-wide text-ink uppercase">
+                  <span className="rounded-full bg-signal px-3 py-1 text-[0.6875rem] font-bold tracking-wide text-frost uppercase">
                     Most chosen
                   </span>
                 ) : null}
               </div>
 
-              <p className="mt-6 font-display text-h2 font-bold text-ink">
+              <p className="mt-6 font-display text-h2 font-bold text-frost">
                 {tier.price}
               </p>
-              <p className="mt-1 text-sm text-muted">{tier.unit}</p>
+              <p className="mt-1 text-sm text-dim">{tier.unit}</p>
 
-              <p className="mt-6 text-sm leading-relaxed text-muted">
+              <p className="mt-6 text-sm leading-relaxed text-dim">
                 {tier.body}
               </p>
 
               <ul className="mt-7 space-y-3">
                 {tier.features.map((f) => (
-                  <li key={f} className="flex gap-3 text-sm text-body">
+                  <li key={f} className="flex gap-3 text-sm text-mist">
                     <Check className="mt-0.5 shrink-0 text-signal" />
                     <span>{f}</span>
                   </li>
@@ -62,7 +62,7 @@ export function Pricing() {
         ))}
       </div>
 
-      <p className="mt-10 text-center text-sm text-muted">
+      <p className="mt-10 text-center text-sm text-dim">
         Prices exclude VAT. Fixed-scope work is invoiced 50% on signature, 50% on
         delivery.
       </p>

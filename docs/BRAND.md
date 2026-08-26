@@ -1,27 +1,28 @@
-# Tech-Agnostic — Charte Graphique v2.0 "warm & human"
+# Deltavantis — Charte Graphique v3.0 "Aurora"
 
 > This document is the source of truth. Every screen, component and asset in
 > this repository must be traceable back to a rule below. If a design decision
 > is not covered here, extend this document first, then build.
 >
-> **v2 replaces the dark, terminal-flavoured v1.** The positioning, the voice
-> and the `//` mark are unchanged. The visual register moved from
-> engineer-tool to confident-company: light-first, warmer, softer, with real
-> elevation. Rationale in §12.
+> **v3 is a rebrand, not a repaint.** The company changed its name from
+> Tech-Agnostic to **Deltavantis**, which retired the old `//` mark and its
+> rationale. The positioning, the voice and the funnel are unchanged. The
+> visual system is new: night-first, lit by an aurora. Rationale in §12.
 
 ---
 
 ## 1. Brand platform
 
-**Name.** Tech-Agnostic (wordmark: `tech-agnostic`, always lowercase, hyphen kept).
+**Name.** Deltavantis (wordmark: `deltavantis`, always lowercase).
+Domain: deltavantis.com.
 
 **Category.** Independent IT & software consultancy.
 
 **Positioning.**
 
 > We are not paid by vendors. We are paid by outcomes.
-> Tech-Agnostic helps teams choose, ship and own the right stack — whatever
-> that stack turns out to be.
+> Deltavantis helps teams choose, ship and own the right stack — whatever that
+> stack turns out to be.
 
 **Promise.** No vendor kickbacks. No stack religion. No 90-page decks.
 
@@ -38,150 +39,166 @@
 
 ---
 
-## 2. Logo — unchanged from v1
+## 2. Logo — "The Offset Delta"
 
-### 2.1 Concept — "The Comment"
+### 2.1 Concept
 
-The mark is `//` — the line-comment marker in C, C++, C#, Java, JavaScript,
-TypeScript, Go, Rust, Swift, Kotlin, PHP, Scala and Dart. It is one of the very
-few pieces of syntax that survives almost any language migration, which makes
-it literally technology-agnostic. It also reads as _the aside_ — the honest note
-an engineer leaves next to the code.
+The mark is a delta (Δ) cut by a horizontal gap, with the upper section
+displaced to the right.
+
+- The **triangle** is the mathematical symbol for change.
+- The **cut** is the measurement line — the baseline you measure against.
+- The **offset** _is_ the delta: the difference between where a system is and
+  where it should be. That difference is the entire product.
+
+The name carries the same idea: _delta_ (measured change) + _vantis_ (vantage,
+advantage). The mark is the name, drawn.
 
 ### 2.2 Construction
 
-- Canvas: 32 × 32 grid.
-- Tile: rounded square, corner radius **9/32** (28.125%).
-- Two parallel strokes, width **4/32**, round caps.
-- Slant: **5 : 14** (≈ 20° from vertical).
-- Stroke axes **8/32** apart; pair nudged **−0.5/32 on x** for optical centring.
-- Stroke 1 `M14 9 L9 23` · Stroke 2 `M22 9 L17 23`.
+Drawn on a **32 × 32** grid as two filled polygons — never strokes:
+
+| Property         | Value                                  |
+| ---------------- | -------------------------------------- |
+| Upper section    | `18.2,4 25.2,16.8 11.2,16.8`           |
+| Lower section    | `7.5,19.6 24.5,19.6 28.5,27 3.5,27`    |
+| Implied triangle | apex (16,4), base (3.5,27) → (28.5,27) |
+| Cut              | y = 16.8 to 19.6 — a **2.8** gap       |
+| Offset           | upper section displaced **+2.2** on x  |
+
+The gap and offset are deliberately large: at 16px they are 1.4px and 1.1px,
+which is the minimum that survives rasterisation. Do not reduce them "for
+elegance" — the mark becomes a plain triangle and stops meaning anything.
 
 Never rebuild the mark by hand. Import from `apps/web/components/Logo.tsx`,
 `apps/blog/src/components/Logo.astro`, or `apps/web/public/logo.svg`.
 
-### 2.3 Lockups
+### 2.3 The gradient
+
+The mark is filled with the aurora, running on the same axis as the cut:
+
+```
+linearGradient  x1=3.5 y1=27  x2=28.5 y2=4   (userSpaceOnUse)
+  0%    --color-mint    #46E5B5
+  52%   --color-cyan    #5AB4FF
+  100%  --color-violet  #A78BFA
+```
+
+Every instance needs a **unique gradient id**. Both logo components take an
+`idSuffix` prop for this — two marks on one page with the same id will make one
+of them render wrong.
+
+### 2.4 Lockups
 
 | Lockup                        | Use                                              |
 | ----------------------------- | ------------------------------------------------ |
-| **Primary** — tile + wordmark | Header, footer, decks, email signature           |
+| **Primary** — mark + wordmark | Header, footer, decks, email signature           |
 | **Mark only**                 | Favicon, avatars, ≤ 32 px, app icons             |
-| **Wordmark only**             | Body copy, legal, where the tile already appears |
+| **Wordmark only**             | Body copy, legal, where the mark already appears |
 
-Wordmark: Plus Jakarta Sans ExtraBold (800), tracking `-0.02em`, lowercase,
-hyphen never replaced by an en dash. Set at `0.56 ×` tile height.
+Wordmark: Plus Jakarta Sans Bold (700), tracking `-0.025em`, **always
+lowercase**. Set at `0.55 ×` mark height, gap `0.31 ×`.
 
-> **v2 change.** The wordmark moved from Space Grotesk Medium to Plus Jakarta
-> Sans ExtraBold when the display face changed (§4). It is the only logo change.
+### 2.5 Clear space & minimum size
 
-### 2.4 Clear space & minimum size
+- Clear space all sides = `0.5 ×` the mark height.
+- Minimum: **16 px** on screen, **5 mm** in print. Below that the cut closes up.
+- On anything smaller, use the solid `--color-frost` monochrome version.
 
-- Clear space all sides = `0.5625 ×` tile height (twice the corner radius).
-- Minimum tile: **20 px** screen, **6 mm** print.
-- Below 20 px, drop the tile and use the two strokes alone.
+### 2.6 Colourways
 
-### 2.5 Colourways
+| Context                      | Fill                 |
+| ---------------------------- | -------------------- |
+| Any night surface            | the aurora gradient  |
+| Single colour, dark ground   | 100% `--color-frost` |
+| Single colour, light ground  | 100% `--color-night` |
+| Engraving / fax / embroidery | solid, no gradient   |
 
-| Background    | Tile             | Strokes                    |
-| ------------- | ---------------- | -------------------------- |
-| Paper / light | `--ta-ink`       | `--ta-signal`              |
-| Deep band     | `--ta-deep-soft` | `--ta-signal`              |
-| Single colour | transparent      | 100% ink **or** 100% paper |
+The mark needs **no tile and no container**. It sits directly on the surface —
+that is why it works on every band without a variant.
 
-Use the `tone="deep"` prop on inverted bands — the light tile disappears there.
+### 2.7 Misuse (all forbidden)
 
-### 2.6 Misuse (all forbidden)
-
-Rotate the tile · change the slant · add a third stroke · outline the strokes ·
-gradient the strokes · place on a photograph without a solid tile · stretch
-either axis · recolour the strokes to anything but `--ta-signal` or a full
-monochrome · add a drop shadow · set the wordmark in another face.
+Rotate · close the gap · remove the offset · outline instead of fill · change
+the gradient stops or angle · stretch either axis · place on a busy photograph ·
+add a drop shadow to the mark itself · add a container tile · set the wordmark
+in another face · use the same gradient id twice on one page.
 
 ---
 
 ## 3. Colour
 
-Light-first. Paper and white surfaces carry the page; two deep bands break the
-rhythm; **one** accent. A colour outside this table is a bug.
+Night-first. Five surface steps, four text steps, three aurora lights. A colour
+outside this table is a bug.
 
 ### 3.1 Tokens
 
-| Token               | Hex       | Role                                     |
-| ------------------- | --------- | ---------------------------------------- |
-| `--ta-paper`        | `#FAF9F7` | Page background                          |
-| `--ta-surface`      | `#FFFFFF` | Cards, raised panels                     |
-| `--ta-sand`         | `#F2EFE9` | Section banding, soft fills, photo slots |
-| `--ta-sand-deep`    | `#E8E3DA` | Pressed / secondary fills                |
-| `--ta-line`         | `#E4E0D8` | Hairlines on light                       |
-| `--ta-line-strong`  | `#CFC9BD` | Hover borders on light                   |
-| `--ta-ink`          | `#14181C` | Headings, primary text                   |
-| `--ta-body`         | `#414B56` | Body copy                                |
-| `--ta-muted`        | `#636C78` | Secondary text, captions                 |
-| `--ta-faint`        | `#9AA2AC` | **Decorative only** — see §3.4           |
-| `--ta-deep`         | `#101519` | Inverted band background                 |
-| `--ta-deep-soft`    | `#1B2228` | Cards on a deep band                     |
-| `--ta-deep-line`    | `#2C353D` | Hairlines on deep                        |
-| `--ta-deep-body`    | `#B6BFC9` | Body copy on deep                        |
-| `--ta-signal`       | `#FF5D2E` | Accent fills, large figures, bars        |
-| `--ta-signal-hover` | `#EE4E1C` | Accent fill on hover                     |
-| `--ta-signal-deep`  | `#BC3810` | Accent **text** on light surfaces        |
-| `--ta-signal-wash`  | `#FFF1EC` | Tinted badges and pills                  |
+| Token                  | Hex       | Role                                      |
+| ---------------------- | --------- | ----------------------------------------- |
+| `--color-night`        | `#070B14` | Page background                           |
+| `--color-panel`        | `#0D1424` | Cards, raised panels                      |
+| `--color-panel-2`      | `#131C2F` | Section banding                           |
+| `--color-panel-3`      | `#1A2540` | Cards on a banded section, photo slots    |
+| `--color-edge`         | `#202B44` | Hairlines                                 |
+| `--color-edge-2`       | `#33425F` | Hover borders, dividers that must be seen |
+| `--color-frost`        | `#EAF0FA` | Headings, primary text                    |
+| `--color-mist`         | `#B9C6DE` | Body copy                                 |
+| `--color-dim`          | `#8A9BBA` | Secondary text, captions                  |
+| `--color-faint`        | `#5C6C8C` | **Decorative only** — see §3.4            |
+| `--color-mint`         | `#46E5B5` | Aurora 1 · the primary accent             |
+| `--color-cyan`         | `#5AB4FF` | Aurora 2                                  |
+| `--color-violet`       | `#A78BFA` | Aurora 3                                  |
+| `--color-signal`       | `#46E5B5` | Alias of mint: CTAs, active state, the Δ  |
+| `--color-signal-hover` | `#6BEBC5` | Accent fill on hover                      |
+| `--color-signal-veil`  | `#0E2A23` | Tinted pill / badge background            |
 
-Semantic, used only in forms and system messages:
-`--ta-ok #2F9E6E` · `--ta-warn #B57C11` · `--ta-err #CF3F2C`
+Semantic, forms and system messages only:
+`--color-ok #46E5B5` · `--color-warn #F0C065` · `--color-err #FF7A6B`
 
 ### 3.2 The Signal rule
 
-Per viewport, the accent may appear on **at most**: one primary button, the `//`
-in the logo and eyebrows, and one emphasised element. If two orange things
-compete for attention on the same screen, one of them is wrong.
+Per viewport, mint may appear on **at most**: one primary button, the Δ in the
+logo and eyebrows, and one emphasised element. Two competing mint objects on the
+same screen means one is wrong.
 
 **Exception — repeated data treatments.** A systematic, identical treatment
 across a set of data (a case-study metric rail, the winning column of a decision
 matrix) counts as a _single_ use: the eye reads one pattern, not several
 highlights. Only when the treatment is uniform across the whole set.
 
-### 3.3 The two accent tokens — read this before using orange
+### 3.3 Cyan and violet are for light, not for text
 
-`#FF5D2E` is bright, and **white text on it is 3.06:1 — an AA failure.** So the
-accent is split by job:
+Mint is the accent. **Cyan and violet exist to make the aurora**, and appear as
+gradient stops and background blooms — not as UI colours. Do not colour a
+button, a link or a label cyan or violet. The one exception is the logo
+gradient, which is the aurora itself.
 
-| Job                                     | Token               | Why                                     |
-| --------------------------------------- | ------------------- | --------------------------------------- |
-| Fill (button, badge, bar, large figure) | `--ta-signal`       | Label on it must be `--ta-ink` (5.83:1) |
-| Fill hover                              | `--ta-signal-hover` | Ink label still clears 4.88:1           |
-| Accent **text** on a light surface      | `--ta-signal-deep`  | 5.38:1 on paper, 5.13:1 on wash         |
+### 3.4 `--color-faint` is not a text colour
 
-Never put white text on `--ta-signal`. Never use `--ta-signal` for body-size
-text on a light surface.
-
-### 3.4 `--ta-faint` is not a text colour
-
-`#9AA2AC` is 2.45:1 on paper. It exists for **decoration only** — empty score
-bars, inactive ticks, dividers. Any text that reaches for "faint" takes
-`--ta-muted` instead.
+`#5C6C8C` is 3.73:1 on night — fine for a decorative mark, below the 4.5:1 floor
+for body-size text. Use it for empty score bars, inactive ticks and dividers.
+Text that wants to look quiet takes `--color-dim` (7.01:1).
 
 ### 3.5 Verified contrast
 
-All 21 foreground/background pairs in the system are measured, not estimated.
-Floors: body text ≥ 4.5:1, large display ≥ 3:1.
+Measured, not estimated. Floors: body ≥ 4.5:1, large display ≥ 3:1.
 
-| Pair                               | Ratio     |
-| ---------------------------------- | --------- |
-| `ink` on `paper`                   | 16.95 : 1 |
-| `body` on `paper`                  | 8.44 : 1  |
-| `muted` on `paper`                 | 5.06 : 1  |
-| `muted` on `sand`                  | 4.64 : 1  |
-| `ink` on `signal` (button label)   | 5.83 : 1  |
-| `ink` on `signal-hover`            | 4.88 : 1  |
-| `signal-deep` on `paper`           | 5.38 : 1  |
-| `signal-deep` on `signal-wash`     | 5.13 : 1  |
-| `signal` on `surface` (large only) | 3.06 : 1  |
-| `signal` on `deep`                 | 6.00 : 1  |
-| `white` on `deep`                  | 18.37 : 1 |
-| `deep-body` on `deep`              | 9.87 : 1  |
+| Pair                             | Ratio     |
+| -------------------------------- | --------- |
+| `frost` on `night`               | 17.19 : 1 |
+| `mist` on `night`                | 11.43 : 1 |
+| `dim` on `night`                 | 7.01 : 1  |
+| `frost` on `panel`               | 16.05 : 1 |
+| `mist` on `panel`                | 10.67 : 1 |
+| `dim` on `panel`                 | 6.54 : 1  |
+| `dim` on `panel-2`               | 6.06 : 1  |
+| `night` on `mint` (button label) | 12.31 : 1 |
+| `mint` on `night`                | 12.31 : 1 |
+| `mint` on `panel`                | 11.50 : 1 |
+| `err` on `panel`                 | 7.22 : 1  |
+| `faint` on `night` (decorative)  | 3.73 : 1  |
 
-Re-run the check whenever a colour changes. Do not ship an unverified pair.
+Re-run the check whenever a colour changes. Never ship an unverified pair.
 
 ---
 
@@ -196,10 +213,6 @@ Re-run the check whenever a colour changes. Do not ship an unverified pair.
 Self-hosted: `next/font` in the Next app, `@fontsource-variable` in Astro.
 No Google Fonts `<link>` — the privacy page promises no third-party requests.
 
-> **v2 change.** Space Grotesk → Plus Jakarta Sans, and mono is now a specialist
-> face rather than the voice of every label. The mono terminal eyebrow was the
-> single strongest "this is a dev tool" signal in v1.
-
 ### 4.1 Scale
 
 | Step      | Size                            | Line height | Tracking | Use                         |
@@ -213,10 +226,15 @@ No Google Fonts `<link>` — the privacy page promises no third-party requests.
 | `small`   | 0.875rem                        | 1.6         | 0        | Captions, footnotes         |
 | `eyebrow` | 0.8125rem                       | 1           | 0.02em   | Semibold, in a pill         |
 
-### 4.2 Measure
+### 4.2 The Δ device
+
+`Δ LABEL` opens every section, set in a pill. The delta is the brand's
+typographic device — the mark, reduced to a character. It is set in the
+**display face**, never in mono: it is a glyph, not code punctuation.
+
+### 4.3 Measure
 
 Body copy **66ch**. Lead paragraphs **54ch**. Long-form article body **68ch**.
-A full-width paragraph is the fastest way to make this brand look cheap.
 
 ---
 
@@ -227,60 +245,71 @@ A full-width paragraph is the fastest way to make this brand look cheap.
 - **Spacing scale:** 4px base — 4, 8, 12, 16, 24, 32, 48, 64, 88, 96, 136, 160.
 - **Section rhythm:** 88px mobile / 136px desktop.
 - **Radii:** 10px (fields, chips) · 20px (cards) · 28px (panels) · full (buttons,
-  pills) · 28.125% of size (logo tile only).
-- **Borders:** 1px `--ta-line` on light, 1px `--ta-deep-line` on deep.
+  pills). The mark has no radius — it is a polygon.
+- **Borders:** 1px `--color-edge`; `--color-edge-2` where it must be seen.
 
 ### 5.1 Band rhythm
 
-The page alternates surfaces so it never reads as one long scroll:
-`paper` → `deep` → `paper` → `sand` → `paper` → `sand` → `paper` → `deep` → …
+```
+night → aurora → night → panel-2 → night → panel-2 → night → aurora → night
+```
 
-Use the `.band-deep` and `.band-sand` helpers. **Never put body-heavy long-form
-copy on a deep band** — it is for statements, numbers and short claims.
+`.band-aurora` is the showcase band: `panel-2` with the aurora bloom over it.
+`.band-panel` is the quiet band. Alternating the two stops a night page reading
+as one undifferentiated scroll.
 
-### 5.2 Elevation — three steps, and only three
+### 5.2 Elevation
 
-> **v2 change.** v1 had exactly one shadow and used borders for everything.
-> A light page needs real elevation to separate a white card from a near-white
-> background, so v2 introduces a small, strictly-limited shadow scale.
+On a night surface a drop shadow is invisible. Depth comes from a **1px top
+highlight** — light falling on the upper edge — plus a deep, wide shadow.
 
-| Token           | Use                                          |
-| --------------- | -------------------------------------------- |
-| `--shadow-sm`   | Buttons, sticky header once scrolled         |
-| `--shadow-card` | Cards and panels at rest                     |
-| `--shadow-lift` | Hover on an interactive card; the hero panel |
+| Token           | Use                                                          |
+| --------------- | ------------------------------------------------------------ |
+| `--shadow-sm`   | Small controls                                               |
+| `--shadow-card` | Cards and panels at rest                                     |
+| `--shadow-lift` | Hover on an interactive card; the hero panel                 |
+| `--shadow-glow` | **Primary CTA only.** The one coloured shadow in the system. |
 
-All three are neutral and warm-tinted. **No coloured shadows, no glows.** Cards
-change _shadow_, never position — nothing translates on hover.
+Cards change _shadow_ on hover, never position. Nothing translates.
+
+### 5.3 The aurora
+
+Three overlapping radial blooms — mint, cyan, violet — at 10–18% alpha over the
+night surface. It is the brand's signature and it is **decoration**:
+
+- It never sits directly behind body copy. Put a solid surface between.
+- **It never moves.** No animation, no drift, no shifting hues. A looping
+  gradient is the single fastest way to make this look like a crypto landing
+  page.
+- Two presets: `.aurora` (hero strength) and `.aurora-soft` (mid-page).
 
 ---
 
 ## 6. Components
 
-**Buttons.** Full-radius, 52px tall, 28px horizontal padding, weight 600.
+**Buttons.** Full radius, 52px tall, 28px horizontal padding, weight 600.
 
-- _Primary_: `--ta-signal` fill, **`--ta-ink` label** (§3.3), `--shadow-sm`.
-  Hover → `--ta-signal-hover`.
-- _Secondary_: white fill, 1px `--ta-line-strong` border, ink label.
-  Hover → border `--ta-ink`, `--shadow-card`.
-- _On deep_: white fill, ink label.
+- _Primary_: mint fill, **`--color-night` label** (12.31:1), `--shadow-glow`.
+  Hover → `--color-signal-hover`.
+- _Secondary_: `panel` fill, 1px `--color-edge-2`, frost label. Hover → border
+  `--color-frost`, background `panel-2`.
 - _Ghost_: text with a permanent underline at 4px offset.
 
-Every button has a visible `:focus-visible` ring: 2px `--ta-signal`, 2px offset.
+Every button carries a visible `:focus-visible` ring: 2px mint, 2px offset.
 
-**Cards.** White surface, 1px `--ta-line`, radius 20px, `--shadow-card`,
+**Cards.** `panel` surface, 1px `--color-edge`, radius 20px, `--shadow-card`,
 padding 28–36px. Interactive cards go to `--shadow-lift` on hover.
 
-**Eyebrows.** A pill, not a terminal label: `--ta-signal-wash` background,
-`--ta-signal-deep` text, semibold, with a muted `//` glyph as prefix. On deep
-bands: `white/10` background, white text.
+**Eyebrows.** A pill: `--color-signal-veil` background, mint text, semibold,
+prefixed with `Δ` in the display face. On an aurora band: `frost/10` background,
+frost text.
 
-**Forms.** 48px controls, `--ta-paper` field on a white card, 1px `--ta-line`
-→ `--ta-ink` on focus plus the ring. Labels always visible above the field.
-Errors in `--ta-err` below the field, wired with `aria-describedby`.
+**Forms.** 48px controls, `night` field on a `panel` card, 1px `--color-edge` →
+`--color-frost` on focus plus the ring. Labels always visible above the field.
+Errors in `--color-err` below the field, wired with `aria-describedby`.
 Placeholder text is never a substitute for a label.
 
-**Chips.** `--ta-sand` fill, no border, radius full, 12px semibold `--ta-muted`.
+**Chips.** `panel-2` fill, no border, radius full, 12px medium `--color-dim`.
 
 ---
 
@@ -290,31 +319,31 @@ Placeholder text is never a substitute for a label.
 - Easing: `cubic-bezier(0.22, 0.61, 0.36, 1)` entrances, `ease-out` states.
 - The only entrance is **fade + 14px rise**, fired once on scroll.
 - **Banned:** parallax · counters that tick up · typing effects · unpausable
-  marquees · animated gradients · looping background animation · hover lifts.
+  marquees · **animated gradients or a moving aurora** · hover lifts · anything
+  that loops forever.
 - Everything collapses to zero under `prefers-reduced-motion: reduce`.
 
 ### 7.1 Reveals are progressive enhancement
 
 Content is **visible by default** and hidden only after an inline script
 confirms JavaScript is running (`html[data-js='true']`). A hydration failure or
-a JS-blocked browser must never leave the page blank. This is an accessibility
-and SEO requirement, not a preference.
+a JS-blocked browser must never leave the page blank.
 
 ---
 
 ## 8. Imagery & iconography
 
 - **No stock photography.** Every photo position is a `PhotoSlot` that renders a
-  designed warm panel until a real image exists. Art direction and the slot
-  register live in `docs/PHOTOGRAPHY.md`.
-- **Diagrams over illustrations:** thin-line, `--ta-line-strong` strokes, one
-  `--ta-signal` highlight per diagram.
+  designed night panel until a real image exists. See `docs/PHOTOGRAPHY.md`.
+- **Photographs must be graded for a night page** — deep shadows, cool cast, no
+  blown highlights. A bright daylight photo will punch a hole in the layout.
+- **Diagrams over illustrations:** thin-line, `--color-edge-2` strokes, one mint
+  highlight per diagram.
 - **Show the deliverable.** The hero illustration is a working decision matrix
-  because that _is_ the product. Prefer the real artefact over an abstract mock.
-- **Icons:** 1.75px stroke, 24px box, round caps, inline SVG. No icon fonts, no
-  third-party packs at a different weight.
+  because that _is_ the product.
+- **Icons:** 1.75px stroke, 24px box, round caps, inline SVG. No icon fonts.
 - **Technologies are text, never vendor logos.** We are not endorsed by any
-  vendor and must not imply it. This is a positioning and legal rule.
+  vendor and must not imply it.
 
 ---
 
@@ -333,47 +362,38 @@ and SEO requirement, not a preference.
 
 ## 10. Asset index
 
-| Asset               | Path                                                                   |
-| ------------------- | ---------------------------------------------------------------------- |
-| Charter (this file) | `docs/BRAND.md`                                                        |
-| Applied skill       | `skill-charte-graphic.md`                                              |
-| Photography brief   | `docs/PHOTOGRAPHY.md`                                                  |
-| Business context    | `docs/BRD.md`                                                          |
-| Tokens (Next)       | `apps/web/app/globals.css` → `@theme`                                  |
-| Tokens (Astro)      | `apps/blog/src/styles/brand.css`                                       |
-| Logo components     | `apps/web/components/Logo.tsx` · `apps/blog/src/components/Logo.astro` |
-| Static assets       | `apps/web/public/{logo,mark,favicon,og}.svg`                           |
-| Rendered specimen   | `docs/brand-specimen.html`                                             |
+| Asset                | Path                                                                   |
+| -------------------- | ---------------------------------------------------------------------- |
+| Charter (this file)  | `docs/BRAND.md`                                                        |
+| Applied skill        | `skill-charte-graphic.md`                                              |
+| Photography brief    | `docs/PHOTOGRAPHY.md`                                                  |
+| Business context     | `docs/BRD.md`                                                          |
+| Pre-launch checklist | `docs/CONTENT.md`                                                      |
+| Tokens (Next)        | `apps/web/app/globals.css` → `@theme`                                  |
+| Tokens (Astro)       | `apps/blog/src/styles/brand.css`                                       |
+| Logo components      | `apps/web/components/Logo.tsx` · `apps/blog/src/components/Logo.astro` |
+| Static assets        | `apps/web/public/{logo,mark,favicon,og}.svg`                           |
+| Rendered specimen    | `docs/brand-specimen.html`                                             |
 
 **The two token files must stay in step.** Changing one without the other is the
 most likely source of brand drift in this repository.
 
 ---
 
-## 11. Static assets still on the v1 palette
+## 11. Why v3 exists
 
-`logo.svg`, `mark.svg`, `favicon.svg` and `og.svg` were drawn for the dark v1
-page and still carry the v1 ink tile. They read correctly on a light page
-because the tile is dark either way, but **`og.svg` shows the old dark layout**
-and should be redrawn before launch. Tracked in `docs/CONTENT.md`.
+The name changed. `Tech-Agnostic` was a description rather than a name —
+descriptive terms make weak trademarks, and "agnostic" is borrowed from religion,
+which reads oddly as a business name in French and in a Muslim-majority market.
 
----
+That change retired the old `//` mark, whose entire logic was "the line-comment
+marker is the one syntax common to every language, therefore technology-agnostic."
+Deltavantis needed a mark that means something about _Deltavantis_, and the delta
+was sitting inside the name already.
 
-## 12. Why v2 exists
-
-v1 was dark, mono-labelled and terminal-flavoured. It was internally consistent
-and it tested well with engineers — but the buyer is rarely only an engineer.
-The CTO's CFO, COO and CEO see the same page, and to them a near-black site with
-monospace labels reads as a developer tool rather than a firm they can hire.
-
-v2 keeps everything that carries the positioning — the `//` mark, the accent,
-published prices, the blunt voice, the decision matrix as hero — and changes
-only the register: light surfaces, a warmer humanist face, real elevation,
-photographs of real people, and a stats band that answers "who are these people"
-before the visitor has to ask.
-
-What it deliberately does **not** do is imitate a large systems integrator.
-Tech-Agnostic is small on purpose, and the design says so: a short work list,
-three faces, and a stat that reads "0 vendor commissions taken". Dressing a
-small independent firm as a 150,000-person SI would undercut the one thing it
-is selling.
+The aurora answers a second brief: premium and technically credible at the same
+time. A night page lit by three colours reads as expensive to a non-technical
+buyer and as unmistakably engineering to a technical one — which is the exact
+audience split this company sells into. What it deliberately avoids is the
+crypto-landing-page failure mode: the aurora never moves, never loops, and never
+sits under text.

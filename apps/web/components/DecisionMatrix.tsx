@@ -30,17 +30,17 @@ export function DecisionMatrix() {
           panel's own content. */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-5 -bottom-2 h-10 rounded-b-panel border border-line bg-surface/80 shadow-sm"
+        className="absolute inset-x-5 -bottom-2 h-10 rounded-b-panel border border-edge bg-panel/80 shadow-sm"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-x-10 -bottom-4 h-10 rounded-b-panel border border-line bg-surface/55"
+        className="absolute inset-x-10 -bottom-4 h-10 rounded-b-panel border border-edge bg-panel/55"
       />
 
-      <figure className="relative rounded-panel border border-line bg-surface shadow-lift">
-        <figcaption className="flex items-center justify-between gap-4 border-b border-line px-6 py-4">
-          <span className="text-sm font-semibold text-ink">Decision matrix</span>
-          <span className="flex items-center gap-2 text-[0.6875rem] font-semibold tracking-wide text-muted uppercase">
+      <figure className="relative rounded-panel border border-edge bg-panel shadow-lift">
+        <figcaption className="flex items-center justify-between gap-4 border-b border-edge px-6 py-4">
+          <span className="text-sm font-semibold text-frost">Decision matrix</span>
+          <span className="flex items-center gap-2 text-[0.6875rem] font-semibold tracking-wide text-dim uppercase">
             <span
               className="inline-block h-1.5 w-1.5 rounded-full bg-signal"
               aria-hidden="true"
@@ -60,7 +60,7 @@ export function DecisionMatrix() {
               <tr>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-[0.6875rem] font-semibold tracking-wide text-muted uppercase"
+                  className="px-6 py-3 text-[0.6875rem] font-semibold tracking-wide text-dim uppercase"
                 >
                   Criterion
                 </th>
@@ -69,7 +69,7 @@ export function DecisionMatrix() {
                     key={o.name}
                     scope="col"
                     className={`px-3 py-3 text-center text-[0.6875rem] font-semibold tracking-wide uppercase ${
-                      o.best ? 'text-signal' : 'text-muted'
+                      o.best ? 'text-signal' : 'text-dim'
                     }`}
                   >
                     {o.name}
@@ -79,13 +79,13 @@ export function DecisionMatrix() {
             </thead>
             <tbody>
               {criteria.map((c, row) => (
-                <tr key={c.label} className="border-t border-line">
+                <tr key={c.label} className="border-t border-edge">
                   <th
                     scope="row"
-                    className="px-6 py-3.5 text-sm font-medium text-ink"
+                    className="px-6 py-3.5 text-sm font-medium text-frost"
                   >
                     {c.label}{' '}
-                    <span className="font-mono text-xs font-normal text-muted">
+                    <span className="font-mono text-xs font-normal text-dim">
                       {c.weight}
                     </span>
                   </th>
@@ -96,10 +96,10 @@ export function DecisionMatrix() {
                   ))}
                 </tr>
               ))}
-              <tr className="border-t border-line bg-sand/60">
+              <tr className="border-t border-edge bg-panel-2/60">
                 <th
                   scope="row"
-                  className="px-6 py-4 text-[0.6875rem] font-semibold tracking-wide text-muted uppercase"
+                  className="px-6 py-4 text-[0.6875rem] font-semibold tracking-wide text-dim uppercase"
                 >
                   Weighted total
                 </th>
@@ -107,7 +107,7 @@ export function DecisionMatrix() {
                   <td
                     key={o.name}
                     className={`px-3 py-4 text-center font-display text-lg font-bold ${
-                      o.best ? 'text-signal' : 'text-muted'
+                      o.best ? 'text-signal' : 'text-dim'
                     }`}
                   >
                     {o.total}
@@ -118,8 +118,8 @@ export function DecisionMatrix() {
           </table>
         </div>
 
-        <p className="border-t border-line px-6 py-4 text-sm text-muted">
-          <span className="font-semibold text-ink">Recommendation:</span> keep
+        <p className="border-t border-edge px-6 py-4 text-sm text-dim">
+          <span className="font-semibold text-frost">Recommendation:</span> keep
           the framework, fix the integration. Saves 21 months.
         </p>
       </figure>
@@ -140,7 +140,7 @@ function Bar({ value, accent }: { value: number; accent: boolean }) {
               ? accent
                 ? 'bg-signal'
                 : 'bg-faint'
-              : 'bg-sand-deep'
+              : 'bg-panel-3'
           }`}
         />
       ))}

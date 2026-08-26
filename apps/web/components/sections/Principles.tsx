@@ -4,13 +4,13 @@ import { Reveal } from '../Reveal';
 
 export function Principles() {
   return (
-    <section id="principles" className="band-deep">
-      <div className="container-ta section-ta">
+    <section id="principles" className="band-aurora">
+      <div className="container-dv section-dv">
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <Eyebrow tone="deep">{principles.eyebrow}</Eyebrow>
             <h2 className="mt-6 text-h1">{principles.title}</h2>
-            <p className="mt-5 text-body-lg text-deep-body measure-lead">
+            <p className="mt-5 text-body-lg text-mist measure-lead">
               Independence is a business model, not a slogan. Here is exactly
               how ours is structured, so you can check it.
             </p>
@@ -19,9 +19,9 @@ export function Principles() {
           <dl className="grid gap-5 sm:grid-cols-2">
             {principles.items.map((item, i) => (
               <Reveal key={item.title} delay={i * 50} className="h-full">
-                <div className="h-full rounded-card border border-deep-line bg-deep-soft p-7">
+                <div className="h-full rounded-card border border-edge-2 bg-panel-3 p-7">
                   <dt className="text-h3">{item.title}</dt>
-                  <dd className="mt-3 text-sm leading-relaxed text-deep-body">
+                  <dd className="mt-3 text-sm leading-relaxed text-mist">
                     {item.body}
                   </dd>
                 </div>

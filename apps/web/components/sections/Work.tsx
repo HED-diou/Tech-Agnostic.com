@@ -18,7 +18,7 @@ export function Work() {
       <div className="mt-14 space-y-8">
         {work.items.map((item, i) => (
           <Reveal key={item.slug} delay={i * 60}>
-            <article className="overflow-hidden rounded-card border border-line bg-surface shadow-card transition-shadow duration-150 ease-out hover:shadow-lift">
+            <article className="overflow-hidden rounded-card border border-edge bg-panel shadow-card transition-shadow duration-150 ease-out hover:shadow-lift">
               <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
                 <PhotoSlot
                   fill
@@ -30,17 +30,17 @@ export function Work() {
 
                 <div className="min-w-0 p-7 lg:p-10">
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-                    <span className="font-semibold text-ink">{item.client}</span>
-                    <span aria-hidden="true" className="text-muted">
+                    <span className="font-semibold text-frost">{item.client}</span>
+                    <span aria-hidden="true" className="text-dim">
                       ·
                     </span>
-                    <span className="text-muted">{item.sector}</span>
+                    <span className="text-dim">{item.sector}</span>
                   </div>
 
                   <h3 className="mt-4 text-h2">{item.title}</h3>
-                  <p className="mt-4 text-muted measure">{item.body}</p>
+                  <p className="mt-4 text-dim measure">{item.body}</p>
 
-                  <dl className="mt-8 grid grid-cols-3 gap-6 border-t border-line pt-7">
+                  <dl className="mt-8 grid grid-cols-3 gap-6 border-t border-edge pt-7">
                     {item.metrics.map((m) => (
                       <div key={m.label}>
                         <dt className="sr-only">{m.label}</dt>
@@ -48,7 +48,7 @@ export function Work() {
                           <span className="block font-display text-h2 font-bold text-signal">
                             {m.value}
                           </span>
-                          <span className="mt-1 block text-sm text-muted">
+                          <span className="mt-1 block text-sm text-dim">
                             {m.label}
                           </span>
                         </dd>
@@ -60,7 +60,7 @@ export function Work() {
                     {item.stack.map((s) => (
                       <li
                         key={s}
-                        className="rounded-full bg-sand px-3 py-1 text-xs font-medium text-muted"
+                        className="rounded-full bg-panel-2 px-3 py-1 text-xs font-medium text-dim"
                       >
                         {s}
                       </li>

@@ -16,23 +16,23 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
 ---
 
 <Base
-  title="Notes — Tech-Agnostic"
+  title="Notes — Deltavantis"
   description="Short, opinionated write-ups on choosing, running and paying for technology. No listicles, no vendor content."
   path="/blog"
 >
   <section class="relative overflow-hidden">
     <div
       aria-hidden="true"
-      class="wash pointer-events-none absolute inset-0"
+      class="aurora pointer-events-none absolute inset-0"
     >
     </div>
 
-    <div class="container-ta relative py-20 lg:py-24">
-      <p class="text-eyebrow font-semibold text-muted">
-        <span class="text-signal" aria-hidden="true">//</span> notes
+    <div class="container-dv relative py-20 lg:py-24">
+      <p class="text-eyebrow font-semibold text-dim">
+        <span class="text-signal" aria-hidden="true">&#916;</span> notes
       </p>
       <h1 class="mt-6 text-h1">Things we keep having to explain.</h1>
-      <p class="mt-6 max-w-[52ch] text-body-lg text-muted">
+      <p class="mt-6 max-w-[52ch] text-body-lg text-dim">
         Write-ups from real engagements, with the numbers left in. No listicles,
         no vendor content, no posts written to rank for a keyword.
       </p>
@@ -41,14 +41,14 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
 
   {
     featured && (
-      <section class="border-t border-line">
-        <div class="container-ta py-14 lg:py-16">
+      <section class="border-t border-edge">
+        <div class="container-dv py-14 lg:py-16">
           <a
             href={`/blog/${featured.id}`}
-            class="group grid gap-8 rounded-card border border-line bg-surface shadow-card p-7 transition-colors duration-150 ease-out hover:shadow-lift lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16 lg:p-10"
+            class="group grid gap-8 rounded-card border border-edge bg-panel shadow-card p-7 transition-colors duration-150 ease-out hover:shadow-lift lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16 lg:p-10"
           >
             <div>
-              <p class="text-eyebrow font-semibold text-muted">
+              <p class="text-eyebrow font-semibold text-dim">
                 <span class="text-signal" aria-hidden="true">
                   //
                 </span>{' '}
@@ -57,11 +57,11 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
               <h2 class="mt-5 text-h1 transition-colors duration-150 ease-out group-hover:text-signal">
                 {featured.data.title}
               </h2>
-              <p class="mt-5 max-w-[60ch] text-muted">
+              <p class="mt-5 max-w-[60ch] text-dim">
                 {featured.data.description}
               </p>
             </div>
-            <p class="shrink-0 font-mono text-xs text-muted">
+            <p class="shrink-0 font-mono text-xs text-dim">
               {dateFmt.format(featured.data.publishedAt)} ·{' '}
               {featured.data.readingTime}
             </p>
@@ -73,20 +73,20 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
 
   {
     rest.length > 0 && (
-      <section class="border-t border-line">
-        <div class="container-ta py-14 lg:py-16">
-          <h2 class="text-eyebrow font-semibold text-muted">
+      <section class="border-t border-edge">
+        <div class="container-dv py-14 lg:py-16">
+          <h2 class="text-eyebrow font-semibold text-dim">
             More notes
           </h2>
 
-          <ul class="mt-8 divide-y divide-line border-t border-line">
+          <ul class="mt-8 divide-y divide-edge border-t border-edge">
             {rest.map((post) => (
               <li>
                 <a
                   href={`/blog/${post.id}`}
                   class="group grid gap-3 py-8 md:grid-cols-[150px_1fr_auto] md:items-baseline md:gap-10"
                 >
-                  <p class="text-eyebrow font-semibold text-muted">
+                  <p class="text-eyebrow font-semibold text-dim">
                     <span class="text-signal" aria-hidden="true">
                       //
                     </span>{' '}
@@ -96,11 +96,11 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
                     <h3 class="text-h3 transition-colors duration-150 ease-out group-hover:text-signal">
                       {post.data.title}
                     </h3>
-                    <p class="mt-2 max-w-[60ch] text-sm text-muted">
+                    <p class="mt-2 max-w-[60ch] text-sm text-dim">
                       {post.data.description}
                     </p>
                   </div>
-                  <p class="shrink-0 font-mono text-xs text-muted">
+                  <p class="shrink-0 font-mono text-xs text-dim">
                     {dateFmt.format(post.data.publishedAt)}
                   </p>
                 </a>
@@ -112,17 +112,17 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
     )
   }
 
-  <section class="border-t border-line">
-    <div class="container-ta py-16 lg:py-20">
-      <div class="rounded-card border border-line bg-surface shadow-card p-8 lg:p-10">
+  <section class="border-t border-edge">
+    <div class="container-dv py-16 lg:py-20">
+      <div class="rounded-card border border-edge bg-panel shadow-card p-8 lg:p-10">
         <h2 class="text-h2">Got one of these problems right now?</h2>
-        <p class="mt-4 max-w-[52ch] text-muted">
+        <p class="mt-4 max-w-[52ch] text-dim">
           The 30-minute technical review is free, and you get a written summary
           whether or not we end up working together.
         </p>
         <a
           href="/contact"
-          class="mt-8 inline-flex h-12 items-center gap-2 rounded-field bg-signal px-6 font-semibold text-[0.9375rem] text-ink transition-colors duration-150 ease-out hover:bg-signal-hover"
+          class="mt-8 inline-flex h-12 items-center gap-2 rounded-field bg-signal px-6 font-semibold text-[0.9375rem] text-frost transition-colors duration-150 ease-out hover:bg-signal-hover"
         >
           Book a review
           <svg

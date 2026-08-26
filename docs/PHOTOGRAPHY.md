@@ -25,8 +25,9 @@ One consistent look across every image, or the page falls apart:
   floor — not a rented co-working space dressed to look busy.
 - **Working, not posing.** Nobody looking down the lens with folded arms.
   Nobody laughing at a laptop.
-- **Muted, warm grade.** Slight warmth, low saturation. It has to sit next to
-  `--ta-sand #F2EFE9` without clashing.
+- **Graded for a night page.** Deep shadows, a cool cast, no blown highlights.
+  Images sit on `--color-panel-3 #1A2540`; a bright daylight photo punches a
+  hole straight through the layout.
 - **Room to breathe.** Leave space around the subject; cards crop tighter than
   you expect.
 - **No screens with fake data.** If a screen is legible, it must show something

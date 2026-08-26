@@ -1,5 +1,5 @@
 /**
- * Tech-Agnostic — content model.
+ * Deltavantis — content model.
  *
  * All marketing copy lives here so that components stay structural and the
  * whole funnel can be re-written without touching JSX.
@@ -14,18 +14,18 @@
  */
 
 export const site = {
-  name: 'Tech-Agnostic',
-  wordmark: 'tech-agnostic',
-  domain: 'tech-agnostic.com',
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tech-agnostic.com',
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'hello@tech-agnostic.com',
+  name: 'Deltavantis',
+  wordmark: 'deltavantis',
+  domain: 'deltavantis.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://deltavantis.com',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'hello@deltavantis.com',
   tagline: 'Independent IT consulting.',
   description:
     'Independent IT consulting. We help teams choose, ship and own the right stack — without vendor kickbacks or stack religion.',
   locale: 'en',
   social: {
-    linkedin: 'https://www.linkedin.com/company/tech-agnostic',
-    github: 'https://github.com/tech-agnostic',
+    linkedin: 'https://www.linkedin.com/company/deltavantis',
+    github: 'https://github.com/deltavantis',
   },
 } as const;
 
@@ -264,10 +264,6 @@ export const work = {
   ],
 } as const;
 
-/* -------------------------------------------------------------------------
- * Portfolio showcase
- * ---------------------------------------------------------------------- */
-
 export const portfolio = {
   eyebrow: 'client portfolio',
   title: 'Proven engineering outcomes across critical industries.',
@@ -278,7 +274,7 @@ export const portfolio = {
     'Cloud & FinOps',
     'Data & Real-Time',
     'Architecture & Scale',
-  ],
+  ] as const,
   projects: [
     {
       id: 'pay-orchestrator',
@@ -429,7 +425,7 @@ export const principles = {
     },
     {
       title: 'You own everything.',
-      body: 'Code, infrastructure, documentation and accounts are in your organisation from day one. There is no Tech-Agnostic platform to be locked into.',
+      body: 'Code, infrastructure, documentation and accounts are in your organisation from day one. There is no Deltavantis platform to be locked into.',
     },
     {
       title: 'We will tell you not to build it.',

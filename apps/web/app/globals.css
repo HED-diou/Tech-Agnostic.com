@@ -1,44 +1,40 @@
 @import 'tailwindcss';
 
 /* ==========================================================================
-   Tech-Agnostic — design tokens, v2 "warm & human"
-   Light-first. Source of truth: docs/BRAND.md.
+   Deltavantis — design tokens, v3 "Aurora"
+   Night-first. Source of truth: docs/BRAND.md.
    Do not introduce a colour, type step or radius that is not declared here.
    ========================================================================== */
 
 @theme {
-  /* -- Surfaces ---------------------------------------------------------- */
-  --color-paper: #faf9f7; /* page background */
-  --color-surface: #ffffff; /* cards, raised panels */
-  --color-sand: #f2efe9; /* banding, soft fills, photo slots */
-  --color-sand-deep: #e8e3da; /* pressed / secondary fills */
-  --color-line: #e4e0d8; /* hairlines on light */
-  --color-line-strong: #cfc9bd; /* hover borders on light */
+  /* -- Surfaces: the night sky, five steps ------------------------------- */
+  --color-night: #070b14; /* page background */
+  --color-panel: #0d1424; /* cards, raised panels */
+  --color-panel-2: #131c2f; /* section banding */
+  --color-panel-3: #1a2540; /* cards on a banded section */
+  --color-edge: #202b44; /* hairlines */
+  --color-edge-2: #33425f; /* hover borders, dividers that must be seen */
 
-  /* -- Ink --------------------------------------------------------------- */
-  --color-ink: #14181c; /* headings, primary text */
-  --color-body: #414b56; /* body copy */
-  --color-muted: #636c78; /* secondary, captions — 5.06:1 on paper */
-  /* Decorative ONLY — bars, empty states, dividers. Never text: it does
-     not clear 4.5:1 on any light surface. Use --color-muted for text. */
-  --color-faint: #9aa2ac;
+  /* -- Text: frost through to faint -------------------------------------- */
+  --color-frost: #eaf0fa; /* headings, primary text */
+  --color-mist: #b9c6de; /* body copy */
+  --color-dim: #8a9bba; /* secondary, captions */
+  --color-faint: #5c6c8c; /* decorative only — see BRAND.md §3.4 */
 
-  /* -- Deep bands (inverted sections) ------------------------------------ */
-  --color-deep: #101519; /* dark section background */
-  --color-deep-soft: #1b2228; /* cards on deep */
-  --color-deep-line: #2c353d; /* hairlines on deep */
-  --color-deep-body: #b6bfc9; /* body copy on deep */
+  /* -- Aurora: the three lights ------------------------------------------ */
+  --color-mint: #46e5b5;
+  --color-cyan: #5ab4ff;
+  --color-violet: #a78bfa;
 
-  /* -- Accent ------------------------------------------------------------ */
-  --color-signal: #ff5d2e; /* fills and large graphics; label on it must be ink */
-  --color-signal-hover: #ee4e1c; /* fill hover — ink label still clears 4.88:1 */
-  --color-signal-deep: #bc3810; /* accent TEXT on light surfaces */
-  --color-signal-wash: #fff1ec; /* tinted backgrounds, badges */
+  /* Primary accent = mint. Labels on it are --color-night (12.31:1). */
+  --color-signal: #46e5b5;
+  --color-signal-hover: #6bebc5;
+  --color-signal-veil: #0e2a23; /* tinted pill / badge background */
 
   /* -- Semantic (forms and system messages only) ------------------------- */
-  --color-ok: #2f9e6e;
-  --color-warn: #b57c11;
-  --color-err: #cf3f2c;
+  --color-ok: #46e5b5;
+  --color-warn: #f0c065;
+  --color-err: #ff7a6b;
 
   /* -- Type -------------------------------------------------------------- */
   --font-display: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system,
@@ -75,19 +71,24 @@
   --radius-card: 20px;
   --radius-panel: 28px;
 
-  /* -- Elevation: three steps, warm-tinted, never coloured --------------- */
-  --shadow-sm: 0 1px 2px rgba(20, 24, 28, 0.05);
+  /* -- Elevation ---------------------------------------------------------
+     On a night surface a drop shadow is invisible. Depth comes from a
+     1px top highlight (light falling on the upper edge) plus a deep,
+     wide shadow that separates the card from the page. --------------------*/
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-card:
-    0 1px 2px rgba(20, 24, 28, 0.04), 0 10px 28px -14px rgba(20, 24, 28, 0.16);
+    inset 0 1px 0 0 rgba(234, 240, 250, 0.06), 0 16px 40px -20px rgba(0, 0, 0, 0.8);
   --shadow-lift:
-    0 2px 4px rgba(20, 24, 28, 0.05), 0 24px 52px -24px rgba(20, 24, 28, 0.24);
+    inset 0 1px 0 0 rgba(234, 240, 250, 0.1), 0 28px 64px -24px rgba(0, 0, 0, 0.9);
+  /* The only coloured shadow in the system — reserved for the primary CTA. */
+  --shadow-glow: 0 8px 32px -10px rgba(70, 229, 181, 0.45);
 
   --ease-entrance: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 :root {
-  --ta-container: 1200px;
-  color-scheme: light;
+  --dv-container: 1200px;
+  color-scheme: dark;
 }
 
 /* ==========================================================================
@@ -96,7 +97,7 @@
 
 @layer base {
   * {
-    border-color: var(--color-line);
+    border-color: var(--color-edge);
   }
 
   html {
@@ -106,8 +107,8 @@
   }
 
   body {
-    background-color: var(--color-paper);
-    color: var(--color-body);
+    background-color: var(--color-night);
+    color: var(--color-mist);
     font-family: var(--font-sans);
     font-feature-settings: 'cv05' 1, 'ss03' 1;
     -webkit-font-smoothing: antialiased;
@@ -119,7 +120,7 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    color: var(--color-ink);
+    color: var(--color-frost);
     font-weight: 700;
     text-wrap: balance;
   }
@@ -129,12 +130,12 @@
   }
 
   ::selection {
-    background-color: var(--color-signal);
-    color: #fff;
+    background-color: var(--color-mint);
+    color: var(--color-night);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-signal);
+    outline: 2px solid var(--color-mint);
     outline-offset: 2px;
     border-radius: 3px;
   }
@@ -159,69 +160,129 @@
    ========================================================================== */
 
 @layer components {
-  .container-ta {
+  .container-dv {
     width: 100%;
-    max-width: var(--ta-container);
+    max-width: var(--dv-container);
     margin-inline: auto;
     padding-inline: 20px;
   }
 
   @media (min-width: 768px) {
-    .container-ta {
+    .container-dv {
       padding-inline: 40px;
     }
   }
 
   @media (min-width: 1280px) {
-    .container-ta {
+    .container-dv {
       padding-inline: 56px;
     }
   }
 
-  .section-ta {
+  .section-dv {
     padding-block: 88px;
   }
 
   @media (min-width: 1024px) {
-    .section-ta {
+    .section-dv {
       padding-block: 136px;
     }
   }
 
-  /* Inverted band. Used to break the page rhythm, never for body-heavy copy. */
-  .band-deep {
-    background-color: var(--color-deep);
-    color: var(--color-deep-body);
-  }
-
-  .band-deep h1,
-  .band-deep h2,
-  .band-deep h3,
-  .band-deep h4 {
-    color: #fff;
-  }
-
-  .band-sand {
-    background-color: var(--color-sand);
-  }
-
-  /* Warm ambient wash behind the hero. Decoration only. */
-  .wash {
+  /* ── The aurora ────────────────────────────────────────────────────────
+     Three overlapping radial blooms — mint, cyan, violet — at low alpha
+     over the night surface. This is the brand's signature and it is
+     DECORATION: it never sits directly behind body copy, and it never
+     moves. BRAND.md §5.3.
+     ------------------------------------------------------------------- */
+  .aurora {
     background:
       radial-gradient(
-        62% 48% at 78% 6%,
-        rgba(255, 93, 46, 0.1) 0%,
+        58% 44% at 12% 8%,
+        rgba(70, 229, 181, 0.16) 0%,
         transparent 62%
       ),
       radial-gradient(
-        48% 44% at 8% 24%,
-        rgba(216, 200, 178, 0.34) 0%,
+        52% 46% at 76% 2%,
+        rgba(90, 180, 255, 0.18) 0%,
+        transparent 64%
+      ),
+      radial-gradient(
+        64% 52% at 92% 46%,
+        rgba(167, 139, 250, 0.14) 0%,
         transparent 66%
       );
   }
 
+  /* Satellite coordinate grid */
+  .satellite-grid {
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(90, 180, 255, 0.14) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(90, 180, 255, 0.14) 1px,
+        transparent 1px
+      );
+    background-size: 48px 48px;
+  }
+
+  /* Quieter variant for mid-page bands. */
+  .aurora-soft {
+    background:
+      radial-gradient(
+        60% 50% at 8% 50%,
+        rgba(70, 229, 181, 0.1) 0%,
+        transparent 64%
+      ),
+      radial-gradient(
+        56% 48% at 88% 30%,
+        rgba(167, 139, 250, 0.1) 0%,
+        transparent 66%
+      );
+  }
+
+  /* A hairline that fades out at both ends, like a horizon. */
+  .rule-aurora {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-edge-2) 18%,
+      var(--color-edge-2) 82%,
+      transparent
+    );
+  }
+
+  .band-panel {
+    background-color: var(--color-panel-2);
+  }
+
+  /* The showcase band: panel surface with the aurora bloom over it. Used for
+     the stats, the principles and the footer, so the lights recur down the
+     page rather than only appearing in the hero. */
+  .band-aurora {
+    position: relative;
+    background-color: var(--color-panel-2);
+    isolation: isolate;
+  }
+
+  .band-aurora::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(58% 60% at 6% 12%, rgba(70, 229, 181, 0.13) 0%, transparent 64%),
+      radial-gradient(54% 56% at 94% 84%, rgba(167, 139, 250, 0.13) 0%, transparent 66%);
+  }
+
   .hairline {
-    border-top: 1px solid var(--color-line);
+    border-top: 1px solid var(--color-edge);
   }
 
   /* Entrance: fade + 14px rise. Visible by default — see Reveal.tsx. */
@@ -259,13 +320,13 @@
   /* Satellite drift animation */
   @keyframes satellite-drift {
     0% {
-      transform: scale(1.18) translate(0%, 0%);
+      transform: scale(1.15) translate(0%, 0%);
     }
     50% {
-      transform: scale(1.28) translate(-2%, -1.5%);
+      transform: scale(1.25) translate(-2%, -1.5%);
     }
     100% {
-      transform: scale(1.18) translate(0%, 0%);
+      transform: scale(1.15) translate(0%, 0%);
     }
   }
 
@@ -277,7 +338,7 @@
   @media (prefers-reduced-motion: reduce) {
     .animate-satellite {
       animation: none !important;
-      transform: scale(1.18);
+      transform: scale(1.15);
     }
   }
 }

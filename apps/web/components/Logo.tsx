@@ -1,13 +1,17 @@
 import { site } from '@/lib/site';
 
 /**
- * The mark is `//` — the line-comment marker shared by almost every
- * programming language, and therefore the one piece of syntax that is
- * genuinely technology-agnostic.
+ * Deltavantis — "The Offset Delta".
  *
- * Geometry is fixed by BRAND.md §2.2 on a 32×32 grid:
- *   tile radius 9 · stroke width 4 · slant 5:14 (≈20° from vertical)
- *   stroke axes 8 apart · pair nudged −0.5 on x for optical centring
+ * The mark is a delta (Δ) cut by a horizontal gap, with the upper section
+ * displaced to the right. The triangle is the mathematical symbol for change;
+ * the cut is the measurement line; the offset IS the delta — the difference
+ * between where a system is and where it should be. That difference is what
+ * the firm sells.
+ *
+ * Geometry is fixed by BRAND.md §2.2 on a 32×32 grid. The silhouette stays
+ * readable at 16px because the offset is a full 1.6 units — a twentieth of the
+ * canvas — and the gap is 2.
  *
  * Never redraw this by hand — import it.
  */
@@ -15,18 +19,23 @@ import { site } from '@/lib/site';
 type MarkProps = {
   size?: number;
   className?: string;
-  /** Monochrome rendering for print, favicons and single-colour contexts. */
+  /** Flat single-colour rendering for print, favicons and engraving. */
   mono?: boolean;
-  /** `deep` lifts the tile so the mark stays visible on inverted bands. */
-  tone?: 'light' | 'deep';
+  /** Unique gradient id — required if more than one mark is on a page. */
+  idSuffix?: string;
 };
+
+const UPPER = '18.2,4 25.2,16.8 11.2,16.8';
+const LOWER = '7.5,19.6 24.5,19.6 28.5,27 3.5,27';
 
 export function LogoMark({
   size = 32,
   className,
   mono = false,
-  tone = 'light',
+  idSuffix = 'a',
 }: MarkProps) {
+  const gid = `dv-aurora-${idSuffix}`;
+
   return (
     <svg
       width={size}
@@ -37,48 +46,42 @@ export function LogoMark({
       aria-hidden="true"
       focusable="false"
     >
-      <rect
-        width="32"
-        height="32"
-        rx="9"
-        fill={
-          mono
-            ? 'currentColor'
-            : tone === 'deep'
-              ? 'var(--color-deep-soft)'
-              : 'var(--color-ink)'
-        }
-      />
-      <g
-        stroke={mono ? 'var(--color-paper)' : 'var(--color-signal)'}
-        strokeWidth="4"
-        strokeLinecap="round"
-      >
-        <path d="M14 9 L9 23" />
-        <path d="M22 9 L17 23" />
+      {!mono && (
+        <defs>
+          {/* The aurora, running across the mark on the same axis as the cut. */}
+          <linearGradient id={gid} x1="3.5" y1="27" x2="28.5" y2="4" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="var(--color-mint)" />
+            <stop offset="0.52" stopColor="var(--color-cyan)" />
+            <stop offset="1" stopColor="var(--color-violet)" />
+          </linearGradient>
+        </defs>
+      )}
+      <g fill={mono ? 'currentColor' : `url(#${gid})`}>
+        <polygon points={UPPER} />
+        <polygon points={LOWER} />
       </g>
     </svg>
   );
 }
 
 type LogoProps = {
-  /** `full` = tile + wordmark. `mark` = tile only (≤32px, avatars, favicons). */
+  /** `full` = mark + wordmark. `mark` = mark alone (≤32px, avatars, favicons). */
   variant?: 'full' | 'mark';
   size?: number;
   className?: string;
-  tone?: 'light' | 'deep';
+  idSuffix?: string;
 };
 
 export function Logo({
   variant = 'full',
   size = 32,
   className,
-  tone = 'light',
+  idSuffix = 'a',
 }: LogoProps) {
   if (variant === 'mark') {
     return (
       <span className={className}>
-        <LogoMark size={size} tone={tone} />
+        <LogoMark size={size} idSuffix={idSuffix} />
         <span className="sr-only">{site.name}</span>
       </span>
     );
@@ -86,10 +89,10 @@ export function Logo({
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className ?? ''}`}>
-      <LogoMark size={size} tone={tone} />
+      <LogoMark size={size} idSuffix={idSuffix} />
       <span
-        className={`font-display font-extrabold ${tone === 'deep' ? 'text-white' : 'text-ink'}`}
-        style={{ fontSize: size * 0.56, letterSpacing: '-0.02em' }}
+        className="font-display font-bold text-frost"
+        style={{ fontSize: size * 0.55, letterSpacing: '-0.025em' }}
       >
         {site.wordmark}
       </span>

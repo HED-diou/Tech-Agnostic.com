@@ -3,7 +3,7 @@ title: 'Where the cloud bill actually goes'
 description: 'Most teams cannot attribute more than 60% of their cloud spend. The missing 40% is where the savings are, and finding it takes about a day.'
 topic: 'cost'
 publishedAt: 2026-05-02
-author: 'Tech-Agnostic'
+author: 'Deltavantis'
 readingTime: '6 min read'
 ---
 

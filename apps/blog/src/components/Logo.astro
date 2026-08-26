@@ -1,15 +1,16 @@
 ---
 /**
- * Mirror of apps/web/components/Logo.tsx — same 32×32 geometry, per BRAND.md §2.2.
- * Kept in sync by hand: the two files are the only places the mark is drawn.
+ * Mirror of apps/web/components/Logo.tsx — the Offset Delta, same 32×32
+ * geometry per BRAND.md §2.2. These two files are the only places the mark is
+ * drawn; keep them in step.
  */
 interface Props {
   size?: number;
-  /** `deep` lifts the tile so the mark stays visible on inverted bands. */
-  tone?: 'light' | 'deep';
+  /** Unique gradient id — required if more than one mark is on a page. */
+  idSuffix?: string;
 }
-const { size = 30, tone = 'light' } = Astro.props;
-const tile = tone === 'deep' ? 'var(--color-deep-soft)' : 'var(--color-ink)';
+const { size = 30, idSuffix = 'a' } = Astro.props;
+const gid = `dv-aurora-${idSuffix}`;
 ---
 
 <span class="inline-flex items-center gap-2.5">
@@ -21,16 +22,22 @@ const tile = tone === 'deep' ? 'var(--color-deep-soft)' : 'var(--color-ink)';
     aria-hidden="true"
     focusable="false"
   >
-    <rect width="32" height="32" rx="9" fill={tile}></rect>
-    <g stroke="var(--color-signal)" stroke-width="4" stroke-linecap="round">
-      <path d="M14 9 L9 23"></path>
-      <path d="M22 9 L17 23"></path>
+    <defs>
+      <linearGradient id={gid} x1="3.5" y1="27" x2="28.5" y2="4" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="var(--color-mint)"></stop>
+        <stop offset="0.52" stop-color="var(--color-cyan)"></stop>
+        <stop offset="1" stop-color="var(--color-violet)"></stop>
+      </linearGradient>
+    </defs>
+    <g fill={`url(#${gid})`}>
+      <polygon points="18.2,4 25.2,16.8 11.2,16.8"></polygon>
+      <polygon points="7.5,19.6 24.5,19.6 28.5,27 3.5,27"></polygon>
     </g>
   </svg>
   <span
-    class={`font-display font-extrabold ${tone === "deep" ? "text-white" : "text-ink"}`}
-    style={`font-size:${size * 0.56}px; letter-spacing:-0.02em;`}
+    class="font-display font-bold text-frost"
+    style={`font-size:${size * 0.55}px; letter-spacing:-0.025em;`}
   >
-    tech-agnostic
+    deltavantis
   </span>
 </span>

@@ -47,7 +47,7 @@ export function PhotoSlot({
   if (src) {
     return (
       <div
-        className={`relative overflow-hidden bg-sand ${className}`}
+        className={`relative overflow-hidden bg-panel-3 ${className}`}
         style={box}
       >
         <Image
@@ -66,7 +66,7 @@ export function PhotoSlot({
     <div
       role="img"
       aria-label={`Photograph placeholder: ${brief}`}
-      className={`relative overflow-hidden bg-sand ${className}`}
+      className={`relative overflow-hidden bg-panel-3 ${className}`}
       style={box}
     >
       {/* Soft warm field, so an empty slot still reads as a designed surface. */}
@@ -75,14 +75,14 @@ export function PhotoSlot({
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(72% 60% at 30% 22%, rgba(255,255,255,0.85) 0%, transparent 60%), radial-gradient(60% 55% at 82% 88%, rgba(255,93,46,0.10) 0%, transparent 62%)',
+            'radial-gradient(70% 58% at 28% 20%, rgba(90,180,255,0.14) 0%, transparent 62%), radial-gradient(62% 56% at 84% 86%, rgba(167,139,250,0.14) 0%, transparent 64%)',
         }}
       />
 
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
         <span
           aria-hidden="true"
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-white/70 text-muted shadow-sm"
+          className="flex h-11 w-11 items-center justify-center rounded-full bg-frost/10 text-mist"
         >
           <svg
             width="20"
@@ -99,10 +99,10 @@ export function PhotoSlot({
             <path d="m3.5 16.5 4.6-4.1a1.8 1.8 0 0 1 2.4 0l3.1 2.8a1.8 1.8 0 0 0 2.4 0l1.7-1.5a1.8 1.8 0 0 1 2.4 0l1.4 1.3" />
           </svg>
         </span>
-        <p className="max-w-[26ch] text-sm leading-snug font-medium text-ink">
+        <p className="max-w-[26ch] text-sm leading-snug font-medium text-frost">
           {brief}
         </p>
-        <p className="font-mono text-[0.6875rem] tracking-wide text-muted uppercase">
+        <p className="font-mono text-[0.6875rem] tracking-wide text-dim uppercase">
           {slot ? `${slot} · ` : ''}
           {ratio.replace(/\s/g, '')}
           {fill ? ' · crops to fit' : ''}

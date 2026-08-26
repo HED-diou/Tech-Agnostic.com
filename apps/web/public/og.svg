@@ -1,19 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
-  <rect width="1200" height="630" fill="#080B0D"/>
-  <g stroke="#222A31" stroke-width="1" opacity="0.55">
-    <path d="M0 128.5H1200M0 256.5H1200M0 384.5H1200M0 512.5H1200"/>
-    <path d="M128.5 0V630M256.5 0V630M384.5 0V630M512.5 0V630M640.5 0V630M768.5 0V630M896.5 0V630M1024.5 0V630"/>
+  <defs>
+    <linearGradient id="mk" x1="96" y1="196" x2="264" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#46E5B5"/><stop offset=".52" stop-color="#5AB4FF"/><stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientTransform="translate(140 60) rotate(38) scale(700 420)">
+      <stop offset="0" stop-color="#46E5B5" stop-opacity=".26"/><stop offset="1" stop-color="#46E5B5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0" cy="0" r="1" gradientTransform="translate(900 30) rotate(120) scale(620 660)">
+      <stop offset="0" stop-color="#5AB4FF" stop-opacity=".28"/><stop offset="1" stop-color="#5AB4FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g3" cx="0" cy="0" r="1" gradientTransform="translate(1120 320) rotate(150) scale(560 520)">
+      <stop offset="0" stop-color="#A78BFA" stop-opacity=".24"/><stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#070B14"/>
+  <rect width="1200" height="630" fill="url(#g1)"/>
+  <rect width="1200" height="630" fill="url(#g2)"/>
+  <rect width="1200" height="630" fill="url(#g3)"/>
+
+  <g fill="url(#mk)" transform="translate(96 42) scale(2.4)">
+    <polygon points="18.2,4 25.2,16.8 11.2,16.8"/>
+    <polygon points="7.5,19.6 24.5,19.6 28.5,27 3.5,27"/>
   </g>
-  <g transform="translate(96 92)">
-    <rect width="72" height="72" rx="20.25" fill="#161C21"/>
-    <g stroke="#FF5D2E" stroke-width="9" stroke-linecap="round">
-      <path d="M31.5 20.25 L20.25 51.75"/>
-      <path d="M49.5 20.25 L38.25 51.75"/>
-    </g>
-    <text x="92" y="49" fill="#F4F5F3" font-family="'Space Grotesk', ui-sans-serif, system-ui, sans-serif" font-size="40" font-weight="500" letter-spacing="-0.8">tech-agnostic</text>
-  </g>
-  <text x="96" y="330" fill="#F4F5F3" font-family="'Space Grotesk', ui-sans-serif, system-ui, sans-serif" font-size="66" font-weight="700" letter-spacing="-2.3">Independent IT consulting.</text>
-  <text x="96" y="404" fill="#7E8F9B" font-family="ui-sans-serif, system-ui, sans-serif" font-size="30">No vendor kickbacks. No stack religion. No 90-page decks.</text>
-  <rect x="96" y="486" width="316" height="4" fill="#FF5D2E"/>
-  <text x="96" y="546" fill="#7E8F9B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" letter-spacing="3.4">TECH-AGNOSTIC.COM</text>
+  <text x="184" y="112" fill="#EAF0FA" font-family="'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif" font-size="42" font-weight="700" letter-spacing="-1">deltavantis</text>
+
+  <text x="96" y="330" fill="#EAF0FA" font-family="'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif" font-size="64" font-weight="700" letter-spacing="-2.2">Independent IT consulting.</text>
+  <text x="96" y="400" fill="#8A9BBA" font-family="ui-sans-serif, system-ui, sans-serif" font-size="29">No vendor kickbacks. No stack religion. No 90-page decks.</text>
+
+  <rect x="96" y="480" width="300" height="3" rx="1.5" fill="url(#mk)"/>
+  <text x="96" y="544" fill="#8A9BBA" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="23" letter-spacing="3.2">DELTAVANTIS.COM</text>
 </svg>

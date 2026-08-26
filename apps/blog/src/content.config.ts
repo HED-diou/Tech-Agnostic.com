@@ -12,7 +12,7 @@ const blog = defineCollection({
     topic: z.string(),
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date().optional(),
-    author: z.string().default('Tech-Agnostic'),
+    author: z.string().default('Deltavantis'),
     readingTime: z.string(),
     draft: z.boolean().default(false),
   }),

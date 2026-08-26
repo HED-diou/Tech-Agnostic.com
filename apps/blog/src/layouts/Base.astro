@@ -14,7 +14,7 @@ interface Props {
 
 const { title, description, path, type = 'website', publishedAt } = Astro.props;
 
-const site = Astro.site?.origin ?? 'https://tech-agnostic.com';
+const site = Astro.site?.origin ?? 'https://deltavantis.com';
 const canonical = new URL(path, site).href;
 ---
 
@@ -33,7 +33,7 @@ const canonical = new URL(path, site).href;
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="Tech-Agnostic — Notes"
+      title="Deltavantis — Notes"
       href="/blog/rss.xml"
     />
 
@@ -41,7 +41,7 @@ const canonical = new URL(path, site).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:site_name" content="Tech-Agnostic" />
+    <meta property="og:site_name" content="Deltavantis" />
     <meta property="og:image" content={new URL('/og.svg', site).href} />
     <meta name="twitter:card" content="summary_large_image" />
     {
@@ -57,7 +57,7 @@ const canonical = new URL(path, site).href;
   <body>
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-field focus:bg-signal focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-field focus:bg-signal focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-frost"
     >
       Skip to content
     </a>

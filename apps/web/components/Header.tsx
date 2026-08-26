@@ -33,15 +33,15 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-paper/85 backdrop-blur-md transition-shadow duration-150 ease-out ${
-        scrolled ? 'border-b border-line shadow-sm' : ''
+      className={`sticky top-0 z-50 bg-night/85 backdrop-blur-md transition-shadow duration-150 ease-out ${
+        scrolled ? 'border-b border-edge shadow-sm' : ''
       }`}
     >
-      <div className="container-ta flex h-[76px] items-center justify-between gap-6">
+      <div className="container-dv flex h-[76px] items-center justify-between gap-6">
         <Link
           href="/"
           className="shrink-0 rounded-sm"
-          aria-label={`${'Tech-Agnostic'} — home`}
+          aria-label={`${'Deltavantis'} — home`}
           onClick={() => setOpen(false)}
         >
           <Logo size={30} />
@@ -53,7 +53,7 @@ export function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-body transition-colors duration-150 ease-out hover:text-ink"
+                className="text-sm font-medium text-mist transition-colors duration-150 ease-out hover:text-frost"
               >
                 {item.label}
               </a>
@@ -61,7 +61,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-body transition-colors duration-150 ease-out hover:text-ink"
+                className="text-sm font-medium text-mist transition-colors duration-150 ease-out hover:text-frost"
               >
                 {item.label}
               </Link>
@@ -77,7 +77,7 @@ export function Header() {
 
         <button
           type="button"
-          className="-mr-2 flex h-11 w-11 items-center justify-center rounded-field text-ink lg:hidden"
+          className="-mr-2 flex h-11 w-11 items-center justify-center rounded-field text-frost lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
@@ -105,15 +105,15 @@ export function Header() {
       {open ? (
         <div
           id="mobile-nav"
-          className="absolute inset-x-0 top-[76px] max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-line bg-paper shadow-card lg:hidden"
+          className="absolute inset-x-0 top-[76px] max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-edge bg-night shadow-card lg:hidden"
         >
-          <nav aria-label="Mobile" className="container-ta py-6">
+          <nav aria-label="Mobile" className="container-dv py-6">
             <ul className="flex flex-col">
               {nav.map((item) => (
-                <li key={item.href} className="border-b border-line">
+                <li key={item.href} className="border-b border-edge">
                   <a
                     href={item.href}
-                    className="block py-4 text-h3 text-ink"
+                    className="block py-4 text-h3 text-frost"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}

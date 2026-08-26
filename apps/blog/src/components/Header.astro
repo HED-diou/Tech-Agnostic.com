@@ -12,9 +12,9 @@ const links = [
 const { current } = Astro.props;
 ---
 
-<header class="sticky top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-md">
-  <div class="container-ta flex h-[72px] items-center justify-between gap-6">
-    <a href="/" aria-label="Tech-Agnostic — home" class="shrink-0">
+<header class="sticky top-0 z-50 border-b border-edge bg-night/85 backdrop-blur-md">
+  <div class="container-dv flex h-[72px] items-center justify-between gap-6">
+    <a href="/" aria-label="Deltavantis — home" class="shrink-0">
       <Logo size={30} />
     </a>
 
@@ -24,7 +24,7 @@ const { current } = Astro.props;
           <a
             href={link.href}
             aria-current={current === link.href ? 'page' : undefined}
-            class="text-sm font-medium text-body transition-colors duration-150 ease-out hover:text-ink aria-[current=page]:text-ink"
+            class="text-sm font-medium text-mist transition-colors duration-150 ease-out hover:text-frost aria-[current=page]:text-frost"
           >
             {link.label}
           </a>
@@ -34,7 +34,7 @@ const { current } = Astro.props;
 
     <a
       href="/contact"
-      class="inline-flex h-11 items-center justify-center rounded-full bg-signal px-5 text-[0.9375rem] font-semibold text-ink transition-colors duration-150 ease-out hover:bg-signal-hover"
+      class="inline-flex h-11 items-center justify-center rounded-full bg-signal px-5 text-[0.9375rem] font-semibold text-frost transition-colors duration-150 ease-out hover:bg-signal-hover"
     >
       Book a review
     </a>

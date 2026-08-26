@@ -1,17 +1,17 @@
 # Business Requirements Document
 
-## Tech-Agnostic.com — marketing site & content platform
+## Deltavantis.com — marketing site & content platform
 
-| Field        | Value                                                                                                       |
-| ------------ | ----------------------------------------------------------------------------------------------------------- |
-| Document     | Business Requirements Document (BRD)                                                                        |
-| Product      | Tech-Agnostic.com public website                                                                            |
-| Version      | 1.0                                                                                                         |
-| Status       | v1.0 delivered — business inputs pending owner confirmation                                                 |
-| Date         | 25 August 2026                                                                                              |
-| Owner        | Amine (founder)                                                                                             |
-| Repository   | `HED-diou/Tech-Agnostic.com`, branch `claude/tech-agnostic-site-4wtzsg`                                     |
-| Related docs | `docs/BRAND.md` (charte graphique), `docs/CONTENT.md` (pre-launch checklist), `README.md` (developer guide) |
+| Field        | Value                                                                                                          |
+| ------------ | -------------------------------------------------------------------------------------------------------------- |
+| Document     | Business Requirements Document (BRD)                                                                           |
+| Product      | Deltavantis.com public website                                                                                 |
+| Version      | 1.0                                                                                                            |
+| Status       | v1.0 delivered — business inputs pending owner confirmation                                                    |
+| Date         | 25 August 2026                                                                                                 |
+| Owner        | Amine (founder)                                                                                                |
+| Repository   | `HED-diou/Deltavantis.com`, branch `claude/deltavantis-site-4wtzsg`                                            |
+| Related docs | `docs/BRAND.md` (charte graphique v3), `docs/CONTENT.md` (pre-launch checklist), `README.md` (developer guide) |
 
 > **Read this first.** This BRD documents a website that has already been built.
 > It is written retrospectively so that requirements, decisions and open
@@ -25,11 +25,11 @@
 
 ---
 
-# 1. What is Tech-Agnostic.com?
+# 1. What is Deltavantis.com?
 
 ## 1.1 In one sentence
 
-Tech-Agnostic is an independent IT and software consultancy that helps companies
+Deltavantis is an independent IT and software consultancy that helps companies
 choose, build and own the right technology — and its website is the machine that
 turns a stranger with a technology problem into a booked, qualified consulting
 call.
@@ -42,7 +42,7 @@ recommends a cloud provider, a CRM or a database, the client can never fully
 separate _"this is the best option for you"_ from _"we earn a margin on this
 option."_
 
-**Tech-Agnostic's entire commercial position is the removal of that conflict.**
+**Deltavantis's entire commercial position is the removal of that conflict.**
 The firm takes no vendor commission, holds no partner tier, and sells only its
 own time. "Agnostic" is meant literally: no allegiance to any vendor, cloud,
 language or framework. The recommendation a client receives is the one the firm
@@ -93,7 +93,7 @@ technology-agnostic. It also reads as _the aside_: the honest note an engineer
 leaves next to the code, which is the firm's tone of voice.
 
 The mark doubles as a typographic device throughout the site (`// SERVICES`,
-`// tech-agnostic`), so the brand asset and the layout system are the same idea.
+`// deltavantis`), so the brand asset and the layout system are the same idea.
 
 ## 1.6 Current status
 
@@ -107,7 +107,7 @@ domain, and its commercial content is still placeholder pending owner sign-off.
 
 |                    |                                                                                                                                                                                               |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Problem**        | Tech-Agnostic has no public presence. Its differentiator (vendor neutrality) is invisible and unprovable to prospects, and there is no repeatable way to capture or qualify inbound demand.   |
+| **Problem**        | Deltavantis has no public presence. Its differentiator (vendor neutrality) is invisible and unprovable to prospects, and there is no repeatable way to capture or qualify inbound demand.     |
 | **Solution**       | A single-origin marketing site: a one-page conversion funnel, a three-step qualifying lead form, and a technical blog that demonstrates competence rather than asserting it.                  |
 | **Approach**       | Static-first. Next.js for the marketing site, Astro for the blog, compiled into one deployable. No backend in v1.0 — the lead form posts to a third-party endpoint with a `mailto:` fallback. |
 | **Primary metric** | Qualified technical reviews booked per month.                                                                                                                                                 |
@@ -132,7 +132,7 @@ the writing.
 
 ## 3.2 Competitive positioning
 
-| Competitor type                                | Their weakness                                             | How Tech-Agnostic positions against it                        |
+| Competitor type                                | Their weakness                                             | How Deltavantis positions against it                          |
 | ---------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------- |
 | Large SIs / consultancies                      | Vendor partnerships, opaque pricing, slow                  | Published prices, no commissions, 2-week engagements          |
 | Vendor-aligned partners (AWS/Azure/Salesforce) | Structurally cannot recommend against their vendor         | "We hold no reseller agreements" — in the engagement letter   |
@@ -490,18 +490,18 @@ the README and encoded in the root `build` script.
 Full specification: **`docs/BRAND.md`**. The rules below are binding on any
 future change.
 
-| ID    | Rule                                                                                                                                                                      |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| BD-01 | Palette is duotone (ink + paper) plus **one** accent and **one** structural tint. A fourth colour is a defect.                                                            |
-| BD-02 | The accent `#FF5D2E` is scarce: at most one primary button, the `//`, and one emphasised element per viewport. Repeated data treatments (a metric rail) count as one use. |
-| BD-03 | Borders do the work shadows do elsewhere. The system contains exactly one shadow.                                                                                         |
-| BD-04 | One entrance animation: fade + 12px rise, 240ms, once. No parallax, no counters, no typing effects.                                                                       |
-| BD-05 | Type: Space Grotesk (display), Inter (body), JetBrains Mono (labels/data). Self-hosted.                                                                                   |
-| BD-06 | Body copy capped at 66ch; lead paragraphs at 52ch.                                                                                                                        |
-| BD-07 | No stock photography. Diagrams over illustrations.                                                                                                                        |
-| BD-08 | Technology names as text chips — never vendor marks.                                                                                                                      |
-| BD-09 | The logo is never rotated, restyled, re-slanted or recoloured. Import it; never redraw it.                                                                                |
-| BD-10 | Tokens live in `globals.css` (`@theme`) and are mirrored in `apps/blog/src/styles/brand.css`. The two must stay in step.                                                  |
+| ID    | Rule                                                                                                                                                                        |
+| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| BD-01 | Palette is night-first: five surface steps, four text steps, three aurora lights. A colour outside the token table is a defect.                                             |
+| BD-02 | Mint `#46E5B5` is the only accent: at most one primary button, the `Δ`, and one emphasised element per viewport. Repeated data treatments (a metric rail) count as one use. |
+| BD-03 | Cyan and violet exist to make the aurora — background blooms and the logo gradient. Never a button, link or label.                                                          |
+| BD-04 | Depth comes from a 1px top highlight plus a deep shadow. A drop shadow alone is invisible on night. One coloured shadow exists: the primary CTA.                            |
+| BD-05 | Type: Plus Jakarta Sans (display), Inter (body), JetBrains Mono (data/code, sparingly). Self-hosted.                                                                        |
+| BD-06 | Body copy capped at 66ch; lead paragraphs at 54ch.                                                                                                                          |
+| BD-07 | The aurora is decoration: never behind body copy, and it never moves.                                                                                                       |
+| BD-08 | No stock photography. Every photo position is a `PhotoSlot`; images must be graded for a night page.                                                                        |
+| BD-09 | Technology names as text chips — never vendor marks.                                                                                                                        |
+| BD-10 | The logo is never redrawn: two filled polygons, fixed geometry, unique gradient id per instance.                                                                            |
 
 ---
 
@@ -556,7 +556,7 @@ points already exist in the form's step transitions.
 
 | Dependency                                  | Type     | Status                                      |
 | ------------------------------------------- | -------- | ------------------------------------------- |
-| Domain `tech-agnostic.com`                  | External | ⏳ Not confirmed registered                 |
+| Domain `deltavantis.com`                    | External | ⏳ Not confirmed registered                 |
 | Form-handling provider                      | External | ❌ Not selected — `mailto:` fallback active |
 | Real case-study permissions                 | Business | ❌ Outstanding                              |
 | Legal review of `/privacy` and guarantees   | Business | ❌ Outstanding                              |
@@ -625,7 +625,7 @@ points already exist in the form's step transitions.
 | OQ-03 | What is the target market? Morocco / France / EU / global? Determines language, currency and whether EUR is right.                              | Founder           | Launch |
 | OQ-04 | Which form provider?                                                                                                                            | Founder           | Launch |
 | OQ-05 | Are there real, permissioned case studies available now, or should the Work section ship reduced rather than fabricated?                        | Founder           | Launch |
-| OQ-06 | Is `tech-agnostic.com` registered and available?                                                                                                | Founder           | Launch |
+| OQ-06 | Is `deltavantis.com` registered and available?                                                                                                  | Founder           | Launch |
 | OQ-07 | Should testimonials be added, and can attribution be obtained?                                                                                  | Founder           | v1.2   |
 
 ---
@@ -639,7 +639,7 @@ points already exist in the form's step transitions.
 | **Fractional CTO**          | Part-time senior technical leadership on a rolling monthly basis                                       |
 | **Funnel**                  | The ordered sequence of landing-page sections moving a visitor toward booking                          |
 | **Progressive enhancement** | Building so the page works without JavaScript, then improving it when JS runs                          |
-| **Signal**                  | The single accent colour, `#FF5D2E`                                                                    |
+| **Signal / mint**           | The single accent colour, `#46E5B5`                                                                    |
 | **Static generation**       | Rendering pages to HTML at build time rather than per request                                          |
 | **Vendor neutrality**       | Taking no commission, partner tier or referral fee from any vendor recommended                         |
 

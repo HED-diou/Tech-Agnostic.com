@@ -3,7 +3,7 @@ title: 'How to read a vendor proposal'
 description: 'The number on the front page is not the price. Here are the seven clauses that decide what you will actually pay, and the questions that surface them.'
 topic: 'procurement'
 publishedAt: 2026-03-19
-author: 'Tech-Agnostic'
+author: 'Deltavantis'
 readingTime: '8 min read'
 ---
 

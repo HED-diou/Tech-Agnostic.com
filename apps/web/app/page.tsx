@@ -18,8 +18,8 @@ import { FinalCta } from '@/components/sections/FinalCta';
  *   Stats       the numbers a non-technical buyer scans for
  *   Problems    name the pain in the visitor's own words
  *   Services    the offer ladder, each with a price and a date
- *   Portfolio   filterable client showcase across key sectors
- *   Work        in-depth evidence with detailed metrics
+ *   Portfolio   showcase of engineering outcomes by category
+ *   Work        evidence, with numbers
  *   Method      de-risk: show exactly what happens after they sign
  *   Team        who they will actually be working with
  *   Principles  remove the conflict of interest (the core objection)
@@ -28,7 +28,7 @@ import { FinalCta } from '@/components/sections/FinalCta';
  *   FinalCta    capture, with a three-step qualifying form
  *
  * Light and inverted bands alternate to give the page rhythm; see the
- * `band-deep` / `band-sand` helpers in globals.css.
+ * `band-aurora` / `band-panel` helpers in globals.css.
  */
 export default function HomePage() {
   return (

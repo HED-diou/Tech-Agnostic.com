@@ -16,12 +16,12 @@ export function Eyebrow({
     <span
       className={`inline-flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-2.5 text-eyebrow font-semibold ${
         tone === 'deep'
-          ? 'bg-white/10 text-white'
-          : 'bg-signal-wash text-signal-deep'
+          ? 'bg-frost/10 text-frost'
+          : 'bg-signal-veil text-signal'
       }`}
     >
-      <span className="font-mono leading-none opacity-70" aria-hidden="true">
-        {'//'}
+      <span className="font-display leading-none opacity-80" aria-hidden="true">
+        {'\u0394'}
       </span>
       {children}
     </span>
@@ -39,8 +39,8 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`section-ta ${className}`}>
-      <div className="container-ta">{children}</div>
+    <section id={id} className={`section-dv ${className}`}>
+      <div className="container-dv">{children}</div>
     </section>
   );
 }
@@ -70,7 +70,7 @@ export function SectionHead({
       {lead ? (
         <p
           className={`mt-5 text-body-lg ${
-            tone === 'deep' ? 'text-deep-body' : 'text-muted'
+            tone === 'deep' ? 'text-mist' : 'text-dim'
           } ${align === 'center' ? 'mx-auto' : ''} measure`}
         >
           {lead}
@@ -89,11 +89,13 @@ const buttonBase =
   'disabled:pointer-events-none disabled:opacity-45';
 
 const buttonVariants: Record<ButtonVariant, string> = {
-  primary: 'bg-signal text-ink shadow-sm hover:bg-signal-hover',
+  // Mint fill with a night label — 12.31:1, and the only coloured shadow
+  // in the system (BRAND.md §5.2).
+  primary: 'bg-signal text-night shadow-glow hover:bg-signal-hover',
   secondary:
-    'border border-line-strong bg-surface text-ink shadow-sm hover:border-ink hover:shadow-card',
-  onDeep: 'bg-white text-ink hover:bg-sand',
-  ghost: 'px-0 text-ink underline underline-offset-4 hover:text-signal',
+    'border border-edge-2 bg-panel text-frost hover:border-frost hover:bg-panel-2',
+  onDeep: 'bg-frost text-night hover:bg-mist',
+  ghost: 'px-0 text-frost underline underline-offset-4 hover:text-signal',
 };
 
 export function Button({
@@ -151,7 +153,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`rounded-card border border-line bg-surface shadow-card ${
+      className={`rounded-card border border-edge bg-panel shadow-card ${
         interactive
           ? 'transition-shadow duration-150 ease-out hover:shadow-lift'
           : ''
